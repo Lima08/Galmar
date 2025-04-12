@@ -10,9 +10,9 @@ import WhatsAppButton from '@/components/whatsapp-button'
 export default function LandingPage() {
   const phoneNumber = '19982340942'
   return (
-    <div id='inicio' className='flex flex-col min-h-screen'>
+    <div id='home' className='flex flex-col min-h-screen'>
       <Header />
-      <main className='flex-1'>
+      <main className='flex-1 '>
         <Hero />
         <Brands />
         <AboutUs />

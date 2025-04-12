@@ -2,13 +2,6 @@
   "header": {
     "brand": "Galmar",
     "tagline": "Produtos de Limpeza",
-    "nav": {
-      "home": "Início",
-      "about": "Sobre Nós",
-      "brands": "Marcas",
-      "testimonials": "Depoimentos",
-      "contact": "Contato"
-    },
     "phone": "(19) 3123-4567"
   },
   "hero": {

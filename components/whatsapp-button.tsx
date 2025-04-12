@@ -52,7 +52,7 @@ export default function WhatsAppButton({
         rel='noopener noreferrer'
         aria-label='Contato via WhatsApp'
         className='flex items-center justify-center w-16 h-16 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition-all duration-300 hover:scale-110 hover:shadow-xl'>
-        <FaWhatsapp />
+        <FaWhatsapp className='h-8 w-8' />
       </Link>
     </div>
   )

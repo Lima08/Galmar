@@ -21,29 +21,29 @@ export default function Header() {
         </div>
         <nav className='hidden md:flex items-center gap-6 text-sm'>
           <Link
-            href='#inicio'
-            className='font-medium transition-colors hover:text-teal-600'>
-            {content.header.nav.inicio}
+            href='#home'
+            className='font-medium transition-colors hover:text-secondary-light'>
+            {content.header.nav.home}
           </Link>
           <Link
-            href='#sobre'
-            className='font-medium transition-colors hover:text-teal-600'>
-            {content.header.nav.sobre}
+            href='#about'
+            className='font-medium transition-colors hover:text-secondary-light'>
+            {content.header.nav.about}
           </Link>
           <Link
-            href='#marcas'
-            className='font-medium transition-colors hover:text-teal-600'>
-            {content.header.nav.marcas}
+            href='#brands'
+            className='font-medium transition-colors hover:text-secondary-light'>
+            {content.header.nav.brands}
           </Link>
           <Link
-            href='#depoimentos'
-            className='font-medium transition-colors hover:text-teal-600'>
-            {content.header.nav.depoimentos}
+            href='#testimonials'
+            className='font-medium transition-colors hover:text-secondary-light'>
+            {content.header.nav.testimonials}
           </Link>
           <Link
-            href='#contato'
-            className='font-medium transition-colors hover:text-teal-600'>
-            {content.header.nav.contato}
+            href='#contact'
+            className='font-medium transition-colors hover:text-secondary-light'>
+            {content.header.nav.contact}
           </Link>
         </nav>
         <Button variant='outline' className='hidden md:inline-flex'>

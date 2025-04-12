@@ -5,18 +5,21 @@ import AboutUs from '@/components/aboutUs'
 import Brands from '@/components/brands'
 import Testimonials from '@/components/testimonials'
 import Contact from '@/components/contact'
+import WhatsAppButton from '@/components/whatsapp-button'
 
 export default function LandingPage() {
+  const phoneNumber = '19982340942'
   return (
     <div id='inicio' className='flex flex-col min-h-screen'>
       <Header />
       <main className='flex-1'>
         <Hero />
-        <AboutUs />
         <Brands />
+        <AboutUs />
         <Testimonials />
         <Contact />
       </main>
+      <WhatsAppButton phoneNumber={phoneNumber} />
       <Footer />
     </div>
   )

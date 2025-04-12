@@ -3,11 +3,11 @@
     "brand": "Galmar",
     "tagline": "Produtos de Limpeza",
     "nav": {
-      "inicio": "Início",
-      "sobre": "Sobre Nós",
-      "marcas": "Marcas",
-      "depoimentos": "Depoimentos",
-      "contato": "Contato"
+      "home": "Início",
+      "about": "Sobre Nós",
+      "brands": "Marcas",
+      "testimonials": "Depoimentos",
+      "contact": "Contato"
     },
     "phone": "(19) 3123-4567"
   },
@@ -15,9 +15,10 @@
     "title": "Produtos de Limpeza de Alta Qualidade em Campinas",
     "description": "Soluções de limpeza eficientes e ecológicas para sua casa ou empresa. Entrega rápida em toda região de Campinas.",
     "ctaBrands": "Conheça Nossas Marcas",
+    "ctaProducts": "Confira Nossos Produtos",
     "ctaContact": "Entre em Contato"
   },
-  "sobre": {
+  "about": {
     "badge": "Sobre a Galmar",
     "title": "Tradição em Produtos de Limpeza",
     "description": "Desde 2005, a Galmar tem fornecido produtos de limpeza de alta qualidade para residências e empresas em Campinas e região. Nossa missão é oferecer soluções eficientes, ecológicas e com o melhor custo-benefício."
@@ -36,30 +37,70 @@
       "description": "Entregamos em toda Campinas e região com agilidade e segurança."
     }
   ],
-  "marcas": {
+  "products": {
+    "badge": "Produtos",
+    "title": "Produtos de Limpeza para Todos os Ambientes",
+    "description": "Conheça nossa linha completa de produtos, com qualidade e eficiência comprovadas.",
+    "button": "Ver Catálogo Completo",
+    "items": [
+      {
+        "title": "Detergente Multiuso",
+        "description": "Limpeza completa para cozinha e ambientes industriais.",
+        "image": "assets/products/detergente-multiuso.png"
+      },
+      {
+        "title": "Desinfetante",
+        "description": "Elimina 99,9% dos germes e bactérias com segurança.",
+        "image": "assets/products/desinfetante.png"
+      },
+      {
+        "title": "Limpador de Piso",
+        "description": "Produtos específicos para diferentes tipos de piso.",
+        "image": "assets/products/limpador-de-piso.png"
+      }
+    ]
+  },
+  "brands": {
     "badge": "Marcas",
     "title": "As Marcas que Representam Qualidade",
     "description": "Confira as marcas que elevam os padrões de limpeza com soluções modernas e eficientes.",
     "button": "Ver Todas as Marcas",
     "items": [
       {
-        "title": "Marca A",
-        "description": "Líder em soluções de limpeza.",
-        "logo": "/brands/marca-a.png"
+        "title": "Coala",
+        "image": "assets/brands/logo-coala.png"
       },
       {
-        "title": "Marca B",
-        "description": "Excelência e inovação.",
-        "logo": "/brands/marca-b.png"
+        "title": "Cooperalcool",
+        "image": "assets/brands/logo-cooperalcool.png"
       },
       {
-        "title": "Marca C",
-        "description": "Qualidade e confiança.",
-        "logo": "/brands/marca-c.png"
+        "title": "Deoline",
+        "image": "assets/brands/logo-deoline.png"
+      },
+      {
+        "title": "Flash",
+        "image": "assets/brands/logo-flash.png"
+      },
+      {
+        "title": "Premisse",
+        "image": "assets/brands/logo-premisse.png"
+      },
+      {
+        "title": "Uau",
+        "image": "assets/brands/logo-uau.png"
+      },
+      {
+        "title": "Vereda",
+        "image": "assets/brands/logo-vereda.png"
+      },
+      {
+        "title": "Zulu",
+        "image": "assets/brands/logo-zulu-perf.png"
       }
     ]
   },
-  "depoimentos": {
+  "testimonials": {
     "badge": "Depoimentos",
     "title": "O que nossos clientes dizem",
     "description": "A satisfação de nossos clientes é nossa maior recompensa.",
@@ -81,26 +122,29 @@
       }
     ]
   },
-  "contato": {
+  "contact": {
     "badge": "Contato",
     "title": "Entre em contato conosco",
     "description": "Estamos à disposição para atender suas necessidades e esclarecer dúvidas.",
     "form": {
       "name": "Nome",
       "email": "E-mail",
-      "phone": "Telefone",
       "message": "Mensagem",
       "button": "Enviar Mensagem"
     },
     "info": {
       "addressTitle": "Endereço",
-      "address": "Av. das Limpezas, 123 - Centro, Campinas - SP",
+      "address": "Av. Jorge Tibiriçá, 1747 - Jardim Santa Eudoxia, Campinas - SP, 13044-125",
       "phoneTitle": "Telefone",
-      "phone": "(19) 3123-4567",
+      "phone": "(19) 32121177",
       "emailTitle": "E-mail",
-      "email": "contato@galmar.com.br",
+      "email": "galmarcomercial@gmail.com",
       "clockTitle": "Horário de Funcionamento",
-      "clock": "Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h"
+      "clock": "Segunda a Sexta: 9h às 18h | Sábado: 8h às 13h"
+    },
+    "social": {
+      "facebook": "https://www.facebook.com/galmarprodutosdelimpeza",
+      "instagram": "https://www.instagram.com/galmarprodutosdelimpeza"
     }
   },
   "footer": {

@@ -60,14 +60,14 @@ export default function Header() {
           ? 'bg-white shadow-md py-2'
           : 'bg-white/80 backdrop-blur-sm py-4'
       )}>
-      <div className='container flex h-[100px] items-center justify-between'>
+      <div className='container flex h-[50px] items-center justify-between'>
         <div className='flex items-center gap-2'>
           <Link href='#home'>
             <Image
               src='/logo-galmar.png'
               alt={content.header.brand}
-              width={150}
-              height={50}
+              width={120}
+              height={40}
               className='object-contain'
             />
           </Link>

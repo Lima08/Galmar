@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import content from '@/data/content.json'
 import { ContactForm } from '@/components/forms/contact-form'
@@ -7,7 +7,7 @@ import { FaFacebookF, FaInstagram } from 'react-icons/fa'
 export default function Contact() {
   return (
     <section id='contact' className='w-full py-12 md:py-24 lg:py-32 bg-black'>
-      <div className='container px-4 md:px-6 text-white'>
+      <div className='container px-4 md:px-8 text-white'>
         <div className='grid gap-6 lg:grid-cols-2 lg:gap-12'>
           <div className='flex flex-col justify-center space-y-4'>
             <div className='space-y-2'>

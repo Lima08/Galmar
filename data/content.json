@@ -1,0 +1,109 @@
+{
+  "header": {
+    "brand": "Galmar",
+    "tagline": "Produtos de Limpeza",
+    "nav": {
+      "inicio": "Início",
+      "sobre": "Sobre Nós",
+      "marcas": "Marcas",
+      "depoimentos": "Depoimentos",
+      "contato": "Contato"
+    },
+    "phone": "(19) 3123-4567"
+  },
+  "hero": {
+    "title": "Produtos de Limpeza de Alta Qualidade em Campinas",
+    "description": "Soluções de limpeza eficientes e ecológicas para sua casa ou empresa. Entrega rápida em toda região de Campinas.",
+    "ctaBrands": "Conheça Nossas Marcas",
+    "ctaContact": "Entre em Contato"
+  },
+  "sobre": {
+    "badge": "Sobre a Galmar",
+    "title": "Tradição em Produtos de Limpeza",
+    "description": "Desde 2005, a Galmar tem fornecido produtos de limpeza de alta qualidade para residências e empresas em Campinas e região. Nossa missão é oferecer soluções eficientes, ecológicas e com o melhor custo-benefício."
+  },
+  "features": [
+    {
+      "title": "Qualidade Garantida",
+      "description": "Todos os nossos produtos passam por rigorosos testes de qualidade."
+    },
+    {
+      "title": "Produtos Ecológicos",
+      "description": "Comprometidos com o meio ambiente, oferecemos opções biodegradáveis."
+    },
+    {
+      "title": "Entrega Rápida",
+      "description": "Entregamos em toda Campinas e região com agilidade e segurança."
+    }
+  ],
+  "marcas": {
+    "badge": "Marcas",
+    "title": "As Marcas que Representam Qualidade",
+    "description": "Confira as marcas que elevam os padrões de limpeza com soluções modernas e eficientes.",
+    "button": "Ver Todas as Marcas",
+    "items": [
+      {
+        "title": "Marca A",
+        "description": "Líder em soluções de limpeza.",
+        "logo": "/brands/marca-a.png"
+      },
+      {
+        "title": "Marca B",
+        "description": "Excelência e inovação.",
+        "logo": "/brands/marca-b.png"
+      },
+      {
+        "title": "Marca C",
+        "description": "Qualidade e confiança.",
+        "logo": "/brands/marca-c.png"
+      }
+    ]
+  },
+  "depoimentos": {
+    "badge": "Depoimentos",
+    "title": "O que nossos clientes dizem",
+    "description": "A satisfação de nossos clientes é nossa maior recompensa.",
+    "items": [
+      {
+        "name": "Maria Silva",
+        "role": "Dona de Casa",
+        "content": "Os produtos da Galmar são excelentes! Uso há anos e nunca me decepcionei com a qualidade."
+      },
+      {
+        "name": "João Oliveira",
+        "role": "Gerente de Condomínio",
+        "content": "Fornecedor confiável e com ótimo atendimento. Os produtos têm excelente custo-benefício."
+      },
+      {
+        "name": "Ana Santos",
+        "role": "Empresária",
+        "content": "A linha ecológica da Galmar é fantástica. Eficiente e ainda ajuda o meio ambiente."
+      }
+    ]
+  },
+  "contato": {
+    "badge": "Contato",
+    "title": "Entre em contato conosco",
+    "description": "Estamos à disposição para atender suas necessidades e esclarecer dúvidas.",
+    "form": {
+      "name": "Nome",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "message": "Mensagem",
+      "button": "Enviar Mensagem"
+    },
+    "info": {
+      "addressTitle": "Endereço",
+      "address": "Av. das Limpezas, 123 - Centro, Campinas - SP",
+      "phoneTitle": "Telefone",
+      "phone": "(19) 3123-4567",
+      "emailTitle": "E-mail",
+      "email": "contato@galmar.com.br",
+      "clockTitle": "Horário de Funcionamento",
+      "clock": "Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h"
+    }
+  },
+  "footer": {
+    "text": "© 2025 Galmar - Produtos de Limpeza e Descartáveis. Todos os direitos reservados."
+  }
+}

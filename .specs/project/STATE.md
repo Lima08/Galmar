@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1 ✅, F2 ✅ (review aplicado; gate verde também em Next 16 / Tailwind 4 / TS 6); próximo: F3 `brand-assets`
+**Current Work:** M1 — F1 ✅, F2 ✅, F3 ✅; próximo: F4 `header-contact-bar`
 
 ---
 
@@ -141,7 +141,7 @@
 **Impact:** Bloqueia F3; afeta F5 e F8. Logo atual (`public/logo-galmar.png`) é vertical com ~25% de margem → símbolo ~20 px no header (manual exige ≥ 80 px).
 **Card:** #12
 **Detalhe:** `logo.ai` tem preview PDF vazio (salvo sem compatibilidade PDF); `logo.psd` contém só estudos tipográficos azuis.
-**Workaround:** AD-011 — PNGs provisórios gerados do `logo-galmar.png`.
+**Workaround:** AD-011 aplicado na F3 — kit provisório em `public/brand/` (trocar arquivos quando o SVG chegar).
 **Resolution:** Designer exporta SVG: horizontal colorido, horizontal branco, símbolo isolado.
 
 ### B-002: Dados da empresa pendentes

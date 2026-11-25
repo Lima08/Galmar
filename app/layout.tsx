@@ -1,38 +1,72 @@
-import type React from "react"
-import "@/app/globals.css"
-import { Inter, Poppins } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
+import { Poppins } from 'next/font/google'
+import content from '@/data/content.json'
+import { siteUrl } from '@/lib/site'
+import './globals.css'
 
-const poppins = Poppins({ 
-  subsets: ["latin"],
-  weight: ["400", "700"]
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '700']
 })
 
+const title = 'Galmar - Produtos de Limpeza em Campinas'
+const description = content.hero.description
 
-export const metadata = {
-  title: "Galmar - Produtos de Limpeza em Campinas",
-  description:
-    "Soluções de limpeza eficientes e ecológicas para sua casa ou empresa. Entrega rápida em toda região de Campinas.",
-    icons: {
-      icon: "/logo-galmar.png",
-    },
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  icons: { icon: '/logo-galmar.png' },
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    siteName: content.header.brand,
+    title,
+    description,
+    images: [{ url: '/foto-galmar.jpg', alt: 'Produtos de limpeza Galmar' }]
+  }
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const { info, social } = content.contact
+
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Store',
+  name: content.header.brand,
+  description,
+  url: siteUrl,
+  image: `${siteUrl}/foto-galmar.jpg`,
+  logo: `${siteUrl}/logo-galmar.png`,
+  telephone: info.phone,
+  email: info.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: info.address.street,
+    addressLocality: info.address.city,
+    addressRegion: info.address.state,
+    postalCode: info.address.postalCode,
+    addressCountry: 'BR'
+  },
+  sameAs: [social.facebook, social.instagram]
+}
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html
+      lang='pt-BR'
+      className='scroll-smooth scroll-pt-[90px]'
+      data-scroll-behavior='smooth'>
       <body className={poppins.className}>
-        <ThemeProvider attribute="class" defaultTheme="light"  disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd).replace(/</g, '\\u003c')
+          }}
+        />
+        {children}
       </body>
     </html>
   )
 }
-
-
-import './globals.css'

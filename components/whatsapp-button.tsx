@@ -2,55 +2,48 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
+import content from '@/data/content.json'
+import { cn } from '@/lib/utils'
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
 
-interface WhatsAppButtonProps {
-  phoneNumber: string
-  message?: string
-}
+const SHOW_DELAY_MS = 1500
+const SCROLL_THRESHOLD_PX = 300
 
-export default function WhatsAppButton({
-  phoneNumber,
-  message = 'Olá! Vim pelo site e gostaria de mais informações.'
-}: WhatsAppButtonProps) {
-  const [isVisible, setIsVisible] = useState(false)
+const whatsappUrl = buildWhatsAppUrl(
+  content.contact.info.phone,
+  content.contact.whatsappMessage
+)
 
-  const formattedPhone = phoneNumber.replace(/\D/g, '')
-
-  const whatsappUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(
-    message
-  )}`
+export default function WhatsAppButton() {
+  const [delayElapsed, setDelayElapsed] = useState(false)
+  const [scrolledPast, setScrolledPast] = useState(false)
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
-    }
+    const handleScroll = () =>
+      setScrolledPast(window.scrollY > SCROLL_THRESHOLD_PX)
 
-    window.addEventListener('scroll', toggleVisibility)
-
-    const timer = setTimeout(() => {
-      setIsVisible(true)
-    }, 1500)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    const timer = setTimeout(() => setDelayElapsed(true), SHOW_DELAY_MS)
 
     return () => {
-      window.removeEventListener('scroll', toggleVisibility)
+      window.removeEventListener('scroll', handleScroll)
       clearTimeout(timer)
     }
   }, [])
 
+  const isVisible = delayElapsed || scrolledPast
+
   return (
     <div
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
+      className={cn(
+        'fixed bottom-6 right-6 z-50 transition-all duration-300',
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-      }`}>
+      )}>
       <Link
         href={whatsappUrl}
         target='_blank'
         rel='noopener noreferrer'
-        aria-label='Contato via WhatsApp'
+        aria-label={content.contact.whatsappLabel}
         className='flex items-center justify-center w-16 h-16 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition-all duration-300 hover:scale-110 hover:shadow-xl'>
         <FaWhatsapp className='h-8 w-8' />
       </Link>

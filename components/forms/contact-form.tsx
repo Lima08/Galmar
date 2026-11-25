@@ -1,20 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import { Button } from '@/components/ui/button'
 import content from '@/data/content.json'
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
 
 export function ContactForm() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
-  const callWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
+  const callWhatsApp = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const phone = content.contact.info.phone.replace(/\D/g, '')
     const text = `Olá, meu nome é ${name} (email: ${email}).\nMensagem: ${message}`
-    const encodedText = encodeURIComponent(text)
-    window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank')
+    window.open(buildWhatsAppUrl(content.contact.info.phone, text), '_blank')
   }
 
   return (
@@ -30,7 +29,8 @@ export function ContactForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           className='h-10 rounded-md border border-input bg-background px-3 py-2 text-sm'
-          placeholder='Seu nome completo'
+          placeholder={content.contact.form.namePlaceholder}
+          required
         />
       </div>
       <div className='grid gap-2'>
@@ -45,7 +45,8 @@ export function ContactForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className='h-10 rounded-md border border-input bg-background px-3 py-2 text-sm'
-          placeholder='Seu e-mail'
+          placeholder={content.contact.form.emailPlaceholder}
+          required
         />
       </div>
       <div className='grid gap-2'>
@@ -59,7 +60,8 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className='min-h-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm'
-          placeholder='Digite sua mensagem'
+          placeholder={content.contact.form.messagePlaceholder}
+          required
         />
       </div>
       <Button type='submit' className='bg-secondary hover:bg-secondary-dark'>

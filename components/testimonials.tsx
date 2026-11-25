@@ -19,17 +19,15 @@ export default function Testimonials() {
           </div>
         </div>
         <div className='mx-auto grid max-w-6xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3'>
-          {content.testimonials.items.map((testimonial, index) => (
+          {content.testimonials.items.map((testimonial) => (
             <div
-              key={index}
+              key={testimonial.name}
               className='flex flex-col justify-between rounded-lg border bg-white p-6 shadow-sm'>
               <div>
                 <div className='flex items-center gap-1 text-yellow-500'>
-                  <Star className='h-4 w-4 fill-current' />
-                  <Star className='h-4 w-4 fill-current' />
-                  <Star className='h-4 w-4 fill-current' />
-                  <Star className='h-4 w-4 fill-current' />
-                  <Star className='h-4 w-4 fill-current' />
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <Star key={i} className='h-4 w-4 fill-current' />
+                  ))}
                 </div>
                 <p className='mt-4'>{testimonial.content}</p>
               </div>

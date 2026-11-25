@@ -13,16 +13,19 @@ export default function Hero() {
               <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl'>
                 {content.hero.title}
               </h1>
-              <p className='max-w-[600px] text-muted-foreground md:text-xl py12'>
+              <p className='max-w-[600px] text-muted-foreground md:text-xl'>
                 {content.hero.description}
               </p>
             </div>
             <div className='flex flex-col gap-2 min-[400px]:flex-row'>
               <Button
+                asChild
                 size='lg'
-                className='bg-secondary hover:bg-secondary-dark k'>
-                <a href='#brands'>{content.hero.ctaBrands}</a>
-                <ChevronRight className='ml-2 h-4 w-4' />
+                className='bg-secondary hover:bg-secondary-dark'>
+                <a href='#brands'>
+                  {content.hero.ctaBrands}
+                  <ChevronRight className='ml-2 h-4 w-4' />
+                </a>
               </Button>
               <Button asChild size='lg' variant='outline'>
                 <a href='#contact'>{content.hero.ctaContact}</a>
@@ -34,7 +37,8 @@ export default function Hero() {
               src='/foto-galmar.jpg'
               width={500}
               height={400}
-              alt='Produtos de limpeza Galmar'
+              alt={content.hero.imageAlt}
+              priority
               className='rounded-lg object-cover shadow-lg'
             />
           </div>

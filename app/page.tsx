@@ -1,14 +1,13 @@
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import Hero from '@/components/hero'
-import AboutUs from '@/components/aboutUs'
+import AboutUs from '@/components/about-us'
 import Brands from '@/components/brands'
 import Testimonials from '@/components/testimonials'
 import Contact from '@/components/contact'
 import WhatsAppButton from '@/components/whatsapp-button'
 
 export default function LandingPage() {
-  const phoneNumber = '19982340942'
   return (
     <div id='home' className='flex flex-col min-h-screen'>
       <Header />
@@ -19,7 +18,7 @@ export default function LandingPage() {
         <Testimonials />
         <Contact />
       </main>
-      <WhatsAppButton phoneNumber={phoneNumber} />
+      <WhatsAppButton />
       <Footer />
     </div>
   )

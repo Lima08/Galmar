@@ -4,6 +4,9 @@ import content from '@/data/content.json'
 import { ContactForm } from '@/components/forms/contact-form'
 import { FaFacebookF, FaInstagram } from 'react-icons/fa'
 
+const { street, city, state, postalCode } = content.contact.info.address
+const formattedAddress = `${street}, ${city} - ${state}, ${postalCode}`
+
 export default function Contact() {
   return (
     <section id='contact' className='w-full py-12 md:py-24 lg:py-32 bg-black'>
@@ -28,9 +31,7 @@ export default function Contact() {
                   <h3 className='font-bold'>
                     {content.contact.info.addressTitle}
                   </h3>
-                  <p className='text-gray-400'>
-                    {content.contact.info.address}
-                  </p>
+                  <p className='text-gray-400'>{formattedAddress}</p>
                 </div>
               </div>
               <div className='flex items-start gap-4'>
@@ -89,7 +90,7 @@ export default function Contact() {
             </div>
           </div>
           <div className='rounded-lg border bg-white p-6 shadow-sm'>
-            <h3 className='text-xl font-bold'>Envie uma mensagem</h3>
+            <h3 className='text-xl font-bold'>{content.contact.form.title}</h3>
             <ContactForm />
           </div>
         </div>

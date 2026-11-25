@@ -17,7 +17,7 @@ export default function Brands() {
           {content.brands.items.map((brand) => (
             <div key={brand.title} className='flex items-center justify-center'>
               <Image
-                src={brand.image || '/placeholder.svg'}
+                src={brand.image}
                 alt={`Logo ${brand.title}`}
                 width={160}
                 height={80}

@@ -6,14 +6,14 @@ import content from '@/data/content.json'
 export default function Hero() {
   return (
     <section className='min-h-screen flex items-center w-full bg-secondary-bg'>
-      <div className='container px-4 md:px-8'>
+      <div className='container'>
         <div className='grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2'>
           <div className='flex flex-col justify-center space-y-4'>
             <div className='space-y-2'>
-              <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl'>
+              <h1 className='text-display font-bold text-balance'>
                 {content.hero.title}
               </h1>
-              <p className='max-w-[600px] text-muted-foreground md:text-xl'>
+              <p className='max-w-prose text-muted-foreground md:text-xl'>
                 {content.hero.description}
               </p>
             </div>
@@ -21,7 +21,7 @@ export default function Hero() {
               <Button
                 asChild
                 size='lg'
-                className='bg-secondary hover:bg-secondary-dark'>
+                className='bg-secondary-dark hover:bg-secondary-dark/90'>
                 <a href='#brands'>
                   {content.hero.ctaBrands}
                   <ChevronRight className='ml-2 h-4 w-4' />

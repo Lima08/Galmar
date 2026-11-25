@@ -1,8 +1,8 @@
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 import tailwindcssAnimate from 'tailwindcss-animate'
 
 const config = {
-  darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -11,15 +11,23 @@ const config = {
     '*.{js,ts,jsx,tsx,mdx}'
   ],
   prefix: '',
+  corePlugins: { container: false },
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px'
-      }
-    },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans]
+      },
+      fontSize: {
+        display: [
+          'clamp(2rem, 1.4rem + 2.6vw, 3.5rem)',
+          { lineHeight: '1.1', letterSpacing: '-0.02em' }
+        ],
+        h2: [
+          'clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem)',
+          { lineHeight: '1.2', letterSpacing: '-0.01em' }
+        ],
+        h3: ['clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem)', { lineHeight: '1.3' }]
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -29,16 +37,17 @@ const config = {
         primary: {
           DEFAULT: '#d52825',
           foreground: '#ffffff',
-          light: '#f87171',
-          dark: '#b41f1e'
+          dark: '#b3211f'
         },
         secondary: {
           DEFAULT: '#2983c2',
           foreground: '#ffffff',
-          light: '#5aa9e1',
-          dark: '#000957',
-          bg: '#d4eafd'
+          dark: '#1f6aa0',
+          bg: '#eaf3fa'
         },
+        // Exceções de terceiros (AD-016): cores oficiais, só nesses usos
+        whatsapp: { DEFAULT: '#25d366', dark: '#1ebe5d' },
+        rating: '#eab308',
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))'

@@ -17,7 +17,7 @@ export function ContactForm() {
   }
 
   return (
-    <form className='mt-4 grid gap-4 text-black' onSubmit={callWhatsApp}>
+    <form className='mt-4 grid gap-4 text-foreground' onSubmit={callWhatsApp}>
       <div className='grid gap-2'>
         <label
           htmlFor='name'
@@ -28,7 +28,7 @@ export function ContactForm() {
           id='name'
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className='h-10 rounded-md border border-input bg-background px-3 py-2 text-sm'
+          className='h-10 w-full min-w-0 rounded-md border border-input bg-background px-3 py-2 text-sm'
           placeholder={content.contact.form.namePlaceholder}
           required
         />
@@ -44,7 +44,7 @@ export function ContactForm() {
           type='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className='h-10 rounded-md border border-input bg-background px-3 py-2 text-sm'
+          className='h-10 w-full min-w-0 rounded-md border border-input bg-background px-3 py-2 text-sm'
           placeholder={content.contact.form.emailPlaceholder}
           required
         />
@@ -59,12 +59,14 @@ export function ContactForm() {
           id='message'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className='min-h-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm'
+          className='min-h-[120px] w-full min-w-0 rounded-md border border-input bg-background px-3 py-2 text-sm'
           placeholder={content.contact.form.messagePlaceholder}
           required
         />
       </div>
-      <Button type='submit' className='bg-secondary hover:bg-secondary-dark'>
+      <Button
+        type='submit'
+        className='bg-secondary-dark hover:bg-secondary-dark/90'>
         {content.contact.form.button}
       </Button>
     </form>

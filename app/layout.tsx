@@ -3,11 +3,14 @@ import type { ReactNode } from 'react'
 import { Poppins } from 'next/font/google'
 import content from '@/data/content.json'
 import { siteUrl } from '@/lib/site'
+import { cn } from '@/lib/utils'
 import './globals.css'
 
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '700']
+  weight: ['400', '500', '700'],
+  display: 'swap',
+  variable: '--font-poppins'
 })
 
 const title = 'Galmar - Produtos de Limpeza em Campinas'
@@ -55,9 +58,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang='pt-BR'
-      className='scroll-smooth scroll-pt-[90px]'
+      className={cn(
+        'scroll-smooth scroll-pt-[calc(var(--header-h)+0.5rem)]',
+        poppins.variable
+      )}
       data-scroll-behavior='smooth'>
-      <body className={poppins.className}>
+      <body>
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{

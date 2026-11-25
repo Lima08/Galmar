@@ -24,12 +24,10 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled
-          ? 'bg-white shadow-md py-2'
-          : 'bg-white/80 backdrop-blur-sm py-4'
+        'fixed top-0 left-0 right-0 z-50 h-[var(--header-h)] transition-all duration-300',
+        isScrolled ? 'bg-white shadow-md' : 'bg-white/80 backdrop-blur-sm'
       )}>
-      <div className='container flex h-[50px] items-center justify-between'>
+      <div className='container flex h-full items-center justify-between'>
         <a href='#home'>
           <Image
             src='/logo-galmar.png'

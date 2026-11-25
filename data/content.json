@@ -3,10 +3,13 @@
     "title": "Galmar - Produtos de Limpeza em Campinas",
     "ogImageAlt": "Logo da Galmar – Produtos de Limpeza e Descartáveis, sobre fundo azul"
   },
+  "contactBar": {
+    "whatsapp": "WhatsApp",
+    "call": "Ligar"
+  },
   "header": {
     "brand": "Galmar",
     "menuOpen": "Abrir menu",
-    "menuClose": "Fechar menu",
     "nav": [
       {
         "name": "Início",
@@ -28,7 +31,8 @@
         "name": "Contato",
         "id": "contact"
       }
-    ]
+    ],
+    "cta": "Chamar no WhatsApp"
   },
   "hero": {
     "title": "Produtos de limpeza e descartáveis em Campinas desde 1996",
@@ -131,11 +135,13 @@
       "hoursByDay": [
         {
           "days": "Segunda a sexta",
+          "daysShort": "Seg–Sex",
           "opens": "09:00",
           "closes": "18:00"
         },
         {
           "days": "Sábado",
+          "daysShort": "Sáb",
           "opens": "09:00",
           "closes": "13:00"
         },

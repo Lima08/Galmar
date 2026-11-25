@@ -3,16 +3,11 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 import content from '@/data/content.json'
+import { defaultWhatsAppUrl } from '@/lib/contact'
 import { cn } from '@/lib/utils'
-import { buildWhatsAppUrl } from '@/lib/whatsapp'
 
 const SHOW_DELAY_MS = 1500
 const SCROLL_THRESHOLD_PX = 300
-
-const whatsappUrl = buildWhatsAppUrl(
-  content.contact.info.phone,
-  content.contact.whatsappMessages.default
-)
 
 export default function WhatsAppButton() {
   const [delayElapsed, setDelayElapsed] = useState(false)
@@ -40,7 +35,7 @@ export default function WhatsAppButton() {
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
       )}>
       <Link
-        href={whatsappUrl}
+        href={defaultWhatsAppUrl}
         target='_blank'
         rel='noopener noreferrer'
         aria-label={content.contact.whatsappLabel}

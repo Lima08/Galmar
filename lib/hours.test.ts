@@ -1,12 +1,17 @@
 import { describe, expect, it } from 'vitest'
-import { formatHours } from './hours'
+import { formatHours, formatShortHours } from './hours'
 
 const labels = { to: 'às', closed: 'fechado', separator: ' · ' }
 
 const week = [
-  { days: 'Segunda a sexta', opens: '09:00', closes: '18:00' },
-  { days: 'Sábado', opens: '09:00', closes: '13:00' },
-  { days: 'Domingo', closed: true }
+  {
+    days: 'Segunda a sexta',
+    daysShort: 'Seg–Sex',
+    opens: '09:00',
+    closes: '18:00'
+  },
+  { days: 'Sábado', daysShort: 'Sáb', opens: '09:00', closes: '13:00' },
+  { days: 'Domingo', daysShort: 'Dom', closed: true }
 ]
 
 describe('formatHours', () => {
@@ -36,5 +41,20 @@ describe('formatHours', () => {
 
   it('lista vazia gera texto vazio', () => {
     expect(formatHours([], labels)).toBe('')
+  })
+})
+
+describe('formatShortHours', () => {
+  it('só dias abertos, com rótulo curto', () => {
+    expect(formatShortHours(week, ' · ')).toBe('Seg–Sex 9h–18h · Sáb 9h–13h')
+  })
+
+  it('usa o rótulo longo quando não há curto e mantém minutos', () => {
+    expect(
+      formatShortHours(
+        [{ days: 'Sábado', opens: '09:30', closes: '12:45' }],
+        ' · '
+      )
+    ).toBe('Sábado 9h30–12h45')
   })
 })

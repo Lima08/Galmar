@@ -44,11 +44,17 @@ describe('primitiva de seção', () => {
 })
 
 describe('altura do header em um único lugar', () => {
+  it('header é sticky: o <main> não compensa altura com margem (HC-04)', () => {
+    expect(readSource('components/header.tsx')).toMatch(/\bsticky\b/)
+    expect(readSource('components/header.tsx')).not.toMatch(/\bfixed\b/)
+    expect(readSource('app/page.tsx')).not.toMatch(/\bmt-/)
+  })
+
   it('define --header-h uma vez no CSS global', () => {
     expect(readSource('app/globals.css').match(/--header-h:/g)).toHaveLength(1)
   })
 
-  it.each(['app/layout.tsx', 'app/page.tsx', 'components/header.tsx'])(
+  it.each(['app/layout.tsx', 'components/header.tsx'])(
     '%s usa --header-h e nenhuma altura fixa',
     (path) => {
       const source = readSource(path)

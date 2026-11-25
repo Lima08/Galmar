@@ -1,5 +1,6 @@
-type OpenRow = { days: string; opens: string; closes: string }
-type ClosedRow = { days: string; closed: boolean }
+type Days = { days: string; daysShort?: string }
+type OpenRow = Days & { opens: string; closes: string }
+type ClosedRow = Days & { closed: boolean }
 type HoursRow = OpenRow | ClosedRow
 
 interface HoursLabels {
@@ -14,10 +15,20 @@ const formatTime = (time: string) => {
   return `${Number(hours)}h${minutes === '00' ? '' : minutes}`
 }
 
+const isOpen = (row: HoursRow): row is OpenRow => 'opens' in row
+
 const formatRow = (row: HoursRow, { to, closed }: HoursLabels) =>
-  'opens' in row
+  isOpen(row)
     ? `${row.days}: ${formatTime(row.opens)} ${to} ${formatTime(row.closes)}`
     : `${row.days}: ${closed}`
 
+// Versão compacta (faixa de contato): só dias abertos, "Seg–Sex 9h–18h";
+// o "–" entre horários é notação de intervalo, como o "h" da hora
+const formatShortRow = (row: OpenRow) =>
+  `${row.daysShort ?? row.days} ${formatTime(row.opens)}–${formatTime(row.closes)}`
+
 export const formatHours = (rows: HoursRow[], labels: HoursLabels) =>
   rows.map((row) => formatRow(row, labels)).join(labels.separator)
+
+export const formatShortHours = (rows: HoursRow[], separator: string) =>
+  rows.filter(isOpen).map(formatShortRow).join(separator)

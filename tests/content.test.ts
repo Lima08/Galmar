@@ -115,8 +115,13 @@ describe('contato oficial (CT-03, CT-04)', () => {
 
   it('horário estruturado por dia, igual ao Google', () => {
     expect(info.hoursByDay, 'contact.info.hoursByDay').toEqual([
-      { days: 'Segunda a sexta', opens: '09:00', closes: '18:00' },
-      { days: 'Sábado', opens: '09:00', closes: '13:00' },
+      {
+        days: 'Segunda a sexta',
+        daysShort: 'Seg–Sex',
+        opens: '09:00',
+        closes: '18:00'
+      },
+      { days: 'Sábado', daysShort: 'Sáb', opens: '09:00', closes: '13:00' },
       { days: 'Domingo', closed: true }
     ])
     info.hoursByDay
@@ -154,6 +159,14 @@ describe('atalhos de WhatsApp (CT-05)', () => {
       ).toMatch(/^Olá! Vim pelo site/)
     }
   )
+
+  it('rótulos da faixa de contato e do CTA do header (HC-01, HC-03)', () => {
+    expect(content.contactBar, 'contactBar').toEqual({
+      whatsapp: 'WhatsApp',
+      call: 'Ligar'
+    })
+    expect(content.header.cta, 'header.cta').toBe('Chamar no WhatsApp')
+  })
 
   it('rótulos dos atalhos do hero', () => {
     expect(content.hero.ctaBusiness, 'hero.ctaBusiness').toBe(

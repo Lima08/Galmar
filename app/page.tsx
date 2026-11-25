@@ -1,4 +1,5 @@
 import Footer from '@/components/footer'
+import ContactBar from '@/components/contact-bar'
 import Header from '@/components/header'
 import Hero from '@/components/hero'
 import AboutUs from '@/components/about-us'
@@ -11,8 +12,9 @@ import RevealObserver from '@/components/reveal-observer'
 export default function LandingPage() {
   return (
     <div id='home' className='flex flex-col min-h-screen'>
+      <ContactBar />
       <Header />
-      <main className='flex-1 mt-(--header-h)'>
+      <main className='flex-1'>
         <Hero />
         <Brands />
         <AboutUs />

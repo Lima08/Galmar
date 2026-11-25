@@ -2,79 +2,105 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu } from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
+import { Button } from '@/components/ui/button'
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger
+} from '@/components/ui/sheet'
 import content from '@/data/content.json'
+import { defaultWhatsAppUrl } from '@/lib/contact'
 import { cn } from '@/lib/utils'
 
-const { nav: navLinks, menuOpen, menuClose } = content.header
+const { nav: navLinks, brand } = content.header
+
+const WhatsAppCta = ({ className }: { className?: string }) => (
+  <Button
+    asChild
+    className={cn(
+      'bg-primary text-white hover:bg-primary-dark focus-visible:bg-primary-dark',
+      className
+    )}>
+    <a href={defaultWhatsAppUrl} target='_blank' rel='noopener noreferrer'>
+      <FaWhatsapp aria-hidden />
+      {content.header.cta}
+    </a>
+  </Button>
+)
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
 
+    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const closeMenu = () => setIsMenuOpen(false)
-
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 h-(--header-h) transition-all duration-300',
-        isScrolled ? 'bg-white shadow-md' : 'bg-white/80 backdrop-blur-xs'
+        'sticky top-0 z-50 h-(--header-h) bg-white transition-shadow duration-300',
+        isScrolled && 'shadow-md'
       )}>
-      <div className='container flex h-full items-center justify-between'>
+      <div className='container flex h-full items-center justify-between gap-4'>
         <a href='#home'>
           <Image
             src='/brand/logo-horizontal.png'
-            alt={content.header.brand}
+            alt={brand}
             width={594}
             height={180}
             className='h-11 w-auto md:h-12'
             loading='eager'
           />
         </a>
-        <nav className='hidden md:flex items-center space-x-8'>
+
+        <nav className='hidden items-center gap-1 rounded-full bg-secondary-bg p-1 lg:flex'>
           {navLinks.map((link) => (
             <a
               key={link.id}
               href={`#${link.id}`}
-              className='text-gray-700 hover:text-secondary-dark font-medium transition-colors relative group'>
+              className='rounded-full px-4 py-2 font-medium text-gray-700 transition-colors hover:bg-white hover:text-secondary-dark'>
               {link.name}
-              <span className='absolute left-0 bottom-0 h-0.5 w-0 bg-secondary-dark transition-all duration-300 group-hover:w-full' />
             </a>
           ))}
         </nav>
 
-        <button
-          className='md:hidden text-gray-700 hover:text-secondary-dark'
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? menuClose : menuOpen}
-          aria-expanded={isMenuOpen}>
-          {isMenuOpen ? (
-            <X className='h-6 w-6' />
-          ) : (
-            <Menu className='h-6 w-6' />
-          )}
-        </button>
+        <WhatsAppCta className='hidden lg:inline-flex' />
 
-        {isMenuOpen && (
-          <nav className='md:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-4 flex flex-col space-y-4'>
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                onClick={closeMenu}
-                className='text-gray-700 hover:text-secondary-dark font-medium py-2 transition-colors'>
-                {link.name}
-              </a>
-            ))}
-          </nav>
-        )}
+        <Sheet>
+          <SheetTrigger asChild>
+            <button
+              className='inline-flex size-11 items-center justify-center rounded-md text-gray-700 hover:text-secondary-dark lg:hidden'
+              aria-label={content.header.menuOpen}>
+              <Menu className='h-6 w-6' />
+            </button>
+          </SheetTrigger>
+          <SheetContent
+            side='right'
+            aria-describedby={undefined}
+            className='flex flex-col gap-6'>
+            <SheetTitle>{brand}</SheetTitle>
+            <nav className='flex flex-col'>
+              {navLinks.map((link) => (
+                <SheetClose asChild key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    className='flex min-h-11 items-center border-b font-medium text-gray-700 hover:text-secondary-dark'>
+                    {link.name}
+                  </a>
+                </SheetClose>
+              ))}
+            </nav>
+            <WhatsAppCta className='mt-auto' />
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   )

@@ -8,7 +8,7 @@
 
 - Impact: sem `NEXT_PUBLIC_SITE_URL` no deploy, sitemap/robots/OG/canonical apontam para `localhost:3000`
 - Files: `lib/site.ts`, `.env.example`
-- Fix: definir env no provedor de deploy quando o domínio existir (#8)
+- Fix: definir env no provedor de deploy quando o domínio existir (#2)
 
 **Vulnerabilidade transitiva `postcss` (<=8.5.22) dentro de `next`:**
 

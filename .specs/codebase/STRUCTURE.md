@@ -8,6 +8,7 @@
 │   ├── layout.tsx          # html/body, fonte, metadata/OG, JSON-LD
 │   ├── page.tsx            # composição das seções
 │   ├── robots.ts  sitemap.ts
+│   ├── icon.png  apple-icon.png   # favicons (file convention)
 │   └── globals.css         # Tailwind + CSS vars shadcn
 ├── components/
 │   ├── header.tsx  hero.tsx  brands.tsx  about-us.tsx
@@ -28,6 +29,7 @@
 | O quê                                 | Onde                                                     |
 | ------------------------------------- | -------------------------------------------------------- |
 | Ordem das seções                      | `app/page.tsx`                                           |
+| Favicon                               | `app/icon.png`, `app/apple-icon.png`                     |
 | SEO / metadata / JSON-LD              | `app/layout.tsx`                                         |
 | URL do site                           | env `NEXT_PUBLIC_SITE_URL` → `lib/site.ts`               |
 | Textos, contatos, marcas, depoimentos | `data/content.json`                                      |

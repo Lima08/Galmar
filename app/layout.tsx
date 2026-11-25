@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
   description,
-  icons: { icon: '/logo-galmar.png' },
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',

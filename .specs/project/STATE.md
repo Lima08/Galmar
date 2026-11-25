@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — foundation criado; validando preferências com o usuário antes de /specify
+**Current Work:** M1 — F1 `design-foundation` ✅ (gate Build verde); próximo: F2 `content-truth` ou F3 `brand-assets` (sem dependências)
 
 ---
 
@@ -86,6 +86,51 @@
 **Trade-off:** PNG pesa mais e serrilha em telas de alta densidade; montagem horizontal é provisória.
 **Impact:** F3 desbloqueada com escopo provisório; troca por SVG é tarefa curta pós-entrega. Os arquivos provisórios ficam em `public/brand/` com nomes estáveis para a troca ser só de arquivo.
 
+### AD-012: Animações sutis, CSS puro (2026-11-25)
+
+**Decision:** Fade + subida de ~16 px na entrada das seções ao rolar (uma vez, via IntersectionObserver ou `animation-timeline` com fallback), hover suave em botões/cards, carrossel de marcas em loop lento. Sem Framer Motion. Tudo desligado com `prefers-reduced-motion: reduce`.
+**Reason:** Equilibra "moderno" e "formal/respeitoso" do manual sem pesar no celular.
+**Impact:** F1 define utilitários/keyframes no Tailwind; seções só aplicam a classe.
+
+### AD-013: Público duplo — casa e empresa, com atalhos (2026-11-25)
+
+**Decision:** Hero com título geral ("Produtos de limpeza e descartáveis em Campinas desde 1996" — copy final em F2) e dois atalhos: "Para sua casa" e "Para sua empresa". Cada um abre o WhatsApp com mensagem própria (`content.json`: `whatsappMessages.casa`, `whatsappMessages.empresa`).
+**Reason:** Galmar atende doméstico e industrial, varejo e entregas (manual 1.1).
+**Trade-off:** Hero com 2 ações; refina AD-005: ambos são CTA de WhatsApp vermelho — "empresa" preenchido, "casa" contorno vermelho (ordem a validar com dados do GA4).
+**Impact:** F2 (copy e mensagens), F5 (layout dos atalhos), F9 (parâmetro `audience` nos eventos GA4).
+
+### AD-014: Pendências externas não bloqueiam a v1 — cada uma tem alternativa (2026-11-25)
+
+**Decision:** Todo dado que depende de cliente/terceiro tem card no GitHub e um caminho alternativo. O código lê tudo de `content.json`; quando o dado chegar, a troca é só de conteúdo/arquivo.
+**Reason:** Pedido do usuário: seguir sem esperar o cliente.
+
+| Card | Pendência                         | Alternativa na v1                                                                                                                                                                                                                                                                                                                |
+| ---- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| #13  | CNPJ, horário, entrega, redes     | Endereço e telefone confirmados pelo GMN (print 2026-11-25). Horário confirmado no GMN: Seg–Sex 9h–18h, Sáb 9h–13h, Dom fechado (`content.json` diz Sáb 8h — corrigir em F2). CNPJ omitido do rodapé até chegar (site não vende online). Remover a promessa "entrega rápida em toda Campinas" → "Consulte entrega pelo WhatsApp" |
+| #10  | Avaliações reais do Google        | Selo "5,0 ★ no Google · mais de 40 avaliações" + link "Ver avaliações no Google". Textos entram quando o usuário copiar 3–6 avaliações do GMN (Google bloqueia leitura automática). Sem `aggregateRating` no JSON-LD (Google não aceita avaliação autodeclarada de LocalBusiness)                                                |
+| #3   | Conexão com GMN (URL do perfil)   | Links "Ver no Google"/"Como chegar" via URL de busca do Maps por nome + endereço; mapa embutido via `maps?q=<endereço>&output=embed` (sem chave)                                                                                                                                                                                 |
+| #15  | Fotos                             | Hero: banco de imagens (AD-010). Fotos do GMN só se forem do proprietário e baixadas manualmente; foto da fachada atual fica fora (placa com WhatsApp antigo). Street View não pode ser usado                                                                                                                                    |
+| #12  | Logo SVG                          | PNGs provisórios (AD-011)                                                                                                                                                                                                                                                                                                        |
+| #1   | GTM/GA4                           | Implementar com `NEXT_PUBLIC_GA_ID` vazio = no-op; liga ao preencher a env                                                                                                                                                                                                                                                       |
+| #2   | DNS e domínio                     | Desenvolver com a URL da Vercel; `NEXT_PUBLIC_SITE_URL` definido no lançamento                                                                                                                                                                                                                                                   |
+| #16  | Hospedagem no servidor do cliente | Só afeta F10; build estático testado localmente (`npx serve out`)                                                                                                                                                                                                                                                                |
+| #14  | Placa da fachada                  | Só comunicação com o cliente; nada no código                                                                                                                                                                                                                                                                                     |
+
+**Impact:** Nenhuma feature de F1 a F9 fica bloqueada. F10 depende de #2 e #16.
+
+### AD-015: Azul de apoio derivado só para texto pequeno (contraste AA) (2026-11-25)
+
+**Decision:** #2983c2 segue como azul da marca (fundos grandes, títulos ≥ 24 px ou ≥ 18,66 px bold, ícones, logo). Para texto pequeno em azul, e para fundos azuis que levam texto branco pequeno (faixa de contato, rodapé, hover de botão azul), usa o tom derivado #1f6aa0 (5,79:1 com branco). Hover do vermelho: #b3211f.
+**Reason:** #2983c2 × branco = 4,1:1, abaixo do WCAG AA (4,5:1) para texto normal; meta O4 (Lighthouse a11y ≥ 90). Vermelho #d52825 × branco = 5,05:1 passa.
+**Trade-off:** Faixa de contato e rodapé ficam um pouco mais escuros que o azul do manual.
+**Impact:** F1 define os tokens; #000957 (navy fora do manual) é removido e os títulos passam a #2983c2.
+
+### AD-016: Cores de terceiros como exceção documentada (2026-11-25)
+
+**Decision:** Verde do WhatsApp (#25d366/#1ebe5d) e amarelo das estrelas (#eab308) ficam, como tokens nomeados `whatsapp` e `rating`. Ícones de Facebook/Instagram em `secondary-dark` (monocromático). Nenhuma outra cor fora da paleta.
+**Reason:** Reconhecimento imediato do botão de WhatsApp; review da F1 apontou cores cruas fora da guarda.
+**Impact:** `tests/palette.test.ts` proíbe todas as famílias de cor do Tailwind e hex literal; exceções só via token.
+
 ---
 
 ## Active Blockers
@@ -94,6 +139,7 @@
 
 **Discovered:** 2026-11-25
 **Impact:** Bloqueia F3; afeta F5 e F8. Logo atual (`public/logo-galmar.png`) é vertical com ~25% de margem → símbolo ~20 px no header (manual exige ≥ 80 px).
+**Card:** #12
 **Detalhe:** `logo.ai` tem preview PDF vazio (salvo sem compatibilidade PDF); `logo.psd` contém só estudos tipográficos azuis.
 **Workaround:** AD-011 — PNGs provisórios gerados do `logo-galmar.png`.
 **Resolution:** Designer exporta SVG: horizontal colorido, horizontal branco, símbolo isolado.
@@ -101,13 +147,16 @@
 ### B-002: Dados da empresa pendentes
 
 **Discovered:** 2026-11-25
+**Card:** #13 · **Alternativa:** AD-014
 **Impact:** F2, F6, F8.
+**Confirmado (GMN, 2026-11-25):** endereço Av. Jorge Tibiriçá, 1747 – Jardim Santa Eudoxia, Campinas-SP, 13044-125; telefone (19) 3212-1177; nota 5,0 com 41 avaliações; categoria "Fornecedor de produtos de limpeza".
 **Pendente:** CNPJ/razão social; confirmar endereço (Av. Jorge Tibiriçá, 1747 – Jd. Santa Eudóxia, 13044-125) e horário (Seg–Sex 9h–18h, Sáb 8h–13h); se faz entrega e onde.
 
 ### B-003: Domínio e hospedagem indefinidos
 
 **Discovered:** 2026-11-25
 **Impact:** F10; sem `NEXT_PUBLIC_SITE_URL` canonical/OG/sitemap apontam para localhost.
+**Cards:** #2, #16
 **Parcial (AD-007):** dev na Vercel; produção estática no servidor do cliente. Falta: domínio final, tipo de servidor e forma de upload.
 
 ---
@@ -122,7 +171,24 @@
 
 ---
 
+### L-002: `container.padding` por breakpoint no Tailwind 3 exige o breakpoint em `container.screens`
+
+**Context:** F1 — margem de 32 px a partir de `md` nunca era aplicada.
+**Problem:** Incluir `md` em `container.screens` também fixa `max-width: 768px` naquele intervalo (largura em degraus).
+**Solution:** `.container` próprio em `globals.css` + `corePlugins.container: false`.
+**Prevents:** Container com margem errada; testes que validam config em vez de comportamento — medir no navegador (script CDP).
+
+### L-003: `pkill -f "<padrão>"` mata o próprio shell quando o padrão está na linha de comando
+
+**Solution:** Liberar porta com `fuser -k <porta>/tcp`.
+
+---
+
 ## Deferred Ideas
+
+- [ ] Hover `primary-dark` (#b3211f) na variante default do Button — Captured during: review F1 (tratar em F4)
+- [ ] `sr-only` "Facebook"/"Instagram" para `content.json` — Captured during: review F1 (tratar em F6)
+- [ ] Lighthouse/axe real (contraste, performance) — Captured during: review F1 (F10)
 
 - [ ] Fotos reais da loja (interior, balcão, fachada sem placa antiga) para hero e Sobre — Captured during: AD-010
 
@@ -134,6 +200,5 @@
 
 ## Todos
 
-- [ ] Commitar o saneamento M0 (staged) antes de iniciar F1
-- [ ] Avisar cliente: placa da fachada mostra WhatsApp (19) 98167-8444, diferente do oficial
-- [ ] Obter link do Perfil da Empresa no Google e selecionar 3–6 avaliações (AD-006)
+- [ ] Copiar 3–6 avaliações do GMN (nome, nota, texto) para `content.json` — #10
+- [ ] Baixar fotos do GMN enviadas pelo proprietário, se houver — #15

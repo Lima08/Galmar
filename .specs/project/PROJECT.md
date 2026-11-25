@@ -29,12 +29,15 @@ Landing page single-page da Galmar Comercial (produtos de limpeza doméstica e i
 
 ## Dados oficiais confirmados
 
-| Campo             | Valor                             | Fonte           |
-| ----------------- | --------------------------------- | --------------- |
-| Telefone/WhatsApp | +55 (19) 3212-1177 (mesmo número) | Usuário         |
-| Fundação          | 1996                              | Manual de marca |
-| Cores             | #2983c2 / #d52825 / branco        | Manual de marca |
-| Fonte             | Poppins                           | Manual de marca |
+| Campo             | Valor                                                                   | Fonte           |
+| ----------------- | ----------------------------------------------------------------------- | --------------- |
+| Telefone/WhatsApp | +55 (19) 3212-1177 (mesmo número)                                       | Usuário         |
+| Endereço          | Av. Jorge Tibiriçá, 1747 – Jardim Santa Eudoxia, Campinas-SP, 13044-125 | GMN             |
+| Horário           | Seg–Sex 9h–18h · Sáb 9h–13h · Dom fechado                               | GMN             |
+| Avaliações Google | 5,0 ★, 41 avaliações (2026-11-25)                                       | GMN             |
+| Fundação          | 1996                                                                    | Manual de marca |
+| Cores             | #2983c2 / #d52825 / branco                                              | Manual de marca |
+| Fonte             | Poppins                                                                 | Manual de marca |
 
 ## Referências de UX
 

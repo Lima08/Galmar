@@ -1,6 +1,6 @@
 # Galmar — Guia para agentes
 
-Landing page single-page da Galmar (produtos de limpeza, Campinas-SP). Next.js 15 App Router + React 19 + Tailwind 3 + shadcn/ui. Estático, sem backend. Copy em pt-BR. Ainda não lançado.
+Landing page single-page da Galmar (produtos de limpeza, Campinas-SP). Next.js 16 App Router + React 19 + Tailwind 4 + shadcn/ui. Estático, sem backend. Copy em pt-BR. Ainda não lançado.
 
 ## Comandos
 
@@ -11,7 +11,7 @@ npm run typecheck      # tsc --noEmit
 npm run lint           # ESLint flat config
 npm run format         # Prettier
 npm test               # Vitest
-npm run build          # falha em erro de TS/lint
+npm run build          # falha em erro de TS (lint só via npm run lint)
 ```
 
 Gate antes de commit: `npm run typecheck && npm run lint && npm run format:check && npm test`. CI roda o mesmo + build.

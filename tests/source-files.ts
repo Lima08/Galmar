@@ -24,3 +24,12 @@ export const sourceFiles = SCANNED_DIRS.flatMap((dir) =>
 
 export const readSource = (path: string) =>
   readFileSync(join(ROOT, path), 'utf8')
+
+// Valor de um token do @theme do Tailwind em app/globals.css
+export const themeToken = (name: string) => {
+  const match = readSource('app/globals.css').match(
+    new RegExp(`--${name}:\\s*([^;]+);`)
+  )
+  if (!match) throw new Error(`--${name} ausente no @theme`)
+  return match[1].trim()
+}

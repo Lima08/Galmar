@@ -33,4 +33,4 @@ Colocalizado: `lib/<modulo>.test.ts` (`whatsapp`, `site`) ao lado do módulo. De
 | Full       | Antes de commit       | `npm run typecheck && npm run lint && npm run format:check && npm test` |
 | Build      | Antes de merge/deploy | Full + `npm run build` (mesmo que o CI)                                 |
 
-Build agora falha com erro de TS/lint (flags `ignore*` removidas).
+Build falha com erro de TS (flags `ignore*` removidas). Next 16 não roda lint no build — lint só via `npm run lint` (CI).

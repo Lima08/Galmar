@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest'
-import config from '../tailwind.config'
 import { readSource, sourceFiles } from './source-files'
 
 const tsxFiles = sourceFiles.filter((file) => file.endsWith('.tsx'))
@@ -15,12 +14,11 @@ describe('container único', () => {
     const css = readSource('app/globals.css')
     const flat = css.replace(/\s+/g, ' ')
 
-    expect(config.corePlugins).toEqual({ container: false })
     expect(flat).toMatch(
-      /\.container \{[^}]*max-width: 79rem;[^}]*padding-inline: 1rem;/
+      /@utility container \{[^}]*max-width: 79rem;[^}]*padding-inline: 1rem;/
     )
     expect(flat).toMatch(
-      /@media \(min-width: 768px\) \{ \.container \{ padding-inline: 2rem; \} \}/
+      /@media \(min-width: 768px\) \{ padding-inline: 2rem; \} \}/
     )
   })
 
@@ -51,10 +49,10 @@ describe('altura do header em um único lugar', () => {
   })
 
   it.each(['app/layout.tsx', 'app/page.tsx', 'components/header.tsx'])(
-    '%s usa var(--header-h) e nenhuma altura fixa',
+    '%s usa --header-h e nenhuma altura fixa',
     (path) => {
       const source = readSource(path)
-      expect(source).toContain('var(--header-h)')
+      expect(source).toMatch(/(?:var)?\(--header-h\)/)
       expect(source).not.toMatch(/(?:scroll-pt|mt|h)-\[\d+px\]/)
     }
   )

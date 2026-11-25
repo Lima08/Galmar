@@ -25,7 +25,7 @@ Landing page single-page da Galmar Comercial (produtos de limpeza doméstica e i
 - **Largura máxima.** Container único de 1200 px; fundos full-bleed; texto ≤ ~65 ch.
 - **Identidade visual.** Azul `#2983c2`, vermelho `#d52825`, branco; Poppins; logo sem sombra/deformação; área de proteção.
 - **Sem e-commerce.** Sem catálogo, preço, carrinho, login (decisão do cliente).
-- Stack existente: Next.js 15 App Router, React 19, Tailwind 3, shadcn/ui (ver `.specs/codebase/STACK.md`).
+- Stack existente: Next.js 16 App Router, React 19, Tailwind 4, shadcn/ui (ver `.specs/codebase/STACK.md`).
 
 ## Dados oficiais confirmados
 

@@ -22,7 +22,7 @@ export default function Testimonials() {
         {content.testimonials.items.map((testimonial) => (
           <div
             key={testimonial.name}
-            className='flex flex-col justify-between rounded-lg border bg-white p-6 shadow-sm'>
+            className='flex flex-col justify-between rounded-lg border bg-white p-6 shadow-xs'>
             <div>
               <div className='flex items-center gap-1 text-rating'>
                 {Array.from({ length: 5 }, (_, i) => (

@@ -4,7 +4,7 @@ Landing page da **Galmar — Produtos de Limpeza e Descartáveis**, em Campinas-
 
 Site institucional estático, de página única: marcas representadas, sobre a empresa, depoimentos e contato. O contato é feito pelo WhatsApp, direto do formulário ou pelo botão flutuante.
 
-**Stack:** Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 3 · shadcn/ui
+**Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · shadcn/ui
 
 ## Requisitos
 
@@ -28,16 +28,16 @@ npm run dev                  # http://localhost:3000
 
 ## Scripts
 
-| Script                 | O quê                                     |
-| ---------------------- | ----------------------------------------- |
-| `npm run dev`          | servidor de desenvolvimento               |
-| `npm run build`        | build de produção (falha em erro TS/lint) |
-| `npm run start`        | serve o build                             |
-| `npm run typecheck`    | `tsc --noEmit`                            |
-| `npm run lint`         | ESLint (flat config)                      |
-| `npm run format`       | Prettier (escreve)                        |
-| `npm run format:check` | Prettier (verifica)                       |
-| `npm test`             | Vitest                                    |
+| Script                 | O quê                                |
+| ---------------------- | ------------------------------------ |
+| `npm run dev`          | servidor de desenvolvimento          |
+| `npm run build`        | build de produção (falha em erro TS) |
+| `npm run start`        | serve o build                        |
+| `npm run typecheck`    | `tsc --noEmit`                       |
+| `npm run lint`         | ESLint (flat config)                 |
+| `npm run format`       | Prettier (escreve)                   |
+| `npm run format:check` | Prettier (verifica)                  |
+| `npm test`             | Vitest                               |
 
 Antes de commitar: `npm run typecheck && npm run lint && npm run format:check && npm test`. O CI (`.github/workflows/ci.yml`) roda essas mesmas checagens e o build em todo push na `main` e em todo PR.
 
@@ -47,7 +47,7 @@ Toda a copy fica em **`data/content.json`**: textos, menu, telefone, endereço, 
 
 - **Logos de marca:** arquivo em `public/assets/brands/` + item em `brands.items` (`"image": "/assets/brands/<arquivo>"`)
 - **Telefone/WhatsApp:** `contact.info.phone`, usado no botão flutuante e no formulário (o DDI 55 é adicionado automaticamente)
-- **Cores da marca:** `tailwind.config.ts` (`primary`, `secondary`)
+- **Cores da marca:** `@theme` em `app/globals.css` (`primary`, `secondary`)
 - **Favicon:** `app/icon.png` (512px) e `app/apple-icon.png` (180px)
 
 ## Estrutura

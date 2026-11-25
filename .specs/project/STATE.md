@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1 ✅, F2 `content-truth` ✅ (gate Build verde); próximo: review da F2, depois F3 `brand-assets`
+**Current Work:** M1 — F1 ✅, F2 ✅ (review aplicado; gate verde também em Next 16 / Tailwind 4 / TS 6); próximo: F3 `brand-assets`
 
 ---
 

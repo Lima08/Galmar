@@ -27,7 +27,14 @@ export const metadata: Metadata = {
     siteName: content.header.brand,
     title,
     description,
-    images: [{ url: '/foto-galmar.jpg', alt: content.hero.imageAlt }]
+    images: [
+      {
+        url: '/brand/og.png',
+        width: 1200,
+        height: 630,
+        alt: content.meta.ogImageAlt
+      }
+    ]
   }
 }
 
@@ -39,8 +46,8 @@ const localBusinessJsonLd = {
   name: content.header.brand,
   description,
   url: siteUrl,
-  image: `${siteUrl}/foto-galmar.jpg`,
-  logo: `${siteUrl}/logo-galmar.png`,
+  image: `${siteUrl}/brand/og.png`,
+  logo: `${siteUrl}/brand/logo-vertical.png`,
   telephone: info.phone,
   email: info.email,
   address: {

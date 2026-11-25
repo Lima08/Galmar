@@ -30,12 +30,12 @@ export default function Header() {
       <div className='container flex h-full items-center justify-between'>
         <a href='#home'>
           <Image
-            src='/logo-galmar.png'
+            src='/brand/logo-horizontal.png'
             alt={content.header.brand}
-            width={120}
-            height={40}
-            className='object-contain'
-            priority
+            width={594}
+            height={180}
+            className='h-11 w-auto md:h-12'
+            loading='eager'
           />
         </a>
         <nav className='hidden md:flex items-center space-x-8'>

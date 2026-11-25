@@ -19,7 +19,8 @@ graph TD
   Brands & AboutUs & Testimonials & C --> S[Section]
   P --> F[Footer]
   JSON[(data/content.json)] -.import.-> L & H & Hero & Brands & AboutUs & Testimonials & C & CF & W & F
-  WA[lib/whatsapp.ts] --> CF & W
+  WA[lib/whatsapp.ts] --> CF & W & Hero
+  LIB[lib/hours.ts · lib/address.ts · lib/maps.ts] --> C & Testimonials
 ```
 
 ## Identified Patterns
@@ -38,7 +39,7 @@ Client (`'use client'`) só: `Header` (scroll + menu mobile), `ContactForm` (sta
 
 ### Lógica pura em `lib/`
 
-`lib/whatsapp.ts` (`buildWhatsAppUrl`, adiciona DDI 55), `lib/site.ts` (`siteUrl`), `lib/utils.ts` (`cn`). Testáveis sem DOM.
+`lib/whatsapp.ts` (`buildWhatsAppUrl`, adiciona DDI 55), `lib/hours.ts` (`formatHours`: texto do horário a partir de `hoursByDay` + `hoursLabels`), `lib/address.ts` (`formatAddress`), `lib/maps.ts` (`buildMapsSearchUrl`), `lib/site.ts` (`siteUrl`), `lib/utils.ts` (`cn`). Testáveis sem DOM.
 
 ## Data Flow
 
@@ -50,5 +51,6 @@ Links `<a href='#id'>` gerados de `content.header.nav`. Scroll suave e offset do
 
 Fonte única: `content.contact.info.phone`.
 
-- `WhatsAppButton` → `buildWhatsAppUrl(phone, content.contact.whatsappMessage)`
+- `Hero` → atalhos "Para sua empresa"/"Para sua casa": `buildWhatsAppUrl(phone, whatsappMessages.business | .home)`
+- `WhatsAppButton` → `buildWhatsAppUrl(phone, content.contact.whatsappMessages.default)`
 - `ContactForm` submit → `window.open(buildWhatsAppUrl(phone, texto com nome/email/mensagem))`

@@ -14,11 +14,9 @@
 
 - Fix: aguardar patch do Next; `npm audit fix --force` faria downgrade — não usar (#9)
 
-**Depoimentos genéricos:** avatar cinza e 5 estrelas fixas; conteúdo parece placeholder. Validar depoimentos reais com o cliente (#10).
-
 ## Fragile Areas
 
-- `content.json` sem schema runtime; erros de chave pegos só por `tsc`/build (agora bloqueante)
+- `content.json` sem schema runtime formal; `tests/content.test.ts` valida dados oficiais, formatos e termos proibidos, e `tsc` pega chaves erradas
 
 ## Test Coverage Gaps
 

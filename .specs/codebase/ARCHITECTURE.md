@@ -7,7 +7,8 @@
 ```mermaid
 graph TD
   L[app/layout.tsx<br/>Poppins, metadata/OG, JSON-LD] --> P[app/page.tsx]
-  P --> H[Header 'use client']
+  P --> CB[ContactBar]
+  P --> H[Header 'use client' + Sheet]
   P --> Hero
   P --> Brands
   P --> AboutUs
@@ -35,22 +36,24 @@ graph TD
 
 ### Server por padrão
 
-Client (`'use client'`) só: `Header` (scroll + menu mobile), `ContactForm` (state), `WhatsAppButton` (visibilidade por scroll/timer), `RevealObserver` (revela `[data-reveal]` abaixo da dobra uma vez; nada oculto sem JS ou com `prefers-reduced-motion`).
+Client (`'use client'`) só: `Header` (sombra ao rolar + menu mobile em `Sheet`/Radix Dialog), `ContactForm` (state), `WhatsAppButton` (visibilidade por scroll/timer), `RevealObserver` (revela `[data-reveal]` abaixo da dobra uma vez; nada oculto sem JS ou com `prefers-reduced-motion`).
 
 ### Lógica pura em `lib/`
 
-`lib/whatsapp.ts` (`buildWhatsAppUrl`, adiciona DDI 55), `lib/hours.ts` (`formatHours`: texto do horário a partir de `hoursByDay` + `hoursLabels`), `lib/address.ts` (`formatAddress`), `lib/maps.ts` (`buildMapsSearchUrl`), `lib/site.ts` (`siteUrl`), `lib/utils.ts` (`cn`). Testáveis sem DOM.
+`lib/phone.ts` (`toInternationalDigits`: DDI 55, sem 0 de tronco), `lib/whatsapp.ts` (`buildWhatsAppUrl`), `lib/contact.ts` (`defaultWhatsAppUrl`, `phoneHref`, `shortHours` derivados do `content.json` — fonte única dos links de contato), `lib/hours.ts` (`formatHours`: texto do horário a partir de `hoursByDay` + `hoursLabels`), `lib/address.ts` (`formatAddress`), `lib/maps.ts` (`buildMapsSearchUrl`), `lib/site.ts` (`siteUrl`), `lib/utils.ts` (`cn`). Testáveis sem DOM.
 
 ## Data Flow
 
 ### Navegação
 
-Links `<a href='#id'>` gerados de `content.header.nav`. Scroll suave e offset do header fixo via CSS no `<html>`: `scroll-smooth scroll-pt-[calc(var(--header-h)+0.5rem)]` (altura do header só em `--header-h`, `app/globals.css`) + `data-scroll-behavior='smooth'`. IDs: `home`, `brands`, `about`, `testimonials`, `contact`.
+Links `<a href='#id'>` gerados de `content.header.nav`. `ContactBar` (server) fica no fluxo, acima do `Header` `sticky`; nenhuma margem compensatória no `<main>`. Scroll suave e offset do header via CSS no `<html>`: `scroll-smooth scroll-pt-[calc(var(--header-h)+0.5rem)]` (altura do header só em `--header-h`, `app/globals.css`) + `data-scroll-behavior='smooth'`. IDs: `home`, `brands`, `about`, `testimonials`, `contact`.
 
 ### Contato
 
 Fonte única: `content.contact.info.phone`.
 
 - `Hero` → atalhos "Para sua empresa"/"Para sua casa": `buildWhatsAppUrl(phone, whatsappMessages.business | .home)`
-- `WhatsAppButton` → `buildWhatsAppUrl(phone, content.contact.whatsappMessages.default)`
+- `ContactBar` → `defaultWhatsAppUrl`, `phoneHref` (`tel:+551932121177`), `shortHours`, Instagram
+- `Header` CTA (desktop e `Sheet`) → `defaultWhatsAppUrl`
+- `WhatsAppButton` → `defaultWhatsAppUrl`
 - `ContactForm` submit → `window.open(buildWhatsAppUrl(phone, texto com nome/email/mensagem))`

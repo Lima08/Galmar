@@ -8,7 +8,7 @@
 
 ## Test Organization
 
-Colocalizado: `lib/<modulo>.test.ts` (`whatsapp`, `site`, `hours`, `address`, `maps`) ao lado do módulo. Descrições em pt-BR.
+Colocalizado: `lib/<modulo>.test.ts` (`whatsapp`, `phone`, `contact`, `site`, `hours`, `address`, `maps`) ao lado do módulo. Descrições em pt-BR.
 
 ## Test Coverage Matrix
 

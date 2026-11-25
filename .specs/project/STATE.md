@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1 ✅, F2 ✅, F3 ✅; próximo: F4 `header-contact-bar`
+**Current Work:** M1 — F1–F4 ✅; próximo: F5 `hero-redesign`
 
 ---
 
@@ -186,7 +186,8 @@
 
 ## Deferred Ideas
 
-- [ ] Hover `primary-dark` (#b3211f) na variante default do Button — Captured during: review F1 (tratar em F4)
+- [ ] `components/ui/sheet.tsx` (vendor): `sr-only` "Close" em inglês, alvo de fechar ~16 px (WCAG 2.5.8 pede ≥ 24) e classes `animate-in` sem plugin no Tailwind 4 — avaliar `tw-animate-css` (conferir reduced-motion) e botão de fechar próprio pt-BR `size-11` — Captured during: F4
+
 - [ ] `sr-only` "Facebook"/"Instagram" para `content.json` — Captured during: review F1 (tratar em F6)
 - [ ] Lighthouse/axe real (contraste, performance) — Captured during: review F1 (F10)
 

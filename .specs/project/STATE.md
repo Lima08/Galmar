@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1 `design-foundation` ✅ (gate Build verde); próximo: F2 `content-truth` ou F3 `brand-assets` (sem dependências)
+**Current Work:** M1 — F1 ✅, F2 `content-truth` ✅ (gate Build verde); próximo: review da F2, depois F3 `brand-assets`
 
 ---
 
@@ -104,17 +104,17 @@
 **Decision:** Todo dado que depende de cliente/terceiro tem card no GitHub e um caminho alternativo. O código lê tudo de `content.json`; quando o dado chegar, a troca é só de conteúdo/arquivo.
 **Reason:** Pedido do usuário: seguir sem esperar o cliente.
 
-| Card | Pendência                         | Alternativa na v1                                                                                                                                                                                                                                                                                                                |
-| ---- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| #13  | CNPJ, horário, entrega, redes     | Endereço e telefone confirmados pelo GMN (print 2026-11-25). Horário confirmado no GMN: Seg–Sex 9h–18h, Sáb 9h–13h, Dom fechado (`content.json` diz Sáb 8h — corrigir em F2). CNPJ omitido do rodapé até chegar (site não vende online). Remover a promessa "entrega rápida em toda Campinas" → "Consulte entrega pelo WhatsApp" |
-| #10  | Avaliações reais do Google        | Selo "5,0 ★ no Google · mais de 40 avaliações" + link "Ver avaliações no Google". Textos entram quando o usuário copiar 3–6 avaliações do GMN (Google bloqueia leitura automática). Sem `aggregateRating` no JSON-LD (Google não aceita avaliação autodeclarada de LocalBusiness)                                                |
-| #3   | Conexão com GMN (URL do perfil)   | Links "Ver no Google"/"Como chegar" via URL de busca do Maps por nome + endereço; mapa embutido via `maps?q=<endereço>&output=embed` (sem chave)                                                                                                                                                                                 |
-| #15  | Fotos                             | Hero: banco de imagens (AD-010). Fotos do GMN só se forem do proprietário e baixadas manualmente; foto da fachada atual fica fora (placa com WhatsApp antigo). Street View não pode ser usado                                                                                                                                    |
-| #12  | Logo SVG                          | PNGs provisórios (AD-011)                                                                                                                                                                                                                                                                                                        |
-| #1   | GTM/GA4                           | Implementar com `NEXT_PUBLIC_GA_ID` vazio = no-op; liga ao preencher a env                                                                                                                                                                                                                                                       |
-| #2   | DNS e domínio                     | Desenvolver com a URL da Vercel; `NEXT_PUBLIC_SITE_URL` definido no lançamento                                                                                                                                                                                                                                                   |
-| #16  | Hospedagem no servidor do cliente | Só afeta F10; build estático testado localmente (`npx serve out`)                                                                                                                                                                                                                                                                |
-| #14  | Placa da fachada                  | Só comunicação com o cliente; nada no código                                                                                                                                                                                                                                                                                     |
+| Card | Pendência                         | Alternativa na v1                                                                                                                                                                                                                                                                       |
+| ---- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| #13  | CNPJ, horário, entrega, redes     | Endereço e telefone confirmados pelo GMN (print 2026-11-25). Horário confirmado no GMN: Seg–Sex 9h–18h, Sáb 9h–13h, Dom fechado (corrigido na F2). CNPJ omitido do rodapé até chegar (site não vende online). Promessa de entrega removida (Galmar não entrega; copy: "retire na loja") |
+| #10  | Avaliações reais do Google        | Selo "5,0 ★ no Google · mais de 40 avaliações" + link "Ver avaliações no Google". Textos entram quando o usuário copiar 3–6 avaliações do GMN (Google bloqueia leitura automática). Sem `aggregateRating` no JSON-LD (Google não aceita avaliação autodeclarada de LocalBusiness)       |
+| #3   | Conexão com GMN (URL do perfil)   | Links "Ver no Google"/"Como chegar" via URL de busca do Maps por nome + endereço; mapa embutido via `maps?q=<endereço>&output=embed` (sem chave)                                                                                                                                        |
+| #15  | Fotos                             | Hero: banco de imagens (AD-010). Fotos do GMN só se forem do proprietário e baixadas manualmente; foto da fachada atual fica fora (placa com WhatsApp antigo). Street View não pode ser usado                                                                                           |
+| #12  | Logo SVG                          | PNGs provisórios (AD-011)                                                                                                                                                                                                                                                               |
+| #1   | GTM/GA4                           | Implementar com `NEXT_PUBLIC_GA_ID` vazio = no-op; liga ao preencher a env                                                                                                                                                                                                              |
+| #2   | DNS e domínio                     | Desenvolver com a URL da Vercel; `NEXT_PUBLIC_SITE_URL` definido no lançamento                                                                                                                                                                                                          |
+| #16  | Hospedagem no servidor do cliente | Só afeta F10; build estático testado localmente (`npx serve out`)                                                                                                                                                                                                                       |
+| #14  | Placa da fachada                  | Só comunicação com o cliente; nada no código                                                                                                                                                                                                                                            |
 
 **Impact:** Nenhuma feature de F1 a F9 fica bloqueada. F10 depende de #2 e #16.
 
@@ -150,7 +150,7 @@
 **Card:** #13 · **Alternativa:** AD-014
 **Impact:** F2, F6, F8.
 **Confirmado (GMN, 2026-11-25):** endereço Av. Jorge Tibiriçá, 1747 – Jardim Santa Eudoxia, Campinas-SP, 13044-125; telefone (19) 3212-1177; nota 5,0 com 41 avaliações; categoria "Fornecedor de produtos de limpeza".
-**Pendente:** CNPJ/razão social; confirmar endereço (Av. Jorge Tibiriçá, 1747 – Jd. Santa Eudóxia, 13044-125) e horário (Seg–Sex 9h–18h, Sáb 8h–13h); se faz entrega e onde.
+**Pendente:** CNPJ/razão social; confirmar endereço (Av. Jorge Tibiriçá, 1747 – Jd. Santa Eudóxia, 13044-125) e horário (Seg–Sex 9h–18h, Sáb 9h–13h — confirmados no GMN); entrega: não faz (copy usa "retire na loja").
 
 ### B-003: Domínio e hospedagem indefinidos
 

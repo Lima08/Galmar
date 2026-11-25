@@ -11,7 +11,7 @@ const SCROLL_THRESHOLD_PX = 300
 
 const whatsappUrl = buildWhatsAppUrl(
   content.contact.info.phone,
-  content.contact.whatsappMessage
+  content.contact.whatsappMessages.default
 )
 
 export default function WhatsAppButton() {

@@ -1,7 +1,10 @@
 import Image from 'next/image'
-import { ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import content from '@/data/content.json'
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
+
+const { phone } = content.contact.info
+const { home, business } = content.contact.whatsappMessages
 
 export default function Hero() {
   return (
@@ -22,13 +25,20 @@ export default function Hero() {
                 asChild
                 size='lg'
                 className='bg-secondary-dark hover:bg-secondary-dark/90'>
-                <a href='#brands'>
-                  {content.hero.ctaBrands}
-                  <ChevronRight className='ml-2 h-4 w-4' />
+                <a
+                  href={buildWhatsAppUrl(phone, business)}
+                  target='_blank'
+                  rel='noopener noreferrer'>
+                  {content.hero.ctaBusiness}
                 </a>
               </Button>
               <Button asChild size='lg' variant='outline'>
-                <a href='#contact'>{content.hero.ctaContact}</a>
+                <a
+                  href={buildWhatsAppUrl(phone, home)}
+                  target='_blank'
+                  rel='noopener noreferrer'>
+                  {content.hero.ctaHome}
+                </a>
               </Button>
             </div>
           </div>

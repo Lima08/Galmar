@@ -18,7 +18,7 @@ export default function Brands() {
           <div key={brand.title} className='flex items-center justify-center'>
             <Image
               src={brand.image}
-              alt={`Logo ${brand.title}`}
+              alt={brand.title}
               width={160}
               height={80}
               className='max-h-16 md:max-h-20 w-auto object-contain'

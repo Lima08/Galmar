@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "title": "Galmar - Produtos de Limpeza em Campinas"
+  },
   "header": {
     "brand": "Galmar",
     "menuOpen": "Abrir menu",
@@ -17,7 +20,7 @@
         "id": "about"
       },
       {
-        "name": "Depoimentos",
+        "name": "Avaliações",
         "id": "testimonials"
       },
       {
@@ -27,29 +30,29 @@
     ]
   },
   "hero": {
-    "title": "Produtos de Limpeza de Alta Qualidade em Campinas",
-    "description": "Soluções de limpeza eficientes e ecológicas para sua casa ou empresa. Entrega rápida em toda região de Campinas.",
-    "ctaBrands": "Conheça Nossas Marcas",
-    "ctaContact": "Entre em Contato",
+    "title": "Produtos de limpeza e descartáveis em Campinas desde 1996",
+    "description": "Para sua casa ou sua empresa, com as marcas que você conhece. Peça pelo WhatsApp e retire na loja.",
+    "ctaBusiness": "Para sua empresa",
+    "ctaHome": "Para sua casa",
     "imageAlt": "Produtos de limpeza Galmar"
   },
   "about": {
     "badge": "Sobre a Galmar",
-    "title": "Tradição em Produtos de Limpeza",
-    "description": "Desde 2005, a Galmar tem fornecido produtos de limpeza de alta qualidade para residências e empresas em Campinas e região. Nossa missão é oferecer soluções eficientes, ecológicas e com o melhor custo-benefício."
+    "title": "Há quase 30 anos cuidando da limpeza de Campinas",
+    "description": "Desde 1996, a Galmar vende produtos de limpeza, higiene e descartáveis para casas e empresas de Campinas e região, no varejo e no atacado. Atendimento direto, marcas de confiança e preço justo."
   },
   "features": [
     {
-      "title": "Qualidade Garantida",
-      "description": "Todos os nossos produtos passam por rigorosos testes de qualidade."
+      "title": "Desde 1996",
+      "description": "Quase 30 anos atendendo casas e empresas de Campinas e região."
     },
     {
-      "title": "Produtos Ecológicos",
-      "description": "Comprometidos com o meio ambiente, oferecemos opções biodegradáveis."
+      "title": "Varejo e atacado",
+      "description": "Do produto para sua casa ao volume que sua empresa precisa."
     },
     {
-      "title": "Entrega Rápida",
-      "description": "Entregamos em toda Campinas e região com agilidade e segurança."
+      "title": "Atendimento pelo WhatsApp",
+      "description": "Tire dúvidas, faça seu pedido e retire na loja."
     }
   ],
   "brands": {
@@ -89,27 +92,13 @@
       }
     ]
   },
-  "testimonials": {
-    "badge": "Depoimentos",
-    "title": "O que nossos clientes dizem",
-    "description": "A satisfação de nossos clientes é nossa maior recompensa.",
-    "items": [
-      {
-        "name": "Maria Silva",
-        "role": "Dona de Casa",
-        "content": "Os produtos da Galmar são excelentes! Uso há anos e nunca me decepcionei com a qualidade."
-      },
-      {
-        "name": "João Oliveira",
-        "role": "Gerente de Condomínio",
-        "content": "Fornecedor confiável e com ótimo atendimento. Os produtos têm excelente custo-benefício."
-      },
-      {
-        "name": "Ana Santos",
-        "role": "Empresária",
-        "content": "A linha ecológica da Galmar é fantástica. Eficiente e ainda ajuda o meio ambiente."
-      }
-    ]
+  "reviews": {
+    "badge": "Avaliações",
+    "title": "Avaliado com nota 5,0 no Google",
+    "rating": 5,
+    "summary": "Mais de 40 avaliações de clientes no Google",
+    "link": "Ver avaliações no Google",
+    "items": []
   },
   "contact": {
     "badge": "Contato",
@@ -128,24 +117,54 @@
     "info": {
       "addressTitle": "Endereço",
       "address": {
-        "street": "Av. Jorge Tibiriçá, 1747 - Jardim Santa Eudoxia",
+        "street": "Av. Jorge Tibiriçá, 1747 – Jardim Santa Eudoxia",
         "city": "Campinas",
         "state": "SP",
         "postalCode": "13044-125"
       },
       "phoneTitle": "Telefone",
-      "phone": "(19) 32121177",
+      "phone": "(19) 3212-1177",
       "emailTitle": "E-mail",
       "email": "galmarcomercial@gmail.com",
       "clockTitle": "Horário de Funcionamento",
-      "clock": "Segunda a Sexta: 9h às 18h | Sábado: 8h às 13h"
+      "hoursByDay": [
+        {
+          "days": "Segunda a sexta",
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        {
+          "days": "Sábado",
+          "opens": "09:00",
+          "closes": "13:00"
+        },
+        {
+          "days": "Domingo",
+          "closed": true
+        }
+      ],
+      "hoursLabels": {
+        "to": "às",
+        "closed": "fechado",
+        "separator": " · "
+      }
     },
     "social": {
-      "facebook": "https://www.facebook.com/galmarprodutosdelimpeza",
-      "instagram": "https://www.instagram.com/galmarprodutosdelimpeza"
+      "facebook": {
+        "label": "Facebook",
+        "url": "https://www.facebook.com/galmarprodutosdelimpeza"
+      },
+      "instagram": {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/galmarprodutosdelimpeza"
+      }
     },
-    "whatsappMessage": "Olá! Vim pelo site e gostaria de mais informações.",
-    "whatsappLabel": "Contato via WhatsApp"
+    "whatsappLabel": "Contato via WhatsApp",
+    "whatsappMessages": {
+      "default": "Olá! Vim pelo site e gostaria de mais informações.",
+      "home": "Olá! Vim pelo site e gostaria de informações sobre produtos para minha casa.",
+      "business": "Olá! Vim pelo site e gostaria de um orçamento para minha empresa."
+    }
   },
   "footer": {
     "text": "Galmar - Produtos de Limpeza e Descartáveis. Todos os direitos reservados."

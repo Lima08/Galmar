@@ -1,12 +1,15 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import Section from '@/components/section'
-import content from '@/data/content.json'
-import { ContactForm } from '@/components/forms/contact-form'
 import { FaFacebookF, FaInstagram } from 'react-icons/fa'
+import { ContactForm } from '@/components/forms/contact-form'
+import Section from '@/components/section'
+import { Button } from '@/components/ui/button'
+import content from '@/data/content.json'
+import { formatAddress } from '@/lib/address'
+import { formatHours } from '@/lib/hours'
 
-const { street, city, state, postalCode } = content.contact.info.address
-const formattedAddress = `${street}, ${city} - ${state}, ${postalCode}`
+const { address, hoursByDay, hoursLabels } = content.contact.info
+const formattedAddress = formatAddress(address)
+const hours = formatHours(hoursByDay, hoursLabels)
 
 export default function Contact() {
   return (
@@ -58,27 +61,31 @@ export default function Contact() {
                 <h3 className='text-h3 font-bold text-balance'>
                   {content.contact.info.clockTitle}
                 </h3>
-                <p className='text-white/90'>{content.contact.info.clock}</p>
+                <p className='text-white/90'>{hours}</p>
               </div>
             </div>
           </div>
           <div className='flex gap-4'>
             <Button asChild size='icon' variant='outline'>
               <a
-                href={content.contact.social.facebook}
+                href={content.contact.social.facebook.url}
                 target='_blank'
                 rel='noopener noreferrer'>
                 <FaFacebookF className='h-4 w-4 text-secondary-dark' />
-                <span className='sr-only'>Facebook</span>
+                <span className='sr-only'>
+                  {content.contact.social.facebook.label}
+                </span>
               </a>
             </Button>
             <Button asChild size='icon' variant='outline'>
               <a
-                href={content.contact.social.instagram}
+                href={content.contact.social.instagram.url}
                 target='_blank'
                 rel='noopener noreferrer'>
                 <FaInstagram className='h-4 w-4 text-secondary-dark' />
-                <span className='sr-only'>Instagram</span>
+                <span className='sr-only'>
+                  {content.contact.social.instagram.label}
+                </span>
               </a>
             </Button>
           </div>

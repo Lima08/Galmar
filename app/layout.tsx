@@ -13,7 +13,7 @@ const poppins = Poppins({
   variable: '--font-poppins'
 })
 
-const title = 'Galmar - Produtos de Limpeza em Campinas'
+const { title } = content.meta
 const description = content.hero.description
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: content.header.brand,
     title,
     description,
-    images: [{ url: '/foto-galmar.jpg', alt: 'Produtos de limpeza Galmar' }]
+    images: [{ url: '/foto-galmar.jpg', alt: content.hero.imageAlt }]
   }
 }
 
@@ -51,7 +51,7 @@ const localBusinessJsonLd = {
     postalCode: info.address.postalCode,
     addressCountry: 'BR'
   },
-  sameAs: [social.facebook, social.instagram]
+  sameAs: [social.facebook.url, social.instagram.url]
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

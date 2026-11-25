@@ -31,9 +31,9 @@ Gate antes de commit: `npm run typecheck && npm run lint && npm run format:check
 ## Regras essenciais
 
 - Texto visível → `data/content.json`, nunca hardcoded no JSX
-- Nova seção: `components/<kebab>.tsx` default export, `<section id='...'>`, registrar em `app/page.tsx` e em `content.header.nav`
+- Nova seção: `components/<kebab>.tsx` default export, `<Section id='...' tone=...>` (`components/section.tsx`), registrar em `app/page.tsx` e em `content.header.nav`
 - Server Component por padrão; `'use client'` só com state/efeito/evento
-- Cores de marca via tokens Tailwind (`primary`, `secondary`, `secondary-dark`, `secondary-bg`)
+- Cores só via tokens Tailwind (`primary`, `secondary`, `secondary-dark`, `secondary-bg`, `whatsapp`, `rating`) — `tests/palette.test.ts` barra o resto
 - `cn()` de `@/lib/utils` para classes condicionais; imports via `@/`
 - Lógica pura em `lib/` com teste colocalizado `*.test.ts`
 - URLs de WhatsApp só via `buildWhatsAppUrl` (`lib/whatsapp.ts`)

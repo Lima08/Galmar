@@ -24,9 +24,12 @@ Aspas simples (TS e JSX), sem `;`, 2 espaços, sem trailing comma, `bracketSameL
 ## Styling
 
 - Tailwind inline; condicional com `cn()`
-- Cores de marca por token: `bg-primary`, `bg-secondary`, `hover:bg-secondary-dark`, `bg-secondary-bg`, `text-secondary-dark`
-- Neutros Tailwind (`gray-*`, `black`, `white`) ok; sem azuis/vermelhos crus
-- Mobile-first (`md:`, `lg:`)
+- Cores só por token (`primary`, `primary-dark`, `secondary`, `secondary-dark`, `secondary-bg`, `whatsapp`, `rating`); texto em `foreground`/`muted-foreground`
+- Texto pequeno em azul ou texto branco sobre azul → `secondary-dark` (contraste AA); `secondary` só em títulos ≥ 24 px, ícones e fundos grandes
+- Neutros `gray-*` e `white` ok; proibidos: `black`, famílias de cor do Tailwind, hex literal e `[#…]`/`[color:…]` — guardado por `tests/palette.test.ts`
+- Sem classe montada dinamicamente (`bg-${cor}-500`): o Tailwind não gera e a guarda não detecta
+- Mobile-first (`md:`, `lg:`); largura só pelo `.container` (sem `max-w-*`/`px-*` próprios em seção; `max-w-prose` para texto corrido)
+- Seção nova: `<Section id tone>` (`components/section.tsx`); títulos `text-display`/`text-h2`/`text-h3` + `text-balance`
 
 ## Conteúdo
 

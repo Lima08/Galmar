@@ -12,11 +12,12 @@ Colocalizado: `lib/<modulo>.test.ts` (`whatsapp`, `site`) ao lado do módulo. De
 
 ## Test Coverage Matrix
 
-| Code Layer                  | Required Test Type   | Location Pattern | Run Command   |
-| --------------------------- | -------------------- | ---------------- | ------------- |
-| Lógica pura (`lib/*.ts`)    | unit                 | `lib/*.test.ts`  | `npm test`    |
-| Seções (`components/*.tsx`) | none (visual manual) | —                | `npm run dev` |
-| `components/ui/*`           | none (vendor)        | —                | —             |
+| Code Layer                                                             | Required Test Type   | Location Pattern  | Run Command   |
+| ---------------------------------------------------------------------- | -------------------- | ----------------- | ------------- |
+| Lógica pura (`lib/*.ts`)                                               | unit                 | `lib/*.test.ts`   | `npm test`    |
+| Seções (`components/*.tsx`)                                            | none (visual manual) | —                 | `npm run dev` |
+| Guardas de design (paleta, contraste, container, `--header-h`, reveal) | static               | `tests/*.test.ts` | `npm test`    |
+| `components/ui/*`                                                      | none (vendor)        | —                 | —             |
 
 ## Parallelism Assessment
 

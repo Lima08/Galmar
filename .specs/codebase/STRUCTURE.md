@@ -9,14 +9,16 @@
 │   ├── page.tsx            # composição das seções
 │   ├── robots.ts  sitemap.ts
 │   ├── icon.png  apple-icon.png   # favicons (file convention)
-│   └── globals.css         # Tailwind + CSS vars shadcn
+│   └── globals.css         # Tailwind, CSS vars, .container, --header-h, reveal
 ├── components/
 │   ├── header.tsx  hero.tsx  brands.tsx  about-us.tsx
 │   ├── testimonials.tsx  contact.tsx  footer.tsx  whatsapp-button.tsx
+│   ├── section.tsx  reveal-observer.tsx   # primitiva de seção + animação de entrada
 │   ├── forms/contact-form.tsx
 │   └── ui/button.tsx       # vendor shadcn
 ├── data/content.json       # toda a copy
 ├── lib/                    # utils.ts (cn), whatsapp.ts (+ .test.ts), site.ts
+├── tests/                  # guardas de design: paleta, tema, layout (+ source-files.ts)
 ├── public/                 # logo-galmar.png, foto-galmar.jpg, assets/brands/*
 ├── .specs/codebase/        # este mapeamento
 ├── .github/workflows/ci.yml
@@ -36,5 +38,6 @@
 | Logos de marca                        | `public/assets/brands/` + `content.brands.items[].image` |
 | Cores de marca                        | `tailwind.config.ts`                                     |
 | Links da navegação                    | `content.header.nav`                                     |
-| Offset de scroll do header            | `app/layout.tsx` (`scroll-pt-[90px]` no `<html>`)        |
+| Altura do header / offset de âncora   | `--header-h` em `app/globals.css`                        |
+| Container / largura máxima            | `.container` em `app/globals.css`                        |
 | Telefone / WhatsApp                   | `content.contact.info.phone`                             |

@@ -15,6 +15,8 @@ graph TD
   P --> C[Contact]
   C --> CF[ContactForm 'use client']
   P --> W[WhatsAppButton 'use client']
+  P --> R[RevealObserver 'use client']
+  Brands & AboutUs & Testimonials & C --> S[Section]
   P --> F[Footer]
   JSON[(data/content.json)] -.import.-> L & H & Hero & Brands & AboutUs & Testimonials & C & CF & W & F
   WA[lib/whatsapp.ts] --> CF & W
@@ -24,7 +26,7 @@ graph TD
 
 ### Seção = componente
 
-`components/<kebab>.tsx`, default export, `<section id='...' className='w-full py-12 md:py-24 lg:py-32'>` + `<div className='container px-4 md:px-6'>`. `id` = âncora da navegação.
+`components/<kebab>.tsx`, default export, envolvida em `<Section id='...' tone='white|tint|blue'>` (`components/section.tsx`): fundo full-bleed, `py-16 md:py-24`, conteúdo em `.container` (1200 px) com `data-reveal`. `id` = âncora da navegação. Hero é a exceção (acima da dobra, não anima).
 
 ### Conteúdo desacoplado em JSON
 
@@ -32,7 +34,7 @@ graph TD
 
 ### Server por padrão
 
-Client (`'use client'`) só: `Header` (scroll + menu mobile), `ContactForm` (state), `WhatsAppButton` (visibilidade por scroll/timer).
+Client (`'use client'`) só: `Header` (scroll + menu mobile), `ContactForm` (state), `WhatsAppButton` (visibilidade por scroll/timer), `RevealObserver` (revela `[data-reveal]` abaixo da dobra uma vez; nada oculto sem JS ou com `prefers-reduced-motion`).
 
 ### Lógica pura em `lib/`
 
@@ -42,7 +44,7 @@ Client (`'use client'`) só: `Header` (scroll + menu mobile), `ContactForm` (sta
 
 ### Navegação
 
-Links `<a href='#id'>` gerados de `content.header.nav`. Scroll suave e offset do header fixo via CSS no `<html>`: `scroll-smooth scroll-pt-[90px]` + `data-scroll-behavior='smooth'`. IDs: `home`, `brands`, `about`, `testimonials`, `contact`.
+Links `<a href='#id'>` gerados de `content.header.nav`. Scroll suave e offset do header fixo via CSS no `<html>`: `scroll-smooth scroll-pt-[calc(var(--header-h)+0.5rem)]` (altura do header só em `--header-h`, `app/globals.css`) + `data-scroll-behavior='smooth'`. IDs: `home`, `brands`, `about`, `testimonials`, `contact`.
 
 ### Contato
 

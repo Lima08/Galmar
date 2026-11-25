@@ -18,7 +18,6 @@
 
 ## Fragile Areas
 
-- Offset `scroll-pt-[90px]` (layout) acoplado à altura do header (`h-[50px]` + padding) e ao `mt-[80px]` do `<main>` — mudar header exige ajustar os três
 - `content.json` sem schema runtime; erros de chave pegos só por `tsc`/build (agora bloqueante)
 
 ## Test Coverage Gaps

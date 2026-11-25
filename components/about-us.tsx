@@ -22,7 +22,7 @@ export default function AboutUs() {
         {content.features.map((feature) => (
           <div
             key={feature.title}
-            className='flex flex-col items-center space-y-2 rounded-lg border border-white/10 p-6 shadow-sm bg-white/5'>
+            className='flex flex-col items-center space-y-2 rounded-lg border border-white/10 p-6 shadow-xs bg-white/5'>
             <div className='rounded-full bg-white/10 p-3'>
               <CheckCircle className='h-6 w-6 text-white' />
             </div>

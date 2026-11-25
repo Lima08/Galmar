@@ -12,7 +12,7 @@ export default function LandingPage() {
   return (
     <div id='home' className='flex flex-col min-h-screen'>
       <Header />
-      <main className='flex-1 mt-[var(--header-h)]'>
+      <main className='flex-1 mt-(--header-h)'>
         <Hero />
         <Brands />
         <AboutUs />

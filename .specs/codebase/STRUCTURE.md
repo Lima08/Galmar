@@ -23,7 +23,7 @@
 ├── .specs/codebase/        # este mapeamento
 ├── .github/workflows/ci.yml
 ├── AGENTS.md  CLAUDE.md    # índice para LLMs
-└── next.config.mjs  tailwind.config.ts  eslint.config.mjs  components.json  tsconfig.json
+└── next.config.mjs  eslint.config.mjs  components.json  tsconfig.json
 ```
 
 ## Where Things Live
@@ -36,7 +36,7 @@
 | URL do site                           | env `NEXT_PUBLIC_SITE_URL` → `lib/site.ts`               |
 | Textos, contatos, marcas, depoimentos | `data/content.json`                                      |
 | Logos de marca                        | `public/assets/brands/` + `content.brands.items[].image` |
-| Cores de marca                        | `tailwind.config.ts`                                     |
+| Cores de marca                        | `app/globals.css` (`@theme`)                             |
 | Links da navegação                    | `content.header.nav`                                     |
 | Altura do header / offset de âncora   | `--header-h` em `app/globals.css`                        |
 | Container / largura máxima            | `.container` em `app/globals.css`                        |

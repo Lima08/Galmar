@@ -83,7 +83,7 @@ export default function Contact() {
             </Button>
           </div>
         </div>
-        <div className='rounded-lg border bg-white p-6 text-foreground shadow-sm'>
+        <div className='rounded-lg border bg-white p-6 text-foreground shadow-xs'>
           <h3 className='text-h3 font-bold text-balance'>
             {content.contact.form.title}
           </h3>

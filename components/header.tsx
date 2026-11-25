@@ -24,8 +24,8 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 h-[var(--header-h)] transition-all duration-300',
-        isScrolled ? 'bg-white shadow-md' : 'bg-white/80 backdrop-blur-sm'
+        'fixed top-0 left-0 right-0 z-50 h-(--header-h) transition-all duration-300',
+        isScrolled ? 'bg-white shadow-md' : 'bg-white/80 backdrop-blur-xs'
       )}>
       <div className='container flex h-full items-center justify-between'>
         <a href='#home'>

@@ -4,8 +4,8 @@
 
 ## Core
 
-- Framework: Next.js `^15.5.29` (App Router, rota única estática)
-- Language: TypeScript `^5` (`strict: true`)
+- Framework: Next.js `^16.4.6` (App Router, rota única estática)
+- Language: TypeScript `~6.0.3` (`strict: true`; TS 7 bloqueado por `typescript-eslint` `<6.1`)
 - Runtime: Node 24 (`.nvmrc`; `engines.node >=22.12`, exigido pelo Vitest 5)
 - Package manager: npm (`package-lock.json`)
 
@@ -13,10 +13,10 @@
 
 - UI: React `^19`
 - Componentes: shadcn/ui (`components.json`) — só `components/ui/button.tsx` instalado; adicionar outros via `npx shadcn@latest add <comp>`
-- Styling: Tailwind CSS `^3.4.17` + `tailwindcss-animate`; CSS vars HSL em `app/globals.css`
-- Cores de marca: `tailwind.config.ts` — `primary` #d52825 / `primary-dark` #b3211f (hover), `secondary` #2983c2, `secondary-dark` #1f6aa0 (azul de apoio: texto pequeno e fundos com texto branco, AD-015), `secondary-bg` #eaf3fa (tint). Terceiros (AD-016): `whatsapp` #25d366/#1ebe5d, `rating` #eab308. Neutros: `--foreground` #333, `--muted-foreground` #666
-- Fonte: Poppins 400/500/700 via `next/font/google` (`--font-poppins` → `fontFamily.sans`); títulos fluidos `text-display`/`text-h2`/`text-h3` (`clamp` com teto)
-- Container: `.container` próprio em `app/globals.css` (máx. 79rem = 1200 px de conteúdo; margem 1rem/2rem a partir de 768 px); plugin `container` do Tailwind desligado
+- Styling: Tailwind CSS `^4` (CSS-first, `@tailwindcss/postcss`); tokens em `@theme` e CSS vars HSL em `app/globals.css`; sem `tailwind.config.ts`
+- Cores de marca: `@theme` em `app/globals.css` (`--color-*`) — `primary` #d52825 / `primary-dark` #b3211f (hover), `secondary` #2983c2, `secondary-dark` #1f6aa0 (azul de apoio: texto pequeno e fundos com texto branco, AD-015), `secondary-bg` #eaf3fa (tint). Terceiros (AD-016): `whatsapp` #25d366/#1ebe5d, `rating` #eab308. Neutros: `--foreground` #333, `--muted-foreground` #666
+- Fonte: Poppins 400/500/700 via `next/font/google` (`--font-poppins` → `--font-sans`); títulos fluidos `text-display`/`text-h2`/`text-h3` (`clamp` com teto)
+- Container: `@utility container` em `app/globals.css` (máx. 79rem = 1200 px de conteúdo; margem 1rem/2rem a partir de 768 px); declarado após os breakpoints nativos do v4, então o `max-width` próprio prevalece
 - Ícones: `lucide-react`; `react-icons/fa` só para marcas (WhatsApp/Facebook/Instagram)
 - State: `useState` local
 - Forms: inputs controlados + validação nativa (`required`, `type='email'`)
@@ -31,7 +31,7 @@ Nenhum. Conteúdo em `data/content.json`.
 
 ## Development Tools
 
-- Lint: ESLint 9 flat config (`eslint.config.mjs`: `next/core-web-vitals`, `next/typescript`, `prettier`)
+- Lint: ESLint 9 flat config nativo (`eslint.config.mjs`: `eslint-config-next/core-web-vitals`, `eslint-config-next/typescript`, `eslint-config-prettier/flat`); ESLint 10 bloqueado por `eslint-plugin-react`
 - Format: Prettier 3 (`.prettierrc.json`, `.prettierignore`) + `.editorconfig`
 - Test: Vitest
 - CI: GitHub Actions (`.github/workflows/ci.yml`)

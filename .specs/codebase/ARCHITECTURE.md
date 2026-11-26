@@ -17,7 +17,7 @@ graph TD
   P --> W[WhatsAppButton 'use client']
   P --> R[RevealObserver 'use client']
   Brands & AboutUs & Testimonials & C --> S[Section]
-  P --> F[Footer]
+  P --> F[Footer secondary-dark + faixa brand]
   JSON[(data/content.json)] -.import.-> L & H & Hero & Brands & AboutUs & Testimonials & C & W & F
   WA[lib/whatsapp.ts] --> W & Hero
   LIB[lib/hours.ts · lib/address.ts · lib/maps.ts · lib/contact.ts] --> C & Testimonials & CB

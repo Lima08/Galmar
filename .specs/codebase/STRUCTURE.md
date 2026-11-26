@@ -14,7 +14,6 @@
 │   ├── contact-bar.tsx  header.tsx  hero.tsx  brands.tsx  about-us.tsx
 │   ├── testimonials.tsx  contact.tsx  footer.tsx  whatsapp-button.tsx
 │   ├── section.tsx  reveal-observer.tsx   # primitiva de seção + animação de entrada
-│   ├── forms/contact-form.tsx
 │   └── ui/button.tsx  ui/sheet.tsx   # vendor shadcn
 ├── data/content.json       # toda a copy
 ├── lib/                    # utils (cn), whatsapp, hours, address, maps, site (+ *.test.ts)

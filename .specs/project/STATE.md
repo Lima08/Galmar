@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1–F5 ✅; próximo: F6 `location-section`
+**Current Work:** M1 — F1–F6 ✅; próximo: F7 `sections-polish`
 
 ---
 
@@ -150,6 +150,7 @@
 **Card:** #13 · **Alternativa:** AD-014
 **Impact:** F2, F6, F8.
 **Confirmado (GMN, 2026-11-25):** endereço Av. Jorge Tibiriçá, 1747 – Jardim Santa Eudoxia, Campinas-SP, 13044-125; telefone (19) 3212-1177; nota 5,0 com 41 avaliações; categoria "Fornecedor de produtos de limpeza".
+**Confirmado (redes, 2026-11-25):** Instagram `/galmarlimpeza/`, Facebook `/galmarlimpeza`.
 **Pendente:** CNPJ/razão social; confirmar endereço (Av. Jorge Tibiriçá, 1747 – Jd. Santa Eudóxia, 13044-125) e horário (Seg–Sex 9h–18h, Sáb 9h–13h — confirmados no GMN); entrega: não faz (copy usa "retire na loja").
 
 ### B-003: Domínio e hospedagem indefinidos
@@ -188,7 +189,7 @@
 
 - [ ] `components/ui/sheet.tsx` (vendor): `sr-only` "Close" em inglês, alvo de fechar ~16 px (WCAG 2.5.8 pede ≥ 24) e classes `animate-in` sem plugin no Tailwind 4 — avaliar `tw-animate-css` (conferir reduced-motion) e botão de fechar próprio pt-BR `size-11` — Captured during: F4
 
-- [ ] `sr-only` "Facebook"/"Instagram" para `content.json` — Captured during: review F1 (tratar em F6)
+- [x] `sr-only`/"aria-label" Facebook/Instagram via `content.json` — Done in F6
 - [ ] Lighthouse/axe real (contraste, performance) — Captured during: review F1 (F10)
 
 - [ ] Fotos reais da loja (interior, balcão, fachada sem placa antiga) para hero e Sobre — Captured during: AD-010

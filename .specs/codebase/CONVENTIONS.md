@@ -8,8 +8,8 @@ Aspas simples (TS e JSX), sem `;`, 2 espaços, sem trailing comma, `bracketSameL
 
 ## Naming
 
-- Arquivos: kebab-case (`about-us.tsx`, `whatsapp-button.tsx`, `contact-form.tsx`)
-- Componentes: PascalCase. Seções = `export default function Hero()`; forms = named export (`export function ContactForm()`)
+- Arquivos: kebab-case (`about-us.tsx`, `whatsapp-button.tsx`, `contact-bar.tsx`)
+- Componentes: PascalCase. Seções = `export default function Hero()`
 - Props: `interface XxxProps` acima do componente
 - Handlers: verbo camelCase (`callWhatsApp`, `handleScroll`, `closeMenu`)
 - Constantes estáticas fora do componente (`whatsappUrl`, `SHOW_DELAY_MS`)

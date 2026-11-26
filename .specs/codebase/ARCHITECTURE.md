@@ -13,15 +13,14 @@ graph TD
   P --> Brands
   P --> AboutUs
   P --> Testimonials
-  P --> C[Contact]
-  C --> CF[ContactForm 'use client']
+  P --> C[Contact / Onde estamos]
   P --> W[WhatsAppButton 'use client']
   P --> R[RevealObserver 'use client']
   Brands & AboutUs & Testimonials & C --> S[Section]
   P --> F[Footer]
-  JSON[(data/content.json)] -.import.-> L & H & Hero & Brands & AboutUs & Testimonials & C & CF & W & F
-  WA[lib/whatsapp.ts] --> CF & W & Hero
-  LIB[lib/hours.ts · lib/address.ts · lib/maps.ts] --> C & Testimonials
+  JSON[(data/content.json)] -.import.-> L & H & Hero & Brands & AboutUs & Testimonials & C & W & F
+  WA[lib/whatsapp.ts] --> W & Hero
+  LIB[lib/hours.ts · lib/address.ts · lib/maps.ts · lib/contact.ts] --> C & Testimonials & CB
 ```
 
 ## Identified Patterns
@@ -36,11 +35,11 @@ graph TD
 
 ### Server por padrão
 
-Client (`'use client'`) só: `Header` (sombra ao rolar + menu mobile em `Sheet`/Radix Dialog), `ContactForm` (state), `WhatsAppButton` (visibilidade por scroll/timer), `RevealObserver` (revela `[data-reveal]` abaixo da dobra uma vez; nada oculto sem JS ou com `prefers-reduced-motion`).
+Client (`'use client'`) só: `Header` (sombra ao rolar + menu mobile em `Sheet`/Radix Dialog), `WhatsAppButton` (visibilidade por scroll/timer), `RevealObserver` (revela `[data-reveal]` abaixo da dobra uma vez; nada oculto sem JS ou com `prefers-reduced-motion`).
 
 ### Lógica pura em `lib/`
 
-`lib/phone.ts` (`toInternationalDigits`: DDI 55, sem 0 de tronco), `lib/whatsapp.ts` (`buildWhatsAppUrl`), `lib/contact.ts` (`defaultWhatsAppUrl`, `phoneHref`, `shortHours` derivados do `content.json` — fonte única dos links de contato), `lib/hours.ts` (`formatHours`: texto do horário a partir de `hoursByDay` + `hoursLabels`), `lib/address.ts` (`formatAddress`), `lib/maps.ts` (`buildMapsSearchUrl`), `lib/site.ts` (`siteUrl`), `lib/utils.ts` (`cn`). Testáveis sem DOM.
+`lib/phone.ts` (`toInternationalDigits`: DDI 55, sem 0 de tronco), `lib/whatsapp.ts` (`buildWhatsAppUrl`), `lib/contact.ts` (`defaultWhatsAppUrl`, `phoneHref`, `shortHours` derivados do `content.json` — fonte única dos links de contato), `lib/hours.ts` (`formatHours`: texto do horário a partir de `hoursByDay` + `hoursLabels`), `lib/address.ts` (`formatAddress`), `lib/maps.ts` (`buildMapsSearchUrl`, `buildMapsEmbedUrl`), `lib/site.ts` (`siteUrl`), `lib/utils.ts` (`cn`). Testáveis sem DOM.
 
 ## Data Flow
 
@@ -56,4 +55,4 @@ Fonte única: `content.contact.info.phone`.
 - `ContactBar` → `defaultWhatsAppUrl`, `phoneHref` (`tel:+551932121177`), `shortHours`, Instagram
 - `Header` CTA (desktop e `Sheet`) → `defaultWhatsAppUrl`
 - `WhatsAppButton` → `defaultWhatsAppUrl`
-- `ContactForm` submit → `window.open(buildWhatsAppUrl(phone, texto com nome/email/mensagem))`
+- `Contact` ("Onde estamos") → `defaultWhatsAppUrl`, `phoneHref`, `buildMapsSearchUrl` / `buildMapsEmbedUrl`, redes

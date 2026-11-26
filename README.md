@@ -54,7 +54,7 @@ Toda a copy fica em **`data/content.json`**: textos, menu, telefone, endereço, 
 
 ```
 app/            layout (SEO, JSON-LD), página, robots, sitemap, ícones
-components/     uma seção por arquivo + forms/ + ui/ (shadcn)
+components/     uma seção por arquivo + ui/ (shadcn)
 data/           content.json
 lib/            utilitários (cn, WhatsApp, URL do site) e testes
 public/         imagens

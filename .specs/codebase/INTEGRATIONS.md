@@ -6,18 +6,18 @@ Sem backend, API, webhook ou job. Integrações são links de saída.
 
 **Service:** `https://wa.me/55<ddd><numero>?text=<encoded>`
 **Implementation:** `lib/whatsapp.ts` → `buildWhatsAppUrl(phone, message)`; número normalizado por `lib/phone.ts` (`toInternationalDigits`), também usado no `tel:` (remove não-dígitos e 0 de tronco; 10–11 dígitos → prefixa DDI 55)
-**Usado por:** `components/hero.tsx` (atalhos `whatsappMessages.business` / `.home`), `components/contact-bar.tsx`, `components/header.tsx` e `components/whatsapp-button.tsx` (`whatsappMessages.default` via `lib/contact.ts`), `components/forms/contact-form.tsx` (nome/email/mensagem)
+**Usado por:** `components/hero.tsx` (atalhos `whatsappMessages.business` / `.home`), `components/contact-bar.tsx`, `components/header.tsx`, `components/whatsapp-button.tsx` e `components/contact.tsx` (`whatsappMessages.default` via `lib/contact.ts`)
 **Configuration:** `content.contact.info.phone` = `(19) 3212-1177` (telefone e WhatsApp, mesmo número) → `wa.me/551932121177`; mensagens em `content.contact.whatsappMessages`
 
 ## Google Maps
 
-**Service:** `https://www.google.com/maps/search/?api=1&query=<nome, endereço>` (sem chave de API)
-**Implementation:** `lib/maps.ts` → `buildMapsSearchUrl(name, address)`; endereço via `lib/address.ts` → `formatAddress`
-**Usado por:** `components/testimonials.tsx` (link "Ver avaliações no Google"); F6 reutiliza para "Como chegar"
+**Service:** busca `https://www.google.com/maps/search/?api=1&query=<nome, endereço>`; embed `https://www.google.com/maps?q=<nome, endereço>&output=embed` (sem chave de API)
+**Implementation:** `lib/maps.ts` → `buildMapsSearchUrl`, `buildMapsEmbedUrl`; endereço via `lib/address.ts` → `formatAddress`
+**Usado por:** `components/testimonials.tsx` (link "Ver avaliações no Google"); `components/contact.tsx` ("Como chegar" + iframe lazy)
 
 ## Redes sociais
 
-`components/contact.tsx` + JSON-LD `sameAs`; rótulo + URL em `content.contact.social.{rede}.{label,url}`.
+`components/contact.tsx` + `contact-bar.tsx` + JSON-LD `sameAs`; rótulo + URL em `content.contact.social.{rede}.{label,url}` (Facebook `galmarlimpeza`, Instagram `galmarlimpeza`).
 
 ## Google Fonts
 

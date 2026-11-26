@@ -1,10 +1,10 @@
 import type { MetadataRoute } from 'next'
-import { siteUrl } from '@/lib/site'
+import { isNoIndex, siteUrl } from '@/lib/site'
 
-const noIndex = process.env.NEXT_PUBLIC_NOINDEX === 'true'
+export const dynamic = 'force-static'
 
 export default function robots(): MetadataRoute.Robots {
-  if (noIndex) {
+  if (isNoIndex) {
     return { rules: { userAgent: '*', disallow: '/' } }
   }
 

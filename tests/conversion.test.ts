@@ -9,11 +9,11 @@ describe('medição e SEO (CS-01, CS-02)', () => {
     expect(layout).toContain('openingHoursSpecification')
     expect(layout).toContain('CookieBanner')
     expect(layout).toContain('Analytics')
-    expect(layout).toContain('NEXT_PUBLIC_NOINDEX')
+    expect(layout).toContain('isNoIndex')
   })
 
-  it('robots.txt respeita NOINDEX', () => {
-    expect(readSource('app/robots.ts')).toContain('NEXT_PUBLIC_NOINDEX')
+  it('robots.txt respeita noindex', () => {
+    expect(readSource('app/robots.ts')).toContain('isNoIndex')
     expect(readSource('app/robots.ts')).toContain("disallow: '/'")
   })
 

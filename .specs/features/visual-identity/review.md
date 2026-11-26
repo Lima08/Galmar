@@ -6,13 +6,13 @@
 
 ## Review Summary
 
-| | |
-| --- | --- |
-| **Mode** | Local |
-| **Scope** | 27 arquivos no diff contra `origin/main` mais o working tree; 2 commits não enviados |
-| **Subagents** | 6 de 6 — security, requirements, tests, architecture, regression, performance |
+|                 |                                                                                                                                                                                                                                              |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Mode**        | Local                                                                                                                                                                                                                                        |
+| **Scope**       | 27 arquivos no diff contra `origin/main` mais o working tree; 2 commits não enviados                                                                                                                                                         |
+| **Subagents**   | 6 de 6 — security, requirements, tests, architecture, regression, performance                                                                                                                                                                |
 | **Docs loaded** | `visual-identity/spec.md`, `visual-identity/context.md`, `visual-identity/design.md`, `visual-identity/tasks.md`, `CONVENTIONS.md`, `ARCHITECTURE.md`, `TESTING.md`, `STACK.md`, `INTEGRATIONS.md`, `CONCERNS.md`, `AGENTS.md`, `PROJECT.md` |
-| **Findings** | 3 warnings, 0 críticos. 1 warning corrigido na hora (contraste do copyright). |
+| **Findings**    | 3 warnings, 0 críticos. 1 warning corrigido na hora (contraste do copyright).                                                                                                                                                                |
 
 ### SECURITY (0)
 

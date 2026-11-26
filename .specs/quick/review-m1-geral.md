@@ -33,5 +33,7 @@ Domínio, DNS e tipo de servidor (#2, #16, B-003) · ID do GA4 (#1) · CNPJ (#13
 
 ## Issues
 
-- Fechadas: #17–#21 (F1–F5, com review próprio e achados corrigidos) e #9 (`npm audit`: 0 vulnerabilidades no Next 16).
-- Mantidas abertas: #22–#26 (F6–F10, bloqueantes acima), #27 e todas as externas.
+- Bloqueantes e recomendados rastreados em **#37** (aberta em 2026-11-25).
+- #9 fechada (`npm audit`: 0 vulnerabilidades no Next 16).
+- #17–#26, #1, #3 e #15 já tinham sido fechadas por outra sessão antes deste review; mantidas fechadas e referenciadas na #37.
+- Abertas: #2, #10, #11, #12, #13, #14, #16, #27, #37.

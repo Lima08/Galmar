@@ -78,6 +78,12 @@ describe('uso no código (BA-02, BA-03)', () => {
     )
   })
 
+  it('rodapé usa a versão horizontal branca', () => {
+    expect(readSource('components/footer.tsx')).toContain(
+      '/brand/logo-horizontal-white.png'
+    )
+  })
+
   it('JSON-LD aponta para o logo vertical', () => {
     expect(readSource('app/layout.tsx')).toContain('/brand/logo-vertical.png')
   })

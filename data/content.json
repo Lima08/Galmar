@@ -173,6 +173,7 @@
     }
   },
   "footer": {
-    "text": "Galmar - Produtos de Limpeza e Descartáveis. Todos os direitos reservados."
+    "logoAlt": "Galmar – Produtos de Limpeza e Descartáveis",
+    "rights": "Galmar – Produtos de Limpeza e Descartáveis. Todos os direitos reservados."
   }
 }

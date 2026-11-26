@@ -36,9 +36,7 @@ describe('medição e SEO (CS-01, CS-02)', () => {
     expect(readSource('components/whatsapp-button.tsx')).toContain(
       "data-track-location='flutuante'"
     )
-    expect(readSource('components/footer.tsx')).toContain(
-      "data-track-location='rodape'"
-    )
+    expect(readSource('components/footer.tsx')).not.toContain('rodape')
   })
 
   it('política de privacidade e cookies no JSON', () => {

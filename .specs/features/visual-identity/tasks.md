@@ -2,7 +2,7 @@
 
 **Design**: `.specs/features/visual-identity/design.md`
 **Spec**: `.specs/features/visual-identity/spec.md`
-**Status**: Approved
+**Status**: Done
 
 Nenhuma chave de `data/content.json` muda. `components/ui/` não se edita. Faixa de contato, botão flutuante e aceite de cookies não mudam de cor. Não há E2E: a matriz em `.specs/codebase/TESTING.md` cobre seções por inspeção e guardas de design por teste estático em `tests/*.test.ts`. Cada tarefa que altera componente inclui o teste estático que lê esse fonte. Um commit por tarefa, no formato abaixo.
 
@@ -301,11 +301,11 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] `<Section id='brands' tone='white' pattern>` (ou `pattern={true}`)
-- [ ] `components/brands.tsx` não contém `symbol.png` nem `brand-pattern`
-- [ ] Badge `bg-secondary-bg text-secondary-dark` e título `text-h2 text-secondary` permanecem no container
-- [ ] O `describe` de marcas exige `tone='white'` e `pattern`; o `it` do carrossel (grid, marquee, reduced-motion) não muda
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] `<Section id='brands' tone='white' pattern>` (ou `pattern={true}`)
+- [x] `components/brands.tsx` não contém `symbol.png` nem `brand-pattern`
+- [x] Badge `bg-secondary-bg text-secondary-dark` e título `text-h2 text-secondary` permanecem no container
+- [x] O `describe` de marcas exige `tone='white'` e `pattern`; o `it` do carrossel (grid, marquee, reduced-motion) não muda
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: static
 **Gate**: quick
@@ -331,12 +331,12 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] `<Section id='about' tone='tint'>`, sem `pattern`
-- [ ] Ordem no container: badge `rounded-lg bg-white px-3 py-1 text-sm text-secondary-dark`; painel `rounded-2xl bg-secondary px-6 py-4 text-white` só em volta do `h2` `text-h2 font-bold text-balance`; descrição `text-foreground`; `CheckCircle` em `text-secondary-dark`; `h3` e parágrafo em `text-foreground`
-- [ ] O arquivo não contém `tone='blue'`, `bg-secondary-dark`, `brand-pattern`, `text-white/90` nem `bg-white/5`
-- [ ] Diferenciais continuam sem `border`, sem `shadow-` e sem `bg-white/5`
-- [ ] O `describe` de Sobre exige `tone='tint'`, o painel `bg-secondary`, `text-h2`, e a ausência de `bg-secondary-dark` e de `brand-pattern`
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] `<Section id='about' tone='tint'>`, sem `pattern`
+- [x] Ordem no container: badge `rounded-lg bg-white px-3 py-1 text-sm text-secondary-dark`; painel `rounded-2xl bg-secondary px-6 py-4 text-white` só em volta do `h2` `text-h2 font-bold text-balance`; descrição `text-foreground`; `CheckCircle` em `text-secondary-dark`; `h3` e parágrafo em `text-foreground`
+- [x] O arquivo não contém `tone='blue'`, `bg-secondary-dark`, `brand-pattern`, `text-white/90` nem `bg-white/5`
+- [x] Diferenciais continuam sem `border`, sem `shadow-` e sem `bg-white/5`
+- [x] O `describe` de Sobre exige `tone='tint'`, o painel `bg-secondary`, `text-h2`, e a ausência de `bg-secondary-dark` e de `brand-pattern`
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: static
 **Gate**: quick
@@ -362,12 +362,12 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] `<Section id='testimonials' tone='white'>`, sem `pattern`
-- [ ] `Stars` usa `text-secondary`; o arquivo não contém `text-rating` nem `brand-pattern`
-- [ ] O badge usa `bg-secondary-bg text-secondary-dark`; nota `text-secondary` e summary `text-muted-foreground` ficam
-- [ ] O `it` que hoje exige `tone='tint'` passa a exigir `tone='white'`, `text-secondary`, ausência de `text-rating` e de `brand-pattern`
-- [ ] Summary com “41”, CTA `min-h-11` e `border-primary` permanecem
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] `<Section id='testimonials' tone='white'>`, sem `pattern`
+- [x] `Stars` usa `text-secondary`; o arquivo não contém `text-rating` nem `brand-pattern`
+- [x] O badge usa `bg-secondary-bg text-secondary-dark`; nota `text-secondary` e summary `text-muted-foreground` ficam
+- [x] O `it` que hoje exige `tone='tint'` passa a exigir `tone='white'`, `text-secondary`, ausência de `text-rating` e de `brand-pattern`
+- [x] Summary com “41”, CTA `min-h-11` e `border-primary` permanecem
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: static
 **Gate**: quick
@@ -393,16 +393,16 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] `<Section id='contact' tone='tint'>`, sem `pattern`
-- [ ] Badge `bg-white text-secondary-dark`; painel `rounded-2xl bg-secondary px-6 py-4 text-white` só em volta do `h2` `text-h2 font-bold`
-- [ ] Descrição, endereço, telefone, e-mail e horário em `text-foreground`; ícones `MapPin`, `Phone`, `Mail` e `Clock` em `text-secondary-dark`
-- [ ] WhatsApp da seção, no tint: `bg-primary`, `hover:bg-primary-dark`; `FaWhatsapp` sem `bg-whatsapp` e sem `text-whatsapp`
-- [ ] No fonte, `content.contact.actions.whatsapp` aparece antes de `bg-secondary-dark`; o painel `rounded-2xl bg-secondary-dark p-3` contém só Ligar e Como chegar, no `OUTLINE` atual (`border-2 border-white`, `text-white`, `hover:bg-white/10`, `min-h-11`)
-- [ ] Facebook e Instagram ficam fora desse painel: `border-2 border-secondary-dark text-secondary-dark bg-white hover:bg-secondary-bg`
-- [ ] Iframe usa `bg-white`
-- [ ] O arquivo não contém `tone='blue'` nem `brand-pattern`
-- [ ] `tests/contact.test.ts` estende com `tone='tint'`, `bg-secondary` no título, a ordem WhatsApp → `bg-secondary-dark`, ícone `text-secondary-dark` e ausência de `bg-whatsapp`; `formatAddress`, `formatHours`, phone, email, `min-h-11`, `bg-primary`, redes, mapa lazy e rótulos do JSON permanecem
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] `<Section id='contact' tone='tint'>`, sem `pattern`
+- [x] Badge `bg-white text-secondary-dark`; painel `rounded-2xl bg-secondary px-6 py-4 text-white` só em volta do `h2` `text-h2 font-bold`
+- [x] Descrição, endereço, telefone, e-mail e horário em `text-foreground`; ícones `MapPin`, `Phone`, `Mail` e `Clock` em `text-secondary-dark`
+- [x] WhatsApp da seção, no tint: `bg-primary`, `hover:bg-primary-dark`; `FaWhatsapp` sem `bg-whatsapp` e sem `text-whatsapp`
+- [x] No fonte, `content.contact.actions.whatsapp` aparece antes de `bg-secondary-dark`; o painel `rounded-2xl bg-secondary-dark p-3` contém só Ligar e Como chegar, no `OUTLINE` atual (`border-2 border-white`, `text-white`, `hover:bg-white/10`, `min-h-11`)
+- [x] Facebook e Instagram ficam fora desse painel: `border-2 border-secondary-dark text-secondary-dark bg-white hover:bg-secondary-bg`
+- [x] Iframe usa `bg-white`
+- [x] O arquivo não contém `tone='blue'` nem `brand-pattern`
+- [x] `tests/contact.test.ts` estende com `tone='tint'`, `bg-secondary` no título, a ordem WhatsApp → `bg-secondary-dark`, ícone `text-secondary-dark` e ausência de `bg-whatsapp`; `formatAddress`, `formatHours`, phone, email, `min-h-11`, `bg-primary`, redes, mapa lazy e rótulos do JSON permanecem
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: static
 **Gate**: quick
@@ -428,13 +428,13 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] Ordem: logo em `<a href='#home'>` com `alt={content.footer.logoAlt}` e classe `h-11 w-auto md:h-12`; linha `text-sm text-white/80` com `© {year} {content.footer.rights}` e `<a href='/privacidade'>`; faixa `flex h-3` `aria-hidden`, metade `bg-secondary` e metade `bg-primary`, sem texto e sem logo
-- [ ] Miolo em `gap-6 py-10 md:py-12`
-- [ ] O arquivo não contém `formatAddress`, `formatHours`, `defaultWhatsAppUrl`, `phoneHref`, `mailto:`, `social.facebook`, `social.instagram`, `data-track-location`, `cn`, nem os ícones de contato e de redes
-- [ ] Sem CNPJ. As chaves de `data/content.json` permanecem
-- [ ] `tests/footer.test.ts` inverte o `it` de contato e o de redes: esses identificadores ficam ausentes; a faixa exige `h-3`, `bg-secondary` e `bg-primary`; `href='#home'` entra. Fundo, container, logo branco, `logoAlt`, `rights`, sem CNPJ e `/privacidade` permanecem
-- [ ] `tests/conversion.test.ts` deixa de exigir `data-track-location='rodape'` e passa a exigir que `components/footer.tsx` não contenha `rodape`. `header`, `contact-bar`, `hero`, `onde-estamos`, `flutuante` e a audiência `business` permanecem
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] Ordem: logo em `<a href='#home'>` com `alt={content.footer.logoAlt}` e classe `h-11 w-auto md:h-12`; linha `text-sm text-white` com `© {year} {content.footer.rights}` e `<a href='/privacidade'>`; faixa `flex h-3` `aria-hidden`, metade `bg-secondary` e metade `bg-primary`, sem texto e sem logo
+- [x] Miolo em `gap-6 py-10 md:py-12`
+- [x] O arquivo não contém `formatAddress`, `formatHours`, `defaultWhatsAppUrl`, `phoneHref`, `mailto:`, `social.facebook`, `social.instagram`, `data-track-location`, `cn`, nem os ícones de contato e de redes
+- [x] Sem CNPJ. As chaves de `data/content.json` permanecem
+- [x] `tests/footer.test.ts` inverte o `it` de contato e o de redes: esses identificadores ficam ausentes; a faixa exige `h-3`, `bg-secondary` e `bg-primary`; `href='#home'` entra. Fundo, container, logo branco, `logoAlt`, `rights`, sem CNPJ e `/privacidade` permanecem
+- [x] `tests/conversion.test.ts` deixa de exigir `data-track-location='rodape'` e passa a exigir que `components/footer.tsx` não contenha `rodape`. `header`, `contact-bar`, `hero`, `onde-estamos`, `flutuante` e a audiência `business` permanecem
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: static
 **Gate**: quick
@@ -460,12 +460,12 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] `TONES` tem só `white: 'bg-white'` e `tint: 'bg-secondary-bg'`
-- [ ] `components/section.tsx` não contém a chave `blue` nem `bg-secondary-dark`
-- [ ] `components/about-us.tsx` e `components/contact.tsx` não passam `tone='blue'`
-- [ ] Um `it` lê `components/section.tsx` e falha se `blue` voltar ao mapa
-- [ ] O markup de `pattern` de T4 permanece
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] `TONES` tem só `white: 'bg-white'` e `tint: 'bg-secondary-bg'`
+- [x] `components/section.tsx` não contém a chave `blue` nem `bg-secondary-dark`
+- [x] `components/about-us.tsx` e `components/contact.tsx` não passam `tone='blue'`
+- [x] Um `it` lê `components/section.tsx` e falha se `blue` voltar ao mapa
+- [x] O markup de `pattern` de T4 permanece
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: static
 **Gate**: quick
@@ -491,9 +491,9 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] A lista de cores cita `primary`, `secondary`, `secondary-dark`, `secondary-bg` e `whatsapp`, e não cita `rating`
-- [ ] Nenhuma outra regra do arquivo muda
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] A lista de cores cita `primary`, `secondary`, `secondary-dark`, `secondary-bg` e `whatsapp`, e não cita `rating`
+- [x] Nenhuma outra regra do arquivo muda
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: none
 **Gate**: quick
@@ -519,9 +519,9 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] A lista de tokens não cita `rating`
-- [ ] A regra de texto pequeno em `secondary-dark` e de `secondary` só em título grande, ícone e fundo grande permanece
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] A lista de tokens não cita `rating`
+- [x] A regra de texto pequeno em `secondary-dark` e de `secondary` só em título grande, ícone e fundo grande permanece
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: none
 **Gate**: quick
@@ -547,9 +547,9 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] O parágrafo mantém `primary` `#d52825`, `primary-dark` `#b3211f`, `secondary` `#2983c2`, `secondary-dark` `#1f6aa0`, `secondary-bg` `#eaf3fa`, `whatsapp` `#25d366` / `#1ebe5d`
-- [ ] `rating` e `#eab308` somem; a frase diz que o verde é só do botão flutuante
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] O parágrafo mantém `primary` `#d52825`, `primary-dark` `#b3211f`, `secondary` `#2983c2`, `secondary-dark` `#1f6aa0`, `secondary-bg` `#eaf3fa`, `whatsapp` `#25d366` / `#1ebe5d`
+- [x] `rating` e `#eab308` somem; a frase diz que o verde é só do botão flutuante
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: none
 **Gate**: quick
@@ -575,10 +575,10 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] O texto da primitiva usa `tone='white|tint'`; `blue` sai dessa união
-- [ ] Uma frase diz que o `Footer` renderiza logo branco, copyright, link de privacidade e a faixa de assinatura, e não chama `formatAddress`, `formatHours`, WhatsApp nem redes
-- [ ] O nó do diagrama pode continuar “Footer secondary-dark + faixa brand”; `lib/address.ts` e `lib/hours.ts` não passam a apontar para o `Footer`
-- [ ] Gate: `npm run typecheck && npm test`
+- [x] O texto da primitiva usa `tone='white|tint'`; `blue` sai dessa união
+- [x] Uma frase diz que o `Footer` renderiza logo branco, copyright, link de privacidade e a faixa de assinatura, e não chama `formatAddress`, `formatHours`, WhatsApp nem redes
+- [x] O nó do diagrama pode continuar “Footer secondary-dark + faixa brand”; `lib/address.ts` e `lib/hours.ts` não passam a apontar para o `Footer`
+- [x] Gate: `npm run typecheck && npm test`
 
 **Tests**: none
 **Gate**: quick
@@ -604,10 +604,10 @@ T16 ─┘
 
 **Done when**:
 
-- [ ] `npm run typecheck && npm run lint && npm run format:check && npm test` termina 0
-- [ ] `git diff -- data/content.json` vazio
-- [ ] `components/ui/`, `components/whatsapp-button.tsx`, `components/contact-bar.tsx` e `components/cookie-banner.tsx` sem mudança de cor
-- [ ] Inspeção manual da página em 360 px e em 1280 px confere os cinco testes independentes da spec (o repositório não tem E2E)
+- [x] `npm run typecheck && npm run lint && npm run format:check && npm test` termina 0
+- [x] `git diff -- data/content.json` vazio
+- [x] `components/ui/`, `components/whatsapp-button.tsx`, `components/contact-bar.tsx` e `components/cookie-banner.tsx` sem mudança de cor
+- [x] Inspeção manual da página em 360 px e em 1280 px confere os cinco testes independentes da spec (o repositório não tem E2E)
 
 **Tests**: none
 **Gate**: full

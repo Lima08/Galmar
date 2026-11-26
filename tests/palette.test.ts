@@ -75,11 +75,35 @@ describe('guarda de cores nos componentes', () => {
   })
 })
 
+const WHATSAPP_COLOR_CLASS =
+  /\b(?:hover:bg-whatsapp-dark|bg-whatsapp|text-whatsapp)\b/g
+
 describe('exceções de terceiros (AD-016)', () => {
   it('cores oficiais de terceiros ficam só em tokens nomeados', () => {
     expect(color('whatsapp')).toBe('#25d366')
     expect(color('whatsapp-dark')).toBe('#1ebe5d')
-    expect(color('rating')).toBe('#eab308')
+
+    const css = readSource('app/globals.css')
+    expect(css).not.toMatch(/--color-rating\b/)
+    expect(css).not.toContain('#eab308')
+    expect(css).toMatch(/\/\*[^*]*verde[^*]*botão flutuante[^*]*\*\//i)
+  })
+
+  it('classes de cor whatsapp só existem em components/whatsapp-button.tsx', () => {
+    const allowed = 'components/whatsapp-button.tsx'
+    const hits = sourceFiles.flatMap((file) =>
+      (readSource(file).match(WHATSAPP_COLOR_CLASS) ?? []).map(
+        (match) => `${file}:${match}`
+      )
+    )
+
+    expect(hits.filter((hit) => !hit.startsWith(`${allowed}:`))).toEqual([])
+    expect(hits).toContain(`${allowed}:bg-whatsapp`)
+    expect(hits).toContain(`${allowed}:hover:bg-whatsapp-dark`)
+
+    const button = readSource(allowed)
+    expect(button).toContain('text-white')
+    expect(button).toContain("data-track-location='flutuante'")
   })
 })
 

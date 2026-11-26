@@ -15,11 +15,11 @@ Para o visitante: a Galmar se reconhece pelo azul e pelo vermelho do manual, o c
 
 ## Goals
 
-- [ ] Sobre e Onde estamos não são mais um retângulo full-bleed em `#1f6aa0`
-- [ ] Logo do header com 80 px de altura a partir de `md`, e 56 px abaixo disso
-- [ ] Rodapé sem endereço, horário, telefone, e-mail, WhatsApp nem redes
-- [ ] Estrelas em `#2983c2`; verde do WhatsApp só no botão flutuante
-- [ ] `npm test` verde, com os testes que descreviam o visual antigo atualizados
+- [x] Sobre e Onde estamos não são mais um retângulo full-bleed em `#1f6aa0`
+- [x] Logo do header com 80 px de altura a partir de `md`, e 56 px abaixo disso
+- [x] Rodapé sem endereço, horário, telefone, e-mail, WhatsApp nem redes
+- [x] Estrelas em `#2983c2`; verde do WhatsApp só no botão flutuante
+- [x] `npm test` verde, com os testes que descreviam o visual antigo atualizados
 
 ## Out of Scope
 
@@ -141,13 +141,13 @@ Para o visitante: a Galmar se reconhece pelo azul e pelo vermelho do manual, o c
 
 ## Requirement Traceability
 
-| Requirement ID | Story                   | Phase    | Status   |
-| -------------- | ----------------------- | -------- | -------- |
-| VI-01          | P1: Cor do manual       | In Tasks | In Tasks |
-| VI-02          | P1: WhatsApp e estrelas | In Tasks | In Tasks |
-| VI-03          | P1: Logo no mínimo      | In Tasks | In Tasks |
-| VI-04          | P1: Rodapé curto        | In Tasks | In Tasks |
-| VI-05          | P1: Grafismo            | In Tasks | In Tasks |
+| Requirement ID | Story                   | Phase    | Status |
+| -------------- | ----------------------- | -------- | ------ |
+| VI-01          | P1: Cor do manual       | In Tasks | Done   |
+| VI-02          | P1: WhatsApp e estrelas | In Tasks | Done   |
+| VI-03          | P1: Logo no mínimo      | In Tasks | Done   |
+| VI-04          | P1: Rodapé curto        | In Tasks | Done   |
+| VI-05          | P1: Grafismo            | In Tasks | Done   |
 
 **Coverage:** 5 total, 5 mapped to tasks, 0 unmapped
 
@@ -155,7 +155,7 @@ Para o visitante: a Galmar se reconhece pelo azul e pelo vermelho do manual, o c
 
 ## Success Criteria
 
-- [ ] Os cinco critérios independentes acima passam por inspeção da página em 360 px e em 1280 px
-- [ ] `npm run typecheck && npm run lint && npm run format:check && npm test` verdes
-- [ ] Nenhuma chave de marketing em `content.json` foi reescrita
-- [ ] Endereço, horário, telefone, e-mail e redes continuam alcançáveis pela faixa de contato ou por Onde estamos
+- [x] Os cinco critérios independentes acima passam por inspeção da página em 360 px e em 1280 px
+- [x] `npm run typecheck && npm run lint && npm run format:check && npm test` verdes
+- [x] Nenhuma chave de marketing em `content.json` foi reescrita
+- [x] Endereço, horário, telefone, e-mail e redes continuam alcançáveis pela faixa de contato ou por Onde estamos

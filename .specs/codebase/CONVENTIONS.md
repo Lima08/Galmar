@@ -24,7 +24,7 @@ Aspas simples (TS e JSX), sem `;`, 2 espaços, sem trailing comma, `bracketSameL
 ## Styling
 
 - Tailwind inline; condicional com `cn()`
-- Cores só por token (`primary`, `primary-dark`, `secondary`, `secondary-dark`, `secondary-bg`, `whatsapp`, `rating`); texto em `foreground`/`muted-foreground`
+- Cores só por token (`primary`, `primary-dark`, `secondary`, `secondary-dark`, `secondary-bg`, `whatsapp`); texto em `foreground`/`muted-foreground`
 - Texto pequeno em azul ou texto branco sobre azul → `secondary-dark` (contraste AA); `secondary` só em títulos ≥ 24 px, ícones e fundos grandes
 - Neutros `gray-*` e `white` ok; proibidos: `black`, famílias de cor do Tailwind, hex literal e `[#…]`/`[color:…]` — guardado por `tests/palette.test.ts`
 - Sem classe montada dinamicamente (`bg-${cor}-500`): o Tailwind não gera e a guarda não detecta

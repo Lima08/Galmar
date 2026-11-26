@@ -50,18 +50,34 @@ describe('altura do header em um único lugar', () => {
     expect(readSource('app/page.tsx')).not.toMatch(/\bmt-/)
   })
 
-  it('define --header-h uma vez no CSS global', () => {
-    expect(readSource('app/globals.css').match(/--header-h:/g)).toHaveLength(1)
+  it('define --header-h em 4.5rem no :root e 7rem a partir de 768px', () => {
+    const css = readSource('app/globals.css')
+    const values = [...css.matchAll(/--header-h:\s*([^;]+);/g)].map((match) =>
+      match[1].trim()
+    )
+    expect(values).toEqual(['4.5rem', '7rem'])
+
+    const flat = css.replace(/\s+/g, ' ')
+    const overrides = [
+      ...flat.matchAll(/@media \(min-width: 768px\) \{ :root \{ ([^{}]*)\} \}/g)
+    ]
+    expect(overrides).toHaveLength(1)
+    expect(overrides[0][1].trim()).toBe('--header-h: 7rem;')
+
+    const withoutOverride = flat.replace(overrides[0][0], '')
+    expect(withoutOverride.match(/--header-h:/g)).toEqual(['--header-h:'])
+    expect(withoutOverride).toMatch(/:root \{[^{}]*--header-h: 4\.5rem;/)
   })
 
-  it.each(['app/layout.tsx', 'components/header.tsx'])(
-    '%s usa --header-h e nenhuma altura fixa',
-    (path) => {
-      const source = readSource(path)
-      expect(source).toMatch(/(?:var)?\(--header-h\)/)
-      expect(source).not.toMatch(/(?:scroll-pt|mt|h)-\[\d+px\]/)
-    }
-  )
+  it.each([
+    'app/layout.tsx',
+    'components/header.tsx',
+    'app/privacidade/page.tsx'
+  ])('%s usa --header-h e nenhuma altura fixa', (path) => {
+    const source = readSource(path)
+    expect(source).toMatch(/(?:var)?\(--header-h\)/)
+    expect(source).not.toMatch(/(?:scroll-pt|mt|h)-\[\d+px\]/)
+  })
 })
 
 describe('globals.css sem variáveis não usadas', () => {

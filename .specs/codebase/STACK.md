@@ -14,7 +14,7 @@
 - UI: React `^19`
 - Componentes: shadcn/ui (`components.json`) — `button` e `sheet` (Radix Dialog) instalados; adicionar outros via `npx shadcn@latest add <comp>`
 - Styling: Tailwind CSS `^4` (CSS-first, `@tailwindcss/postcss`); tokens em `@theme` e CSS vars HSL em `app/globals.css`; sem `tailwind.config.ts`
-- Cores de marca: `@theme` em `app/globals.css` (`--color-*`) — `primary` #d52825 / `primary-dark` #b3211f (hover), `secondary` #2983c2, `secondary-dark` #1f6aa0 (azul de apoio: texto pequeno e fundos com texto branco, AD-015), `secondary-bg` #eaf3fa (tint). Terceiros (AD-016): `whatsapp` #25d366/#1ebe5d, `rating` #eab308. Neutros: `--foreground` #333, `--muted-foreground` #666
+- Cores de marca: `@theme` em `app/globals.css` (`--color-*`) — `primary` #d52825 / `primary-dark` #b3211f (hover), `secondary` #2983c2, `secondary-dark` #1f6aa0 (azul de apoio: texto pequeno e fundos com texto branco, AD-015), `secondary-bg` #eaf3fa (tint). Terceiros (AD-016): `whatsapp` #25d366/#1ebe5d; o verde é só do botão flutuante (`components/whatsapp-button.tsx`). Neutros: `--foreground` #333, `--muted-foreground` #666
 - Fonte: Poppins 400/500/700 via `next/font/google` (`--font-poppins` → `--font-sans`); títulos fluidos `text-display`/`text-h2`/`text-h3` (`clamp` com teto)
 - Container: `@utility container` em `app/globals.css` (máx. 79rem = 1200 px de conteúdo; margem 1rem/2rem a partir de 768 px); declarado após os breakpoints nativos do v4, então o `max-width` próprio prevalece
 - Ícones: `lucide-react`; `react-icons/fa` só para marcas (WhatsApp/Facebook/Instagram)

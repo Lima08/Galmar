@@ -64,4 +64,40 @@ describe('header (HC-03, HC-05)', () => {
   it('sombra correta mesmo se a página abrir já rolada (ex.: /#contact)', () => {
     expect(header()).toMatch(/handleScroll\(\)\s*\n\s*window\.addEventListener/)
   })
+
+  it('logo no mínimo do manual, com folga e alt da marca (VI-03)', () => {
+    const logo =
+      header().match(
+        /<Image[\s\S]*?src='\/brand\/logo-horizontal\.png'[\s\S]*?\/>/
+      )?.[0] ?? ''
+    expect(logo).toContain('h-14 w-auto md:h-20')
+    expect(logo).toContain('width={594}')
+    expect(logo).toContain('height={180}')
+    expect(logo).toContain('alt={brand}')
+    expect(header()).toMatch(/justify-between gap-5/)
+    expect(header()).not.toContain('bg-whatsapp')
+  })
+
+  it('menu, botão e link do sheet em text-foreground, sem gray-700 (VI-01)', () => {
+    expect(header()).not.toContain('text-gray-700')
+
+    const desktop =
+      header().match(/<nav className='hidden[\s\S]*?<\/nav>/)?.[0] ?? ''
+    const trigger =
+      header().match(/<SheetTrigger[\s\S]*?<\/SheetTrigger>/)?.[0] ?? ''
+    const sheetLink =
+      header().match(/<SheetClose[\s\S]*?<\/SheetClose>/)?.[0] ?? ''
+
+    for (const el of [desktop, trigger, sheetLink]) {
+      expect(el).toContain('text-foreground')
+      expect(el).toContain('hover:text-secondary-dark')
+    }
+  })
+
+  it('altura do header só em --header-h, sem pixel fixo nem md:h no elemento', () => {
+    const headerTag = header().match(/<header[\s\S]*?>/)?.[0] ?? ''
+    expect(headerTag).toContain('h-(--header-h)')
+    expect(headerTag).not.toMatch(/\bmd:h-/)
+    expect(header()).not.toMatch(/\bh-\[\d+px\]/)
+  })
 })

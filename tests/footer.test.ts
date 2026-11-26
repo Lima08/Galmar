@@ -9,32 +9,55 @@ describe('rodapé (FT-01)', () => {
     const src = footer()
     expect(src).toMatch(/bg-secondary-dark/)
     expect(src).toContain("className='container")
+    expect(src).toContain('gap-6 py-10 md:py-12')
     expect(src).toContain('/brand/logo-horizontal-white.png')
     expect(src).toContain('content.footer.logoAlt')
+    expect(src).toContain('h-11 w-auto md:h-12')
+    expect(src).toContain("href='#home'")
   })
 
-  it('endereço, horário e links de contato compartilhados', () => {
+  it('não repete endereço, horário nem links de contato', () => {
     const src = footer()
-    expect(src).toContain('formatAddress')
-    expect(src).toContain('formatHours')
-    expect(src).toContain('defaultWhatsAppUrl')
-    expect(src).toContain('phoneHref')
-    expect(src).toContain('mailto:')
+    for (const token of [
+      'formatAddress',
+      'formatHours',
+      'defaultWhatsAppUrl',
+      'phoneHref',
+      'mailto:',
+      'data-track-location',
+      'Clock',
+      'Mail',
+      'MapPin',
+      'Phone',
+      'FaWhatsapp',
+      'lucide-react',
+      'react-icons'
+    ]) {
+      expect(src, token).not.toContain(token)
+    }
+    expect(src).not.toMatch(/\bcn\b/)
   })
 
-  it('redes com aria-label do JSON', () => {
+  it('não repete redes sociais', () => {
     const src = footer()
-    expect(src).toContain('social.facebook')
-    expect(src).toContain('social.instagram')
-    expect(src).toContain('aria-label={social.facebook.label}')
-    expect(src).toContain('aria-label={social.instagram.label}')
+    expect(src).not.toContain('social.facebook')
+    expect(src).not.toContain('social.instagram')
+    expect(src).not.toContain('FaFacebookF')
+    expect(src).not.toContain('FaInstagram')
   })
 
-  it('faixa azul+vermelha de 4 px', () => {
+  it('faixa de assinatura de 12 px, sem texto e sem logo', () => {
     const src = footer()
-    expect(src).toMatch(/h-1/)
-    expect(src).toMatch(/(?<![\w:-])bg-secondary(?![\w-])/)
-    expect(src).toMatch(/(?<![\w:-])bg-primary(?![\w-])/)
+    expect(src).not.toMatch(/(?<![\w-])h-1(?![\w-])/)
+    const bar =
+      src.match(
+        /<div className='flex h-3' aria-hidden>([\s\S]*?)<\/div>/
+      )?.[0] ?? ''
+    expect(bar).toMatch(/(?<![\w:-])bg-secondary(?![\w-])/)
+    expect(bar).toMatch(/(?<![\w:-])bg-primary(?![\w-])/)
+    expect(bar).not.toContain('logo')
+    expect(bar).not.toContain('<Image')
+    expect(bar).not.toMatch(/>[^<\s{][^<]*</)
   })
 
   it('copyright com rights do JSON e sem CNPJ', () => {

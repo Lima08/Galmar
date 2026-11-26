@@ -27,7 +27,7 @@ graph TD
 
 ### Seção = componente
 
-`components/<kebab>.tsx`, default export, envolvida em `<Section id='...' tone='white|tint|blue'>` (`components/section.tsx`): fundo full-bleed, `py-16 md:py-24`, conteúdo em `.container` (1200 px) com `data-reveal`. `id` = âncora da navegação. Marcas usa carrossel CSS (`.brands-marquee`, AD-012) com grid em reduced-motion. Hero é a exceção (acima da dobra, não anima): `<section>` própria com fundo tint, grafismo do símbolo e foto LCP via `<img srcSet>`; selo usa `formatRating(reviews.rating)` (`lib/rating.ts`), a mesma fonte da seção de avaliações.
+`components/<kebab>.tsx`, default export, envolvida em `<Section id='...' tone='white|tint'>` (`components/section.tsx`): fundo full-bleed, `py-16 md:py-24`, conteúdo em `.container` (1200 px) com `data-reveal`. `id` = âncora da navegação. Marcas usa carrossel CSS (`.brands-marquee`, AD-012) com grid em reduced-motion. Hero é a exceção (acima da dobra, não anima): `<section>` própria com fundo tint, grafismo do símbolo e foto LCP via `<img srcSet>`; selo usa `formatRating(reviews.rating)` (`lib/rating.ts`), a mesma fonte da seção de avaliações. O `Footer` renderiza logo branco, copyright, link de privacidade e a faixa de assinatura `h-3`, e não chama `formatAddress`, `formatHours`, WhatsApp nem redes.
 
 ### Conteúdo desacoplado em JSON
 

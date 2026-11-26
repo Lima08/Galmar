@@ -24,7 +24,7 @@ const Logo = ({
 
 export default function Brands() {
   return (
-    <Section id='brands'>
+    <Section id='brands' tone='white' pattern>
       <div className='mb-10 flex flex-col items-center gap-4 text-center md:mb-12'>
         <div className='inline-block rounded-lg bg-secondary-bg px-3 py-1 text-sm text-secondary-dark'>
           {badge}

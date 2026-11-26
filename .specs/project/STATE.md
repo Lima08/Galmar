@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** Identidade visual — Phase 3 (T5, T6) ✅; Phases 4–8 pendentes. M1 F1–F10 ✅ (falta domínio/upload — B-003)
+**Current Work:** Identidade visual — Done (T1–T17). M1 F1–F10 ✅ (falta domínio/upload — B-003)
 
 ---
 
@@ -130,6 +130,7 @@
 **Decision:** Verde do WhatsApp (#25d366/#1ebe5d) e amarelo das estrelas (#eab308) ficam, como tokens nomeados `whatsapp` e `rating`. Ícones de Facebook/Instagram em `secondary-dark` (monocromático). Nenhuma outra cor fora da paleta.
 **Reason:** Reconhecimento imediato do botão de WhatsApp; review da F1 apontou cores cruas fora da guarda.
 **Impact:** `tests/palette.test.ts` proíbe todas as famílias de cor do Tailwind e hex literal; exceções só via token.
+**Superseded by visual-identity (2026-11-25):** o amarelo `rating` saiu. O verde do WhatsApp permanece só no botão flutuante.
 
 ---
 

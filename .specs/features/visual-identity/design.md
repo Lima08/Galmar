@@ -226,7 +226,7 @@ Saem do arquivo: `formatAddress`, `formatHours`, `defaultWhatsAppUrl`, `phoneHre
 Ficam, nesta ordem:
 
 1. Logo branco em `<a href='#home'>`, `alt={content.footer.logoAlt}`, classe atual `h-11 w-auto md:h-12`. Os 80 px são requisito do header (VI-03). Repetir essa altura aqui desfaz o rodapé curto.
-2. Linha de copyright e privacidade, `text-sm text-white/80`, com `© {year} {content.footer.rights}` e `<a href='/privacidade'>`. Sem CNPJ.
+2. Linha de copyright e privacidade, `text-sm text-white`, com `© {year} {content.footer.rights}` e `<a href='/privacidade'>`. Sem CNPJ. Branco a 80% sobre `#1f6aa0` cai para ~4,3:1.
 3. Faixa `flex h-3` (`aria-hidden`, sem texto e sem logo): metade `bg-secondary`, metade `bg-primary`. Sai `h-1`.
 
 O miolo desce de `gap-10 py-12 md:py-16` para `gap-6 py-10 md:py-12`. O logo branco sobre `#1f6aa0` segue válido; o texto pequeno da linha de baixo também (5,79:1).

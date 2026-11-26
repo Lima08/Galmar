@@ -33,8 +33,18 @@ Gate antes de commit: `npm run typecheck && npm run lint && npm run format:check
 - Texto visível → `data/content.json`, nunca hardcoded no JSX
 - Nova seção: `components/<kebab>.tsx` default export, `<Section id='...' tone=...>` (`components/section.tsx`), registrar em `app/page.tsx` e em `content.header.nav`
 - Server Component por padrão; `'use client'` só com state/efeito/evento
-- Cores só via tokens Tailwind (`primary`, `secondary`, `secondary-dark`, `secondary-bg`, `whatsapp`, `rating`) — `tests/palette.test.ts` barra o resto
+- Cores só via tokens Tailwind (`primary`, `secondary`, `secondary-dark`, `secondary-bg`, `whatsapp`) — `tests/palette.test.ts` barra o resto
 - `cn()` de `@/lib/utils` para classes condicionais; imports via `@/`
 - Lógica pura em `lib/` com teste colocalizado `*.test.ts`
 - URLs de WhatsApp só via `buildWhatsAppUrl` (`lib/whatsapp.ts`)
 - `components/ui/` é vendor shadcn — adicionar com `npx shadcn@latest add <comp>`, não editar à mão
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

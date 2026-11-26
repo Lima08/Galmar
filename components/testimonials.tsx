@@ -25,7 +25,7 @@ const CTA =
   'min-h-11 border-2 border-primary bg-white px-6 text-base text-primary hover:border-primary-dark hover:bg-white hover:text-primary-dark focus-visible:border-primary-dark focus-visible:text-primary-dark focus-visible:ring-primary-dark'
 
 const Stars = ({ count }: { count: number }) => (
-  <div className='flex items-center gap-1 text-rating' aria-hidden>
+  <div className='flex items-center gap-1 text-secondary' aria-hidden>
     {Array.from({ length: count }, (_, i) => (
       <Star key={i} className='h-5 w-5 fill-current' />
     ))}
@@ -34,9 +34,9 @@ const Stars = ({ count }: { count: number }) => (
 
 export default function Testimonials() {
   return (
-    <Section id='testimonials' tone='tint'>
+    <Section id='testimonials' tone='white'>
       <div className='flex flex-col items-center gap-4 text-center'>
-        <div className='inline-block rounded-lg bg-white px-3 py-1 text-sm text-secondary-dark'>
+        <div className='inline-block rounded-lg bg-secondary-bg px-3 py-1 text-sm text-secondary-dark'>
           {badge}
         </div>
         <h2 className='text-h2 font-bold text-balance text-secondary'>

@@ -63,4 +63,86 @@ describe('mapa embed lazy (LS-02)', () => {
       directions: 'Como chegar'
     })
   })
+
+  it('iframe com fundo branco opaco', () => {
+    const iframe = contact().match(/<iframe[\s\S]*?\/>/)?.[0] ?? ''
+    expect(iframe).toMatch(/(?<![\w:-])bg-white(?![\w/-])/)
+    expect(iframe).not.toContain('bg-white/10')
+  })
+})
+
+describe('Onde estamos no tint (VI-01, VI-02)', () => {
+  it('seção em tint, sem pattern e sem o retângulo blue', () => {
+    const src = contact()
+    expect(src).toMatch(/<Section id='contact' tone='tint'>/)
+    expect(src).not.toContain("tone='blue'")
+    expect(src).not.toContain('brand-pattern')
+    expect(src).not.toMatch(/\bpattern\b/)
+  })
+
+  it('badge claro e título branco só no painel bg-secondary', () => {
+    const src = contact()
+    expect(src).toContain('bg-white text-secondary-dark')
+
+    const titlePanel =
+      src.match(
+        /<div className='rounded-2xl bg-secondary px-6 py-4 text-white'>([\s\S]*?)<\/div>/
+      )?.[1] ?? ''
+    expect(titlePanel).toContain('text-h2 font-bold')
+    expect(titlePanel).toContain('{content.contact.title}')
+    expect(titlePanel).not.toContain('badge')
+    expect(titlePanel).not.toContain('description')
+    expect(titlePanel).not.toContain('actions')
+  })
+
+  it('corpo em foreground e ícones de contato em secondary-dark', () => {
+    const src = contact()
+    expect(src).toContain('text-foreground')
+    expect(src).not.toContain('text-white/90')
+
+    for (const name of ['MapPin', 'Mail', 'Clock']) {
+      const tag = src.match(new RegExp(`<${name}[\\s\\S]*?/>`))?.[0] ?? ''
+      expect(tag, name).toContain('text-secondary-dark')
+    }
+
+    const infoPhone = src.match(/<Phone[\s\S]*?\/>/)?.[0] ?? ''
+    expect(infoPhone).toContain('text-secondary-dark')
+  })
+
+  it('WhatsApp vermelho no tint, antes do painel de Ligar e Como chegar', () => {
+    const src = contact()
+    const whatsappAt = src.indexOf('content.contact.actions.whatsapp')
+    const darkAt = src.indexOf('bg-secondary-dark')
+    expect(whatsappAt).toBeGreaterThan(-1)
+    expect(darkAt).toBeGreaterThan(whatsappAt)
+
+    expect(src).toContain('hover:bg-primary-dark')
+    expect(src).not.toMatch(/bg-whatsapp|text-whatsapp/)
+
+    const panelAt = src.indexOf('rounded-2xl bg-secondary-dark p-3')
+    const socialAt = src.indexOf('content.contact.social.facebook')
+    expect(panelAt).toBeGreaterThan(whatsappAt)
+    const panel = src.slice(panelAt, socialAt)
+    expect(panel).toContain('rounded-2xl bg-secondary-dark p-3')
+    expect(panel).toContain('content.contact.actions.call')
+    expect(panel).toContain('content.contact.actions.directions')
+    expect(panel).not.toContain('whatsapp')
+    expect(panel).toContain('OUTLINE')
+    expect(src).toMatch(/const CTA =\s*'[^']*\bmin-h-11\b/)
+    expect(src).toMatch(
+      /const OUTLINE =\s*'[^']*border-2 border-white[^']*text-white[^']*hover:bg-white\/10/
+    )
+  })
+
+  it('redes fora do painel escuro, com ícone secondary-dark', () => {
+    const src = contact()
+    const darkAt = src.indexOf('bg-secondary-dark')
+    const facebookAt = src.indexOf('content.contact.social.facebook')
+    const instagramAt = src.indexOf('content.contact.social.instagram')
+    expect(facebookAt).toBeGreaterThan(darkAt)
+    expect(instagramAt).toBeGreaterThan(darkAt)
+    expect(src).toContain(
+      'border-2 border-secondary-dark text-secondary-dark bg-white hover:bg-secondary-bg'
+    )
+  })
 })

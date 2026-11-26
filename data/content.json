@@ -3,6 +3,9 @@
     "title": "Galmar - Produtos de Limpeza em Campinas",
     "ogImageAlt": "Logo da Galmar – Produtos de Limpeza e Descartáveis, sobre fundo azul"
   },
+  "a11y": {
+    "skipToContent": "Pular para o conteúdo"
+  },
   "contactBar": {
     "whatsapp": "WhatsApp",
     "call": "Ligar"
@@ -65,6 +68,8 @@
   "brands": {
     "badge": "Marcas",
     "title": "Marcas que você encontra na loja",
+    "pause": "Pausar animação",
+    "resume": "Retomar animação",
     "items": [
       {
         "title": "Coala",
@@ -180,23 +185,34 @@
     "privacy": "Política de privacidade"
   },
   "cookies": {
+    "label": "Aviso de cookies",
     "message": "Usamos cookies de medição (Google Analytics) para entender como o site é usado. Você pode aceitar ou recusar.",
     "accept": "Aceitar",
     "reject": "Recusar",
-    "policy": "Política de privacidade"
+    "policy": "Política de privacidade",
+    "preferences": "Preferências de cookies"
   },
   "privacy": {
     "title": "Política de privacidade",
-    "updated": "Atualizada em 25 de novembro de 2026",
+    "description": "Como a Galmar trata dados neste site: cookies de medição com consentimento, mapa do Google Maps e como exercer seus direitos.",
+    "updated": "Atualizada em 26 de novembro de 2026",
     "back": "Voltar ao início",
     "sections": [
       {
         "heading": "Quem somos",
-        "body": "A Galmar Comercial vende produtos de limpeza, higiene e descartáveis em Campinas-SP. Contato: (19) 3212-1177 e galmarcomercial@gmail.com."
+        "body": "A Galmar Comercial vende produtos de limpeza, higiene e descartáveis em Campinas-SP e é a responsável pelos dados tratados neste site. Contato: (19) 3212-1177 e galmarcomercial@gmail.com."
       },
       {
-        "heading": "Dados que coletamos",
-        "body": "Se você aceitar cookies de medição, o Google Analytics registra páginas visitadas e cliques em WhatsApp, telefone e rotas — de forma agregada, com IP anonimizado. Se recusar, esses cookies não são carregados."
+        "heading": "Cookies de medição",
+        "body": "Só com o seu consentimento (base legal: LGPD, art. 7º, I), o Google Analytics registra de forma agregada as páginas visitadas e os cliques em WhatsApp, telefone e rotas. Se você recusar, esses cookies não são carregados. Cookies de anúncios não são usados."
+      },
+      {
+        "heading": "Mapa do Google Maps",
+        "body": "A seção \"Onde estamos\" exibe um mapa do Google Maps. Ao carregar o mapa, o Google pode receber dados técnicos, como o seu endereço IP, e usar cookies próprios, conforme a política de privacidade do Google."
+      },
+      {
+        "heading": "Transferência internacional",
+        "body": "Google Analytics e Google Maps são serviços do Google, que pode tratar esses dados fora do Brasil, inclusive nos Estados Unidos."
       },
       {
         "heading": "WhatsApp e telefone",
@@ -204,8 +220,13 @@
       },
       {
         "heading": "Seus direitos",
-        "body": "Você pode alterar a escolha de cookies apagando os dados do site no navegador. Para dúvidas sobre privacidade, fale conosco pelo WhatsApp ou e-mail acima."
+        "body": "Você pode mudar ou retirar o consentimento a qualquer momento em \"Preferências de cookies\", no rodapé. Para acessar, corrigir ou excluir dados, ou para outras dúvidas sobre privacidade, fale conosco pelo WhatsApp ou pelo e-mail acima."
       }
     ]
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "message": "O endereço que você abriu não existe ou mudou. Volte ao início ou fale com a gente pelo WhatsApp.",
+    "home": "Voltar ao início"
   }
 }

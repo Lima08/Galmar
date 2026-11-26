@@ -14,7 +14,7 @@ export default function LandingPage() {
     <div id='home' className='flex min-h-screen min-w-0 flex-col'>
       <ContactBar />
       <Header />
-      <main className='min-w-0 flex-1'>
+      <main id='conteudo' className='min-w-0 flex-1'>
         <Hero />
         <Brands />
         <AboutUs />

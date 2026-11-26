@@ -5,6 +5,7 @@ import Analytics from '@/components/analytics'
 import CookieBanner from '@/components/cookie-banner'
 import content from '@/data/content.json'
 import { toOpeningHoursSpecification } from '@/lib/hours'
+import { toInternationalDigits } from '@/lib/phone'
 import { isNoIndex, siteUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
 import './globals.css'
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
     ? { index: false, follow: false }
     : { index: true, follow: true },
   openGraph: {
+    url: '/',
     type: 'website',
     locale: 'pt_BR',
     siteName: content.header.brand,
@@ -53,7 +55,7 @@ const localBusinessJsonLd = {
   url: siteUrl,
   image: `${siteUrl}/brand/og.png`,
   logo: `${siteUrl}/brand/logo-vertical.png`,
-  telephone: info.phone,
+  telephone: `+${toInternationalDigits(info.phone)}`,
   email: info.email,
   address: {
     '@type': 'PostalAddress',
@@ -77,6 +79,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       )}
       data-scroll-behavior='smooth'>
       <body>
+        <a
+          href='#conteudo'
+          className='sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-3 focus:font-medium focus:text-secondary-dark focus:shadow-lg'>
+          {content.a11y.skipToContent}
+        </a>
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{

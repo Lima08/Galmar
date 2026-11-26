@@ -15,15 +15,64 @@ declare global {
 
 export const hasGaId = () => GA_ID.length > 0
 
+// Armazenamento pode estar bloqueado (cookies desativados, modo restrito):
+// nunca lançar — sem acesso conta como "sem escolha" (LR-07)
+const storage = () => {
+  try {
+    return typeof window === 'undefined' ? null : window.localStorage
+  } catch {
+    return null
+  }
+}
+
+const listeners = new Set<() => void>()
+const notify = () => listeners.forEach((listener) => listener())
+
+export const subscribeConsent = (listener: () => void) => {
+  listeners.add(listener)
+  return () => {
+    listeners.delete(listener)
+  }
+}
+
 export const getStoredConsent = (): Consent | null => {
-  if (typeof window === 'undefined') return null
-  const value = window.localStorage.getItem(CONSENT_KEY)
-  return value === 'accepted' || value === 'rejected' ? value : null
+  try {
+    const value = storage()?.getItem(CONSENT_KEY)
+    return value === 'accepted' || value === 'rejected' ? value : null
+  } catch {
+    return null
+  }
 }
 
 export const setStoredConsent = (consent: Consent) => {
-  window.localStorage.setItem(CONSENT_KEY, consent)
+  try {
+    storage()?.setItem(CONSENT_KEY, consent)
+  } catch {
+    // escolha vale só nesta visita
+  }
+  notify()
 }
+
+export const clearStoredConsent = () => {
+  try {
+    storage()?.removeItem(CONSENT_KEY)
+  } catch {
+    // nada a limpar
+  }
+  window.gtag?.('consent', 'update', { analytics_storage: 'denied' })
+  notify()
+}
+
+// Consent Mode v2 (AD-008, LR-08): tudo negado por padrão; o script só roda
+// após o aceite, que libera apenas a medição — anúncios seguem negados
+export const buildGtagInit = (gaId: string) =>
+  [
+    'window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}',
+    "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});",
+    "gtag('js',new Date());",
+    "gtag('consent','update',{analytics_storage:'granted'});",
+    `gtag('config','${gaId}');`
+  ].join('')
 
 export const eventFromHref = (href: string) => {
   if (href.includes('wa.me') || href.includes('whatsapp.com'))

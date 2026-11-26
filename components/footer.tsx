@@ -1,7 +1,11 @@
 import Image from 'next/image'
+import CookiePreferences from '@/components/cookie-preferences'
 import content from '@/data/content.json'
 
 const year = new Date().getFullYear()
+
+const FOOTER_LINK =
+  'inline-flex min-h-11 items-center font-medium text-white underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-white'
 
 export default function Footer() {
   return (
@@ -21,11 +25,12 @@ export default function Footer() {
           <p>
             © {year} {content.footer.rights}
           </p>
-          <a
-            href='/privacidade'
-            className='font-medium text-white underline-offset-2 hover:text-white hover:underline'>
-            {content.footer.privacy}
-          </a>
+          <div className='flex flex-wrap gap-x-6 gap-y-2'>
+            <a href='/privacidade/' className={FOOTER_LINK}>
+              {content.footer.privacy}
+            </a>
+            <CookiePreferences className={FOOTER_LINK} />
+          </div>
         </div>
       </div>
 

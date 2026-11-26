@@ -4,19 +4,25 @@ import { useEffect, useSyncExternalStore } from 'react'
 import Script from 'next/script'
 import {
   GA_ID,
+  buildGtagInit,
   eventFromHref,
   getStoredConsent,
   hasGaId,
+  subscribeConsent,
   trackEvent
 } from '@/lib/analytics'
 
-const subscribe = () => () => {}
+const noop = () => () => {}
 const clientTrue = () => true
 const serverFalse = () => false
 
 export default function Analytics() {
-  const hydrated = useSyncExternalStore(subscribe, clientTrue, serverFalse)
-  const consent = useSyncExternalStore(subscribe, getStoredConsent, () => null)
+  const hydrated = useSyncExternalStore(noop, clientTrue, serverFalse)
+  const consent = useSyncExternalStore(
+    subscribeConsent,
+    getStoredConsent,
+    () => null
+  )
   const enabled = hydrated && hasGaId() && consent === 'accepted'
 
   useEffect(() => {
@@ -47,7 +53,7 @@ export default function Analytics() {
         strategy='afterInteractive'
       />
       <Script id='ga4-init' strategy='afterInteractive'>
-        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{anonymize_ip:true});`}
+        {buildGtagInit(GA_ID)}
       </Script>
     </>
   )

@@ -56,3 +56,54 @@ describe('medição e SEO (CS-01, CS-02)', () => {
     expect(readSource('lib/analytics.ts')).toContain('NEXT_PUBLIC_GA_ID')
   })
 })
+
+describe('privacidade e banner (LR-09, LR-10, LR-13)', () => {
+  const policy = content.privacy.sections
+    .map((section) => `${section.heading} ${section.body}`)
+    .join(' ')
+
+  it('política cita base legal, mapa embutido e transferência ao Google', () => {
+    expect(policy).toMatch(/consentimento/i)
+    expect(policy).toMatch(/Google Maps/)
+    expect(policy).toMatch(/fora do Brasil/)
+    expect(policy).toMatch(/Preferências de cookies/)
+    expect(policy).not.toMatch(/anonimizad/)
+  })
+
+  it('rodapé oferece "Preferências de cookies" para revogar a escolha', () => {
+    expect(content.cookies.preferences).toBe('Preferências de cookies')
+    expect(readSource('components/footer.tsx')).toContain('<CookiePreferences')
+    const button = readSource('components/cookie-preferences.tsx')
+    expect(button).toContain('clearStoredConsent')
+    expect(button).toContain('hasGaId')
+  })
+
+  it('banner é região rotulada, não diálogo sem foco gerenciado', () => {
+    const banner = readSource('components/cookie-banner.tsx')
+    expect(banner).toContain("role='region'")
+    expect(banner).toContain('aria-label={label}')
+    expect(banner).not.toContain("role='dialog'")
+    expect(content.cookies.label).toBe('Aviso de cookies')
+  })
+
+  it('banner e GA reagem à mudança de escolha (sem subscribe vazio)', () => {
+    ;['components/cookie-banner.tsx', 'components/analytics.tsx'].forEach(
+      (path) => {
+        expect(readSource(path)).toContain('subscribeConsent')
+        expect(readSource(path)).not.toMatch(
+          /const subscribe = \(\) => \(\) => \{\}/
+        )
+      }
+    )
+  })
+
+  it('JSON-LD com telefone E.164 e /privacidade com description própria', () => {
+    expect(readSource('app/layout.tsx')).toContain(
+      'telephone: `+${toInternationalDigits(info.phone)}`'
+    )
+    expect(readSource('app/privacidade/page.tsx')).toContain(
+      'content.privacy.description'
+    )
+    expect(content.privacy.description.length).toBeGreaterThan(50)
+  })
+})

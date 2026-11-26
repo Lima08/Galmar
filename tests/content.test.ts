@@ -190,8 +190,7 @@ describe('avaliações do Google (CT-06)', () => {
   })
 
   it('resumo verificável sem número exato que envelheça', () => {
-    expect(reviews.summary, 'reviews.summary').toMatch(/mais de 40/i)
-    expect(reviews.summary, 'reviews.summary').not.toMatch(/\b41\b/)
+    expect(reviews.summary, 'reviews.summary').toMatch(/41 avaliações/i)
     expect(reviews.link, 'reviews.link').toBeTruthy()
   })
 

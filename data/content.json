@@ -63,7 +63,8 @@
     }
   ],
   "brands": {
-    "title": "As Marcas que Representam Qualidade",
+    "badge": "Marcas",
+    "title": "Marcas que você encontra na loja",
     "items": [
       {
         "title": "Coala",
@@ -103,7 +104,7 @@
     "badge": "Avaliações",
     "title": "Avaliado com nota 5,0 no Google",
     "rating": 5,
-    "summary": "Mais de 40 avaliações de clientes no Google",
+    "summary": "41 avaliações de clientes no Google",
     "link": "Ver avaliações no Google",
     "items": []
   },

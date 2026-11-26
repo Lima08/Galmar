@@ -88,6 +88,12 @@
   }
 }
 
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal='hidden'] {
     opacity: 0;
@@ -98,6 +104,25 @@
     transition:
       opacity 600ms ease-out,
       transform 600ms ease-out;
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+}
+
+/* Marcas: grid no celular / reduced-motion; carrossel no md+ com motion */
+.brands-marquee {
+  display: none;
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .brands-grid {
+    display: none;
+  }
+
+  .brands-marquee {
+    display: block;
   }
 }
 

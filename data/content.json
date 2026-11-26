@@ -28,7 +28,7 @@
         "id": "testimonials"
       },
       {
-        "name": "Contato",
+        "name": "Onde estamos",
         "id": "contact"
       }
     ],
@@ -108,18 +108,14 @@
     "items": []
   },
   "contact": {
-    "badge": "Contato",
-    "title": "Entre em contato conosco",
-    "description": "Estamos à disposição para atender suas necessidades e esclarecer dúvidas.",
-    "form": {
-      "title": "Envie uma mensagem",
-      "name": "Nome",
-      "namePlaceholder": "Seu nome completo",
-      "email": "E-mail",
-      "emailPlaceholder": "Seu e-mail",
-      "message": "Mensagem",
-      "messagePlaceholder": "Digite sua mensagem",
-      "button": "Enviar Mensagem"
+    "badge": "Onde estamos",
+    "title": "Retire na loja em Campinas",
+    "description": "Peça pelo WhatsApp e busque no endereço abaixo. Atendimento no varejo e no atacado.",
+    "mapTitle": "Mapa da Galmar no Google Maps",
+    "actions": {
+      "whatsapp": "WhatsApp",
+      "call": "Ligar",
+      "directions": "Como chegar"
     },
     "info": {
       "addressTitle": "Endereço",
@@ -161,11 +157,11 @@
     "social": {
       "facebook": {
         "label": "Facebook",
-        "url": "https://www.facebook.com/galmarprodutosdelimpeza"
+        "url": "https://www.facebook.com/galmarlimpeza"
       },
       "instagram": {
         "label": "Instagram",
-        "url": "https://www.instagram.com/galmarprodutosdelimpeza"
+        "url": "https://www.instagram.com/galmarlimpeza/"
       }
     },
     "whatsappLabel": "Contato via WhatsApp",

@@ -1,23 +1,32 @@
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
-import { FaFacebookF, FaInstagram } from 'react-icons/fa'
-import { ContactForm } from '@/components/forms/contact-form'
+import { Clock, Mail, MapPin, Navigation, Phone } from 'lucide-react'
+import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import Section from '@/components/section'
 import { Button } from '@/components/ui/button'
 import content from '@/data/content.json'
 import { formatAddress } from '@/lib/address'
+import { defaultWhatsAppUrl, phoneHref } from '@/lib/contact'
 import { formatHours } from '@/lib/hours'
+import { buildMapsEmbedUrl, buildMapsSearchUrl } from '@/lib/maps'
+import { cn } from '@/lib/utils'
 
-const { address, hoursByDay, hoursLabels } = content.contact.info
+const { address, hoursByDay, hoursLabels, phone, email } = content.contact.info
 const formattedAddress = formatAddress(address)
 const hours = formatHours(hoursByDay, hoursLabels)
+const brand = content.header.brand
+const directionsUrl = buildMapsSearchUrl(brand, formattedAddress)
+const embedUrl = buildMapsEmbedUrl(brand, formattedAddress)
+
+const CTA = 'min-h-11 px-6 text-base focus-visible:ring-primary-dark'
+const OUTLINE =
+  'border-2 border-white bg-transparent text-white hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white'
 
 export default function Contact() {
   return (
     <Section id='contact' tone='blue'>
-      <div className='grid gap-6 lg:grid-cols-2 lg:gap-12'>
-        <div className='flex flex-col justify-center space-y-4'>
-          <div className='space-y-2'>
-            <div className='inline-block rounded-lg bg-secondary-bg px-3 py-1 text-sm text-secondary-dark'>
+      <div className='grid items-stretch gap-10 lg:grid-cols-2 lg:gap-12'>
+        <div className='flex flex-col gap-6'>
+          <div className='flex flex-col gap-4'>
+            <div className='inline-block w-fit rounded-lg bg-white/15 px-3 py-1 text-sm text-white'>
               {content.contact.badge}
             </div>
             <h2 className='text-h2 font-bold text-balance'>
@@ -27,9 +36,13 @@ export default function Contact() {
               {content.contact.description}
             </p>
           </div>
-          <div className='space-y-4'>
+
+          <div className='flex flex-col gap-4'>
             <div className='flex items-start gap-4'>
-              <MapPin className='h-6 w-6 text-white' />
+              <MapPin
+                className='mt-0.5 h-6 w-6 shrink-0 text-white'
+                aria-hidden
+              />
               <div>
                 <h3 className='text-h3 font-bold text-balance'>
                   {content.contact.info.addressTitle}
@@ -38,25 +51,34 @@ export default function Contact() {
               </div>
             </div>
             <div className='flex items-start gap-4'>
-              <Phone className='h-6 w-6 text-white' />
+              <Phone
+                className='mt-0.5 h-6 w-6 shrink-0 text-white'
+                aria-hidden
+              />
               <div>
                 <h3 className='text-h3 font-bold text-balance'>
                   {content.contact.info.phoneTitle}
                 </h3>
-                <p className='text-white/90'>{content.contact.info.phone}</p>
+                <p className='text-white/90'>{phone}</p>
               </div>
             </div>
             <div className='flex items-start gap-4'>
-              <Mail className='h-6 w-6 text-white' />
+              <Mail
+                className='mt-0.5 h-6 w-6 shrink-0 text-white'
+                aria-hidden
+              />
               <div>
                 <h3 className='text-h3 font-bold text-balance'>
                   {content.contact.info.emailTitle}
                 </h3>
-                <p className='text-white/90'>{content.contact.info.email}</p>
+                <p className='text-white/90'>{email}</p>
               </div>
             </div>
             <div className='flex items-start gap-4'>
-              <Clock className='h-6 w-6 text-white' />
+              <Clock
+                className='mt-0.5 h-6 w-6 shrink-0 text-white'
+                aria-hidden
+              />
               <div>
                 <h3 className='text-h3 font-bold text-balance'>
                   {content.contact.info.clockTitle}
@@ -65,37 +87,75 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          <div className='flex gap-4'>
-            <Button asChild size='icon' variant='outline'>
+
+          <div className='flex flex-col gap-3 min-[480px]:flex-row min-[480px]:flex-wrap'>
+            <Button
+              asChild
+              size='lg'
+              className={cn(
+                CTA,
+                'bg-primary text-white hover:bg-primary-dark focus-visible:bg-primary-dark'
+              )}>
+              <a
+                href={defaultWhatsAppUrl}
+                target='_blank'
+                rel='noopener noreferrer'>
+                <FaWhatsapp aria-hidden />
+                {content.contact.actions.whatsapp}
+              </a>
+            </Button>
+            <Button
+              asChild
+              size='lg'
+              variant='outline'
+              className={cn(CTA, OUTLINE)}>
+              <a href={phoneHref}>
+                <Phone aria-hidden />
+                {content.contact.actions.call}
+              </a>
+            </Button>
+            <Button
+              asChild
+              size='lg'
+              variant='outline'
+              className={cn(CTA, OUTLINE)}>
+              <a href={directionsUrl} target='_blank' rel='noopener noreferrer'>
+                <Navigation aria-hidden />
+                {content.contact.actions.directions}
+              </a>
+            </Button>
+          </div>
+
+          <div className='flex gap-3'>
+            <Button asChild size='icon' variant='outline' className={OUTLINE}>
               <a
                 href={content.contact.social.facebook.url}
                 target='_blank'
-                rel='noopener noreferrer'>
-                <FaFacebookF className='h-4 w-4 text-secondary-dark' />
-                <span className='sr-only'>
-                  {content.contact.social.facebook.label}
-                </span>
+                rel='noopener noreferrer'
+                aria-label={content.contact.social.facebook.label}>
+                <FaFacebookF className='h-4 w-4' aria-hidden />
               </a>
             </Button>
-            <Button asChild size='icon' variant='outline'>
+            <Button asChild size='icon' variant='outline' className={OUTLINE}>
               <a
                 href={content.contact.social.instagram.url}
                 target='_blank'
-                rel='noopener noreferrer'>
-                <FaInstagram className='h-4 w-4 text-secondary-dark' />
-                <span className='sr-only'>
-                  {content.contact.social.instagram.label}
-                </span>
+                rel='noopener noreferrer'
+                aria-label={content.contact.social.instagram.label}>
+                <FaInstagram className='h-4 w-4' aria-hidden />
               </a>
             </Button>
           </div>
         </div>
-        <div className='rounded-lg border bg-white p-6 text-foreground shadow-xs'>
-          <h3 className='text-h3 font-bold text-balance'>
-            {content.contact.form.title}
-          </h3>
-          <ContactForm />
-        </div>
+
+        <iframe
+          title={content.contact.mapTitle}
+          src={embedUrl}
+          loading='lazy'
+          referrerPolicy='no-referrer-when-downgrade'
+          className='min-h-80 w-full rounded-2xl border-0 bg-white/10 lg:min-h-full'
+          allowFullScreen
+        />
       </div>
     </Section>
   )

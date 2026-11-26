@@ -146,6 +146,10 @@ describe('contato oficial (CT-03, CT-04)', () => {
       expect(label, `contact.social.${network}.label`).toBeTruthy()
       expect(url, `contact.social.${network}.url`).toMatch(/^https:\/\//)
     })
+    expect(social.facebook.url).toBe('https://www.facebook.com/galmarlimpeza')
+    expect(social.instagram.url).toBe(
+      'https://www.instagram.com/galmarlimpeza/'
+    )
   })
 })
 

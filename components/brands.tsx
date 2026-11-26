@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import MarqueeToggle from '@/components/marquee-toggle'
 import Section from '@/components/section'
 import content from '@/data/content.json'
 
@@ -11,7 +12,9 @@ const Logo = ({
   brand: (typeof items)[number]
   decorative?: boolean
 }) => (
-  <li className='flex shrink-0 items-center justify-center px-6 md:px-10'>
+  <li
+    aria-hidden={decorative || undefined}
+    className='flex shrink-0 items-center justify-center px-6 md:px-10'>
     <Image
       src={brand.image}
       alt={decorative ? '' : brand.title}
@@ -52,6 +55,7 @@ export default function Brands() {
             <Logo key={`${brand.title}-b`} brand={brand} decorative />
           ))}
         </ul>
+        <MarqueeToggle />
       </div>
     </Section>
   )

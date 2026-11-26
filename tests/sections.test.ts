@@ -202,3 +202,31 @@ describe('Section sem o tom blue (VI-01)', () => {
     expect(src).not.toContain('bg-secondary-dark')
   })
 })
+
+describe('carrossel de marcas acessível (LR-06)', () => {
+  const css = () => readSource('app/globals.css').replace(/\s+/g, ' ')
+
+  it('pausa com hover, foco ou botão (WCAG 2.2.2)', () => {
+    expect(css()).toMatch(
+      /\.brands-marquee:hover \.animate-marquee,\s*\.brands-marquee:focus-within \.animate-marquee,\s*\.brands-marquee\[data-paused='true'\] \.animate-marquee \{ animation-play-state: paused; \}/
+    )
+  })
+
+  it('botão Pausar/Retomar com rótulos do content.json e aria-pressed', () => {
+    const toggle = readSource('components/marquee-toggle.tsx')
+    expect(toggle).toContain("'use client'")
+    expect(toggle).toContain('aria-pressed')
+    expect(toggle).toContain('content.brands.pause')
+    expect(toggle).toContain('content.brands.resume')
+    expect(toggle).toMatch(/\bmin-h-11\b/)
+    expect(brands()).toContain('<MarqueeToggle')
+    expect(content.brands.pause).toBe('Pausar animação')
+    expect(content.brands.resume).toBe('Retomar animação')
+  })
+
+  it('cópia do loop fora da árvore de acessibilidade', () => {
+    expect(brands()).toMatch(
+      /<li[^>]*aria-hidden=\{decorative \|\| undefined\}/
+    )
+  })
+})

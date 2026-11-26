@@ -115,6 +115,13 @@
   max-width: 100%;
 }
 
+/* WCAG 2.2.2: pausa com hover, foco ou botão (LR-06) */
+.brands-marquee:hover .animate-marquee,
+.brands-marquee:focus-within .animate-marquee,
+.brands-marquee[data-paused='true'] .animate-marquee {
+  animation-play-state: paused;
+}
+
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
   .brands-grid {
     display: none;

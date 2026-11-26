@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
+import content from '../data/content.json'
 import { ROOT, readSource, sourceFiles } from './source-files'
 
 const KB = 1024
@@ -102,4 +103,15 @@ describe('uso no código (BA-02, BA-03)', () => {
     expect(openGraph).toContain(`height: ${height}`)
     expect(openGraph).not.toContain('foto-galmar')
   })
+})
+
+describe('logos das marcas revendidas (LR-05)', () => {
+  it.each(content.brands.items.map((item) => item.image))(
+    '%s tem ≤ 30 KB e no máximo 2× a altura exibida (160 px)',
+    (image) => {
+      const info = pngInfo(`public${image}`)
+      expect(info.size).toBeLessThanOrEqual(30 * KB)
+      expect(info.height).toBeLessThanOrEqual(160)
+    }
+  )
 })

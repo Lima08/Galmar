@@ -46,18 +46,11 @@ describe('rodapé (FT-01)', () => {
     expect(src).not.toContain('FaInstagram')
   })
 
-  it('faixa de assinatura de 12 px, sem texto e sem logo', () => {
+  it('não desenha a faixa azul e vermelha no fim', () => {
     const src = footer()
-    expect(src).not.toMatch(/(?<![\w-])h-1(?![\w-])/)
-    const bar =
-      src.match(
-        /<div className='grid h-3 w-full grid-cols-2' aria-hidden>([\s\S]*?)<\/div>/
-      )?.[0] ?? ''
-    expect(bar).toMatch(/(?<![\w:-])bg-secondary(?![\w-])/)
-    expect(bar).toMatch(/(?<![\w:-])bg-primary(?![\w-])/)
-    expect(bar).not.toContain('logo')
-    expect(bar).not.toContain('<Image')
-    expect(bar).not.toMatch(/>[^<\s{][^<]*</)
+    expect(src).not.toContain('grid-cols-2')
+    expect(src).not.toMatch(/(?<![\w:-])bg-secondary(?![\w-])/)
+    expect(src).not.toMatch(/(?<![\w:-])bg-primary(?![\w-])/)
   })
 
   it('copyright com rights do JSON e sem CNPJ', () => {

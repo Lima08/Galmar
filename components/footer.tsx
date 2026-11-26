@@ -33,11 +33,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      <div className='grid h-3 w-full grid-cols-2' aria-hidden>
-        <div className='bg-secondary' />
-        <div className='bg-primary' />
-      </div>
     </footer>
   )
 }

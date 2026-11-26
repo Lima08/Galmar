@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1–F10 ✅ (v1 publicável pronta; falta domínio/upload do cliente — B-003)
+**Current Work:** Identidade visual — Phase 3 (T5, T6) ✅; Phases 4–8 pendentes. M1 F1–F10 ✅ (falta domínio/upload — B-003)
 
 ---
 

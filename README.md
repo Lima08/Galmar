@@ -59,7 +59,7 @@ app/            layout (SEO, JSON-LD), página, privacidade/, robots, sitemap, �
 components/     uma seção por arquivo + ui/ (shadcn)
 data/           content.json
 lib/            utilitários (cn, WhatsApp, URL do site) e testes
-public/         imagens + _headers (hosts estáticos)
+public/         imagens + .htaccess (Apache) + _headers (Cloudflare/Netlify)
 out/            build estático (gerado; não versionar)
 ```
 
@@ -69,19 +69,35 @@ Detalhes em `.specs/codebase/STRUCTURE.md`.
 
 Decisão AD-007 (`.specs/project/STATE.md`):
 
-- **Preview/dev:** Vercel — `noindex` automático em preview
+- **Preview/dev:** Vercel — `noindex` automático em qualquer deploy da Vercel
 - **Produção:** `npm run build` → publicar o conteúdo de `out/` no servidor do cliente
 
 ### Produção (servidor do cliente)
 
-1. Definir `NEXT_PUBLIC_SITE_URL` (e opcionalmente `NEXT_PUBLIC_GA_ID`) no ambiente de build
+1. Definir `NEXT_PUBLIC_SITE_URL` (obrigatória — sem ela o build falha) e opcionalmente `NEXT_PUBLIC_GA_ID`
 2. `npm ci && npm run build`
 3. Enviar o conteúdo de `out/` ao document root
-4. Configurar headers de segurança (ver `public/_headers` ou nginx/Apache):
-   - `X-Content-Type-Options: nosniff`
-   - `X-Frame-Options: DENY`
-   - `Referrer-Policy: strict-origin-when-cross-origin`
-   - HSTS (só com HTTPS)
+4. Headers de segurança, 404 e sem listagem de diretório:
+   - **Apache:** já vem em `out/.htaccess` (gerado de `public/.htaccess`; requer `mod_headers` e `AllowOverride All`)
+   - **Cloudflare Pages / Netlify:** `out/_headers`
+   - **nginx:** no `server {}`:
+
+     ```nginx
+     root /var/www/galmar;
+     index index.html;
+     error_page 404 /404.html;
+     gzip on;
+     gzip_types text/css application/javascript application/json image/svg+xml text/xml;
+     location / { try_files $uri $uri/ =404; }
+     location /_next/static/ { add_header Cache-Control "public, max-age=31536000, immutable"; }
+     add_header X-Content-Type-Options "nosniff" always;
+     add_header X-Frame-Options "DENY" always;
+     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+     add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+     add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; frame-src https://www.google.com; style-src 'self' 'unsafe-inline'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" always;
+     ```
+
 5. Conferir `/robots.txt`, `/sitemap.xml`, preview OG e [Rich Results Test](https://search.google.com/test/rich-results)
 
 ### QA (manual)

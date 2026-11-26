@@ -20,10 +20,15 @@ jobs:
       - run: npm run format:check
       - run: npm test
       - run: npm run build
+        env:
+          # Placeholder só para o CI; o build de produção usa o domínio real (LR-02)
+          NEXT_PUBLIC_SITE_URL: https://example.com
       - name: Verify static export
         run: |
           test -f out/index.html
           test -f out/robots.txt
           test -f out/sitemap.xml
-          test -f out/privacidade/index.html -o -f out/privacidade.html
+          test -f out/privacidade/index.html
+          test ! -f out/privacidade.html
           test -f out/_headers
+          test -f out/.htaccess

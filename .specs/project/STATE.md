@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1–F8 ✅; próximo: F9 `conversion-seo`
+**Current Work:** M1 — F1–F9 ✅; próximo: F10 `launch`
 
 ---
 

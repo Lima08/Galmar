@@ -23,10 +23,19 @@ Sem backend, API, webhook ou job. Integrações são links de saída.
 
 `next/font/google` (Poppins), self-hosted no build.
 
+## Google Analytics 4
+
+**Service:** gtag.js (client-side)
+**Implementation:** `lib/analytics.ts` + `components/analytics.tsx` + `components/cookie-banner.tsx`
+**Configuration:** `NEXT_PUBLIC_GA_ID` (vazio = sem script/banner). Eventos: `click_whatsapp`, `click_phone`, `click_directions` com `location` (+ `audience` no hero).
+**Consent:** só carrega após Aceitar (LGPD); escolha em `localStorage`.
+
 ## Env vars
 
 | Var                    | Uso                                                     | Default                 |
 | ---------------------- | ------------------------------------------------------- | ----------------------- |
 | `NEXT_PUBLIC_SITE_URL` | `metadataBase`, canonical, OG, sitemap, robots, JSON-LD | `http://localhost:3000` |
+| `NEXT_PUBLIC_GA_ID`    | GA4; vazio = no-op                                      | _(vazio)_               |
+| `NEXT_PUBLIC_NOINDEX`  | `true` no preview bloqueia indexação                    | _(omitido)_             |
 
 Exemplo em `.env.example`.

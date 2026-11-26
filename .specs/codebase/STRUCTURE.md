@@ -19,7 +19,7 @@
 ├── data/content.json       # toda a copy
 ├── lib/                    # utils (cn), whatsapp, hours, address, maps, site (+ *.test.ts)
 ├── tests/                  # guardas de design: paleta, tema, layout (+ source-files.ts)
-├── public/                 # brand/ (logos provisórios + og.png), foto-galmar.jpg, assets/brands/*
+├── public/                 # brand/ (logos provisórios + og.png), assets/hero/ (WebP 640/960/1280 + CREDITS.md), assets/brands/*
 ├── .specs/codebase/        # este mapeamento
 ├── .github/workflows/ci.yml
 ├── AGENTS.md  CLAUDE.md    # índice para LLMs

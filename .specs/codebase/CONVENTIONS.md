@@ -45,7 +45,7 @@ Listeners de scroll com `{ passive: true }` e cleanup no retorno do `useEffect`.
 
 ## Imagens
 
-`next/image` sempre; `priority` para imagens acima da dobra (logo, hero).
+`next/image` por padrão (logos, ícones). Exceção: fotos com WebP pré-gerado em várias larguras (export estático sem otimização em runtime, AD-007) usam `<img srcSet sizes width height>` com `eslint-disable-next-line @next/next/no-img-element` e comentário do motivo — ex.: hero. No Next 16 `priority` está deprecado: LCP com `fetchPriority='high'`, demais acima da dobra com `loading='eager'`. Créditos de fotos de banco em `CREDITS.md` ao lado dos arquivos.
 
 ## Comments
 

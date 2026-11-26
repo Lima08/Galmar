@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1–F4 ✅; próximo: F5 `hero-redesign`
+**Current Work:** M1 — F1–F5 ✅; próximo: F6 `location-section`
 
 ---
 
@@ -77,7 +77,7 @@
 **Decision:** Foto horizontal de Unsplash/Pexels (produtos de limpeza/higiene), com camada azul #2983c2 por cima. Registrar autor + URL + licença em `public/assets/hero/CREDITS.md`.
 **Reason:** Rapidez; a única foto real (`foto-galmar.jpg`) mostra a placa com WhatsApp antigo.
 **Trade-off:** Menos autêntica que foto real. Trocar por fotos reais quando houver (Deferred).
-**Impact:** F5 escolhe 2–3 candidatas para aprovação; versões WebP 640/1280/1920 px (AD-007). `foto-galmar.jpg` sai do OG image e do JSON-LD (F9).
+**Impact:** Aplicado na F5: Pexels 28576636 (Jonathan Borba), WebP 640/960/1280 (14/28/44 KB), créditos em `public/assets/hero/CREDITS.md`; sem camada azul sobre a foto (layout em duas colunas, foto ao lado do texto — cor da marca no fundo tint + grafismo). `foto-galmar.jpg` removida.
 
 ### AD-011: Logo provisório a partir do PNG até o SVG chegar (2026-11-25)
 

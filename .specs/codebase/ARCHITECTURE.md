@@ -27,7 +27,7 @@ graph TD
 
 ### Seção = componente
 
-`components/<kebab>.tsx`, default export, envolvida em `<Section id='...' tone='white|tint|blue'>` (`components/section.tsx`): fundo full-bleed, `py-16 md:py-24`, conteúdo em `.container` (1200 px) com `data-reveal`. `id` = âncora da navegação. Hero é a exceção (acima da dobra, não anima): `<section>` própria com fundo tint, grafismo do símbolo e foto LCP via `<img srcSet>`; selo usa `formatRating(reviews.rating)` (`lib/rating.ts`), a mesma fonte da seção de avaliações.
+`components/<kebab>.tsx`, default export, envolvida em `<Section id='...' tone='white|tint|blue'>` (`components/section.tsx`): fundo full-bleed, `py-16 md:py-24`, conteúdo em `.container` (1200 px) com `data-reveal`. `id` = âncora da navegação. Marcas usa carrossel CSS (`.brands-marquee`, AD-012) com grid em reduced-motion. Hero é a exceção (acima da dobra, não anima): `<section>` própria com fundo tint, grafismo do símbolo e foto LCP via `<img srcSet>`; selo usa `formatRating(reviews.rating)` (`lib/rating.ts`), a mesma fonte da seção de avaliações.
 
 ### Conteúdo desacoplado em JSON
 

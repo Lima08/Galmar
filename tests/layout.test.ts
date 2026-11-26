@@ -48,6 +48,7 @@ describe('altura do header em um único lugar', () => {
     expect(readSource('components/header.tsx')).toMatch(/\bsticky\b/)
     expect(readSource('components/header.tsx')).not.toMatch(/\bfixed\b/)
     expect(readSource('app/page.tsx')).not.toMatch(/\bmt-/)
+    expect(readSource('app/page.tsx')).toMatch(/<main className='min-w-0 flex-1'>/)
   })
 
   it('define --header-h em 4.5rem no :root e 7rem a partir de 768px', () => {

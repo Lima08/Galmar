@@ -41,7 +41,7 @@ export default function Brands() {
       </ul>
 
       <div
-        className='brands-marquee overflow-hidden'
+        className='brands-marquee max-w-full min-w-0 overflow-hidden'
         role='region'
         aria-label={title}>
         <ul className='animate-marquee flex w-max items-center'>

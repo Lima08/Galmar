@@ -30,7 +30,7 @@
   --color-secondary-dark: #1f6aa0;
   --color-secondary-bg: #eaf3fa;
 
-  /* Verde só do botão flutuante */
+  /* Verde dos botões de WhatsApp */
   --color-whatsapp: #25d366;
   --color-whatsapp-dark: #1ebe5d;
 
@@ -112,6 +112,7 @@
 /* Marcas: grid no celular / reduced-motion; carrossel no md+ com motion */
 .brands-marquee {
   display: none;
+  max-width: 100%;
 }
 
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {

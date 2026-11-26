@@ -21,6 +21,7 @@ describe('marcas — carrossel (SP-01)', () => {
   it('carrossel CSS com reduced-motion → grid', () => {
     expect(brands()).toContain('brands-grid')
     expect(brands()).toContain('brands-marquee')
+    expect(brands()).toContain('max-w-full min-w-0 overflow-hidden')
     expect(brands()).toContain('animate-marquee')
     expect(css()).toMatch(/@keyframes marquee/)
     expect(css()).toMatch(

@@ -86,22 +86,32 @@ describe('exceções de terceiros (AD-016)', () => {
     const css = readSource('app/globals.css')
     expect(css).not.toMatch(/--color-rating\b/)
     expect(css).not.toContain('#eab308')
-    expect(css).toMatch(/\/\*[^*]*verde[^*]*botão flutuante[^*]*\*\//i)
+    expect(css).toMatch(/\/\*[^*]*Verde dos botões de WhatsApp[^*]*\*\//)
   })
 
-  it('classes de cor whatsapp só existem em components/whatsapp-button.tsx', () => {
-    const allowed = 'components/whatsapp-button.tsx'
+  it('classes de cor whatsapp só nos botões de WhatsApp', () => {
+    const allowed = [
+      'components/whatsapp-button.tsx',
+      'components/header.tsx',
+      'components/contact.tsx'
+    ]
     const hits = sourceFiles.flatMap((file) =>
       (readSource(file).match(WHATSAPP_COLOR_CLASS) ?? []).map(
         (match) => `${file}:${match}`
       )
     )
 
-    expect(hits.filter((hit) => !hit.startsWith(`${allowed}:`))).toEqual([])
-    expect(hits).toContain(`${allowed}:bg-whatsapp`)
-    expect(hits).toContain(`${allowed}:hover:bg-whatsapp-dark`)
+    expect(
+      hits.filter((hit) => !allowed.some((file) => hit.startsWith(`${file}:`)))
+    ).toEqual([])
+    expect(hits).toContain('components/whatsapp-button.tsx:bg-whatsapp')
+    expect(hits).toContain('components/header.tsx:bg-whatsapp')
+    expect(hits).toContain('components/contact.tsx:bg-whatsapp')
+    expect(hits).toContain(
+      'components/whatsapp-button.tsx:hover:bg-whatsapp-dark'
+    )
 
-    const button = readSource(allowed)
+    const button = readSource('components/whatsapp-button.tsx')
     expect(button).toContain('text-white')
     expect(button).toContain("data-track-location='flutuante'")
   })

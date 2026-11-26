@@ -22,7 +22,7 @@ const WhatsAppCta = ({ className }: { className?: string }) => (
   <Button
     asChild
     className={cn(
-      'bg-primary text-white hover:bg-primary-dark focus-visible:bg-primary-dark',
+      'bg-whatsapp text-white hover:bg-whatsapp-dark focus-visible:bg-whatsapp-dark',
       className
     )}>
     <a

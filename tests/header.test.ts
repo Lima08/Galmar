@@ -38,12 +38,14 @@ describe('faixa de contato (HC-01, HC-02)', () => {
 })
 
 describe('header (HC-03, HC-05)', () => {
-  it('CTA vermelho de WhatsApp com hover e foco em primary-dark', () => {
+  it('CTA verde de WhatsApp com hover e foco em whatsapp-dark', () => {
     expect(header()).toContain('content.header.cta')
+    expect(header()).toContain('bg-whatsapp')
     expect(header()).toMatch(
-      /hover:bg-primary-dark[^']*focus-visible:bg-primary-dark|focus-visible:bg-primary-dark[^']*hover:bg-primary-dark/
+      /hover:bg-whatsapp-dark[^']*focus-visible:bg-whatsapp-dark|focus-visible:bg-whatsapp-dark[^']*hover:bg-whatsapp-dark/
     )
     expect(header()).toMatch(/href=\{defaultWhatsAppUrl\}/)
+    expect(header()).not.toContain('bg-primary')
   })
 
   it('menu mobile em Sheet: título, itens que fecham o painel e CTA dentro', () => {
@@ -75,7 +77,7 @@ describe('header (HC-03, HC-05)', () => {
     expect(logo).toContain('height={180}')
     expect(logo).toContain('alt={brand}')
     expect(header()).toMatch(/justify-between gap-5/)
-    expect(header()).not.toContain('bg-whatsapp')
+    expect(header()).toContain('bg-whatsapp')
   })
 
   it('menu, botão e link do sheet em text-foreground, sem gray-700 (VI-01)', () => {

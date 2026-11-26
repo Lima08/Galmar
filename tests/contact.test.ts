@@ -19,13 +19,14 @@ describe('seção Onde estamos (LS-01)', () => {
     expect(contact()).toContain('{email}')
   })
 
-  it('CTAs WhatsApp vermelho, Ligar e Como chegar com alvo ≥ 44 px', () => {
+  it('CTA WhatsApp verde, Ligar e Como chegar com alvo ≥ 44 px', () => {
     const src = contact()
     expect(src).toMatch(/const CTA =\s*'[^']*\bmin-h-11\b/)
     expect(src).toContain('defaultWhatsAppUrl')
     expect(src).toContain('phoneHref')
     expect(src).toContain('buildMapsSearchUrl')
-    expect(src).toMatch(/(?<![\w:-])bg-primary(?![\w-])/)
+    expect(src).toContain('bg-whatsapp')
+    expect(src).not.toContain('bg-primary')
     expect(src).toContain('content.contact.actions.whatsapp')
     expect(src).toContain('content.contact.actions.call')
     expect(src).toContain('content.contact.actions.directions')
@@ -109,15 +110,15 @@ describe('Onde estamos no tint (VI-01, VI-02)', () => {
     expect(infoPhone).toContain('text-secondary-dark')
   })
 
-  it('WhatsApp vermelho no tint, antes do painel de Ligar e Como chegar', () => {
+  it('WhatsApp verde no tint, antes do painel de Ligar e Como chegar', () => {
     const src = contact()
     const whatsappAt = src.indexOf('content.contact.actions.whatsapp')
     const darkAt = src.indexOf('bg-secondary-dark')
     expect(whatsappAt).toBeGreaterThan(-1)
     expect(darkAt).toBeGreaterThan(whatsappAt)
 
-    expect(src).toContain('hover:bg-primary-dark')
-    expect(src).not.toMatch(/bg-whatsapp|text-whatsapp/)
+    expect(src).toContain('hover:bg-whatsapp-dark')
+    expect(src).toContain('bg-whatsapp')
 
     const panelAt = src.indexOf('rounded-2xl bg-secondary-dark p-3')
     const socialAt = src.indexOf('content.contact.social.facebook')

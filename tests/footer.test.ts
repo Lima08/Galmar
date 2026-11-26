@@ -51,7 +51,7 @@ describe('rodapé (FT-01)', () => {
     expect(src).not.toMatch(/(?<![\w-])h-1(?![\w-])/)
     const bar =
       src.match(
-        /<div className='flex h-3' aria-hidden>([\s\S]*?)<\/div>/
+        /<div className='grid h-3 w-full grid-cols-2' aria-hidden>([\s\S]*?)<\/div>/
       )?.[0] ?? ''
     expect(bar).toMatch(/(?<![\w:-])bg-secondary(?![\w-])/)
     expect(bar).toMatch(/(?<![\w:-])bg-primary(?![\w-])/)

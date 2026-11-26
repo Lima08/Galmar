@@ -5,7 +5,7 @@ const year = new Date().getFullYear()
 
 export default function Footer() {
   return (
-    <footer className='w-full bg-secondary-dark text-white'>
+    <footer className='w-full min-w-0 bg-secondary-dark text-white'>
       <div className='container flex flex-col gap-6 py-10 md:py-12'>
         <a href='#home' className='w-fit'>
           <Image
@@ -29,9 +29,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className='flex h-3' aria-hidden>
-        <div className='w-1/2 bg-secondary' />
-        <div className='w-1/2 bg-primary' />
+      <div className='grid h-3 w-full grid-cols-2' aria-hidden>
+        <div className='bg-secondary' />
+        <div className='bg-primary' />
       </div>
     </footer>
   )

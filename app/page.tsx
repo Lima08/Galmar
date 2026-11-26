@@ -11,10 +11,10 @@ import RevealObserver from '@/components/reveal-observer'
 
 export default function LandingPage() {
   return (
-    <div id='home' className='flex flex-col min-h-screen'>
+    <div id='home' className='flex min-h-screen min-w-0 flex-col'>
       <ContactBar />
       <Header />
-      <main className='flex-1'>
+      <main className='min-w-0 flex-1'>
         <Hero />
         <Brands />
         <AboutUs />

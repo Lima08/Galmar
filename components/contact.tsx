@@ -98,7 +98,7 @@ export default function Contact() {
               size='lg'
               className={cn(
                 CTA,
-                'bg-primary text-white hover:bg-primary-dark focus-visible:bg-primary-dark'
+                'bg-whatsapp text-white hover:bg-whatsapp-dark focus-visible:bg-whatsapp-dark'
               )}>
               <a
                 href={defaultWhatsAppUrl}

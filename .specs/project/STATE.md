@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** Identidade visual — Done (T1–T17). M1 F1–F10 ✅ (falta domínio/upload — B-003)
+**Current Work:** M1 — F1–F5 revisadas ✅; F6–F10 implementadas com 9 bloqueantes de publicação (ver `.specs/quick/review-m1-geral.md`); M1 = pronto para correções + QA, não para publicar
 
 ---
 

@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import Section from '@/components/section'
 import content from '@/data/content.json'
 import { formatAddress } from '@/lib/address'
+import { formatRating } from '@/lib/rating'
 import { buildMapsSearchUrl } from '@/lib/maps'
 
 interface Review {
@@ -16,9 +17,7 @@ const googleUrl = buildMapsSearchUrl(
   formatAddress(content.contact.info.address, { withPostalCode: false })
 )
 const { badge, title, rating, summary, link } = content.reviews
-const ratingLabel = new Intl.NumberFormat('pt-BR', {
-  minimumFractionDigits: 1
-}).format(rating)
+const ratingLabel = formatRating(rating)
 const items: Review[] = content.reviews.items
 
 const Stars = ({ count }: { count: number }) => (

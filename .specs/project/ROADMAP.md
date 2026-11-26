@@ -22,7 +22,7 @@ Ordem = dependência. Features com mesmo nível podem rodar em paralelo.
 | F7  | `sections-polish`    | Marcas, Sobre e Avaliações do Google (AD-006) no novo padrão visual                                                                                                                                                       | F1, F2     | Medium  | ✅ Done |
 | F8  | `footer`             | Rodapé azul: logo branco, endereço, contatos, horário, redes, CNPJ, ©, faixa azul+vermelha 4 px                                                                                                                           | F1, F2, F3 | Small   | ✅ Done |
 | F9  | `conversion-seo`     | Mensagens WhatsApp por origem, `openingHours` no JSON-LD, metadata final, GA4 + Consent Mode + banner LGPD + política de privacidade (AD-008)                                                                             | F4–F8      | Medium  | ✅ Done |
-| F10 | `launch`             | `output: 'export'` + imagens pré-otimizadas, domínio + `NEXT_PUBLIC_SITE_URL`, preview Vercel `noindex`, upload do `out/` no servidor do cliente (AD-007), checklist QA (360→2560 px), Lighthouse ≥ 90, Rich Results Test | F1–F9      | Small   | ⬜ Todo |
+| F10 | `launch`             | `output: 'export'` + imagens pré-otimizadas, domínio + `NEXT_PUBLIC_SITE_URL`, preview Vercel `noindex`, upload do `out/` no servidor do cliente (AD-007), checklist QA (360→2560 px), Lighthouse ≥ 90, Rich Results Test | F1–F9      | Small   | ✅ Done |
 
 ### Critério de saída do M1
 

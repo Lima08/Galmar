@@ -4,7 +4,7 @@
 
 ## Core
 
-- Framework: Next.js `^16.4.6` (App Router, rota única estática)
+- Framework: Next.js (`output: 'export'` em produção) `^16.4.6` (App Router, rota única estática)
 - Language: TypeScript `~6.0.3` (`strict: true`; TS 7 bloqueado por `typescript-eslint` `<6.1`)
 - Runtime: Node 24 (`.nvmrc`; `engines.node >=22.12`, exigido pelo Vitest 5)
 - Package manager: npm (`package-lock.json`)

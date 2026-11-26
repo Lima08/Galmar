@@ -32,10 +32,10 @@ Sem backend, API, webhook ou job. Integrações são links de saída.
 
 ## Env vars
 
-| Var                    | Uso                                                     | Default                 |
-| ---------------------- | ------------------------------------------------------- | ----------------------- |
-| `NEXT_PUBLIC_SITE_URL` | `metadataBase`, canonical, OG, sitemap, robots, JSON-LD | `http://localhost:3000` |
-| `NEXT_PUBLIC_GA_ID`    | GA4; vazio = no-op                                      | _(vazio)_               |
-| `NEXT_PUBLIC_NOINDEX`  | `true` no preview bloqueia indexação                    | _(omitido)_             |
+| Var                    | Uso                                                          | Default                 |
+| ---------------------- | ------------------------------------------------------------ | ----------------------- |
+| `NEXT_PUBLIC_SITE_URL` | `metadataBase`, canonical, OG, sitemap, robots, JSON-LD      | `http://localhost:3000` |
+| `NEXT_PUBLIC_GA_ID`    | GA4; vazio = no-op                                           | _(vazio)_               |
+| `NEXT_PUBLIC_NOINDEX`  | `true` força noindex; preview Vercel também via `VERCEL_ENV` | _(omitido)_             |
 
 Exemplo em `.env.example`.

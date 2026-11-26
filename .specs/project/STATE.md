@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1–F9 ✅; próximo: F10 `launch`
+**Current Work:** M1 — F1–F10 ✅ (v1 publicável pronta; falta domínio/upload do cliente — B-003)
 
 ---
 

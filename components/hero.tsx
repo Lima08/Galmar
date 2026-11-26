@@ -20,7 +20,7 @@ export default function Hero() {
         aria-hidden
         width={512}
         height={512}
-        className='pointer-events-none absolute -right-24 -bottom-32 w-md opacity-10 lg:-right-16 lg:w-xl'
+        className='pointer-events-none absolute -right-24 -bottom-32 w-md opacity-15 lg:-right-16 lg:w-xl'
       />
       <div className='container relative grid items-center gap-10 lg:grid-cols-2 lg:gap-12'>
         <div className='flex flex-col gap-6'>
@@ -68,7 +68,7 @@ export default function Hero() {
             </Button>
           </div>
           <p className='flex items-center gap-2 text-sm font-medium text-muted-foreground'>
-            <Star className='h-4 w-4 fill-current text-rating' aria-hidden />
+            <Star className='h-4 w-4 fill-current text-secondary' aria-hidden />
             <span>
               {formatRating(content.reviews.rating)} {content.hero.trustRating}
             </span>

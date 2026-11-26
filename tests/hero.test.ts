@@ -78,12 +78,39 @@ describe('foto otimizada e creditada (HR-03)', () => {
 })
 
 describe('grafismo da marca (HR-04)', () => {
-  it('símbolo decorativo, ignorado por leitores de tela', () => {
+  it('símbolo decorativo visível, ignorado por leitores de tela', () => {
     const symbol =
       hero().match(/<Image\s+src='\/brand\/symbol\.png'[\s\S]*?\/>/)?.[0] ?? ''
     expect(symbol).toMatch(/alt=''\s+aria-hidden/)
-    expect(symbol).toMatch(/\bopacity-10\b/)
+    expect(symbol).toMatch(/\bopacity-15\b/)
+    expect(symbol).not.toMatch(/\bopacity-10\b/)
     expect(symbol).toMatch(/\bpointer-events-none\b/)
-    expect(hero()).toMatch(/overflow-hidden/)
+    expect(symbol).toContain(
+      'absolute -right-24 -bottom-32 w-md opacity-15 lg:-right-16 lg:w-xl'
+    )
+    expect(hero()).toMatch(
+      /<section className='[^']*\boverflow-hidden\b[^']*\bbg-secondary-bg\b/
+    )
+    expect(hero()).not.toMatch(/mask-image|brand-pattern|mix-blend/)
+  })
+
+  it('estrela do selo no azul oficial, sem token rating', () => {
+    const star = hero().match(/<Star[\s\S]*?\/>/)?.[0] ?? ''
+    expect(star).toMatch(/(?<![\w-])text-secondary(?![\w-])/)
+    expect(hero()).not.toContain('text-rating')
+  })
+
+  it('foto atual sem camada de cor e CTAs primários no hero', () => {
+    const photo = hero().match(/<img[\s\S]*?\/>/)?.[0] ?? ''
+    expect(photo).toContain('hero-640.webp')
+    expect(photo).toContain('hero-960.webp')
+    expect(photo).toContain('hero-1280.webp')
+    expect(photo).toContain(
+      "className='aspect-3/2 w-full rounded-2xl object-cover shadow-lg'"
+    )
+    expect(photo).not.toMatch(/\bbg-/)
+    expect(hero()).toContain("data-track-location='hero'")
+    expect(hero()).toMatch(/(?<![\w:-])bg-primary(?![\w-])/)
+    expect(hero()).toMatch(/(?<![\w:-])border-primary(?![\w-])/)
   })
 })

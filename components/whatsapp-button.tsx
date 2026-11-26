@@ -39,7 +39,8 @@ export default function WhatsAppButton() {
         target='_blank'
         rel='noopener noreferrer'
         aria-label={content.contact.whatsappLabel}
-        className='flex items-center justify-center w-16 h-16 rounded-full bg-whatsapp text-white shadow-lg hover:bg-whatsapp-dark transition-all duration-300 hover:scale-110 hover:shadow-xl'>
+        data-track-location='flutuante'
+        className='flex h-16 w-16 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-whatsapp-dark hover:shadow-xl'>
         <FaWhatsapp className='h-8 w-8' />
       </Link>
     </div>

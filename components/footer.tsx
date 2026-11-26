@@ -51,12 +51,13 @@ export default function Footer() {
               href={defaultWhatsAppUrl}
               target='_blank'
               rel='noopener noreferrer'
+              data-track-location='rodape'
               className={LINK}>
               <FaWhatsapp className='h-4 w-4' aria-hidden />
               {content.contactBar.whatsapp}
               <span className='hidden sm:inline'>{info.phone}</span>
             </a>
-            <a href={phoneHref} className={LINK}>
+            <a href={phoneHref} data-track-location='rodape' className={LINK}>
               <Phone className='h-4 w-4' aria-hidden />
               {content.contactBar.call}
             </a>
@@ -85,9 +86,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className='border-t border-white/15 pt-6 text-sm text-white/80'>
-          © {year} {content.footer.rights}
-        </p>
+        <div className='flex flex-col gap-2 border-t border-white/15 pt-6 text-sm text-white/80 sm:flex-row sm:items-center sm:justify-between'>
+          <p>
+            © {year} {content.footer.rights}
+          </p>
+          <a
+            href='/privacidade'
+            className='font-medium text-white underline-offset-2 hover:text-white hover:underline'>
+            {content.footer.privacy}
+          </a>
+        </div>
       </div>
 
       <div className='flex h-1' aria-hidden>

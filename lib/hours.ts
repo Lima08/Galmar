@@ -1,4 +1,4 @@
-type Days = { days: string; daysShort?: string }
+type Days = { days: string; daysShort?: string; dayOfWeek?: string[] }
 type OpenRow = Days & { opens: string; closes: string }
 type ClosedRow = Days & { closed: boolean }
 type HoursRow = OpenRow | ClosedRow
@@ -7,6 +7,13 @@ interface HoursLabels {
   to: string
   closed: string
   separator: string
+}
+
+export interface OpeningHoursSpec {
+  '@type': 'OpeningHoursSpecification'
+  dayOfWeek: string[]
+  opens: string
+  closes: string
 }
 
 // '09:00' → '9h'; '08:30' → '8h30' (notação de hora pt-BR)
@@ -32,3 +39,20 @@ export const formatHours = (rows: HoursRow[], labels: HoursLabels) =>
 
 export const formatShortHours = (rows: HoursRow[], separator: string) =>
   rows.filter(isOpen).map(formatShortRow).join(separator)
+
+// Schema.org OpeningHoursSpecification (só dias abertos com dayOfWeek)
+export const toOpeningHoursSpecification = (
+  rows: HoursRow[]
+): OpeningHoursSpec[] =>
+  rows.filter(isOpen).flatMap((row) =>
+    row.dayOfWeek?.length
+      ? [
+          {
+            '@type': 'OpeningHoursSpecification' as const,
+            dayOfWeek: row.dayOfWeek,
+            opens: row.opens,
+            closes: row.closes
+          }
+        ]
+      : []
+  )

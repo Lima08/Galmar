@@ -25,7 +25,11 @@ const WhatsAppCta = ({ className }: { className?: string }) => (
       'bg-primary text-white hover:bg-primary-dark focus-visible:bg-primary-dark',
       className
     )}>
-    <a href={defaultWhatsAppUrl} target='_blank' rel='noopener noreferrer'>
+    <a
+      href={defaultWhatsAppUrl}
+      target='_blank'
+      rel='noopener noreferrer'
+      data-track-location='header'>
       <FaWhatsapp aria-hidden />
       {content.header.cta}
     </a>

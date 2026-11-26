@@ -118,10 +118,17 @@ describe('contato oficial (CT-03, CT-04)', () => {
       {
         days: 'Segunda a sexta',
         daysShort: 'Seg–Sex',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
         opens: '09:00',
         closes: '18:00'
       },
-      { days: 'Sábado', daysShort: 'Sáb', opens: '09:00', closes: '13:00' },
+      {
+        days: 'Sábado',
+        daysShort: 'Sáb',
+        dayOfWeek: ['Saturday'],
+        opens: '09:00',
+        closes: '13:00'
+      },
       { days: 'Domingo', closed: true }
     ])
     info.hoursByDay
@@ -129,6 +136,20 @@ describe('contato oficial (CT-03, CT-04)', () => {
       .forEach((time) =>
         expect(time, 'contact.info.hoursByDay[].opens/closes').toMatch(
           /^([01]\d|2[0-3]):[0-5]\d$/
+        )
+      )
+    info.hoursByDay
+      .filter(
+        (
+          row
+        ): row is Extract<
+          (typeof info.hoursByDay)[number],
+          { opens: string }
+        > => 'opens' in row
+      )
+      .forEach((row) =>
+        expect(row.dayOfWeek?.length, 'hoursByDay[].dayOfWeek').toBeGreaterThan(
+          0
         )
       )
   })

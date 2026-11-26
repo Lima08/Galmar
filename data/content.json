@@ -135,12 +135,14 @@
         {
           "days": "Segunda a sexta",
           "daysShort": "Seg–Sex",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           "opens": "09:00",
           "closes": "18:00"
         },
         {
           "days": "Sábado",
           "daysShort": "Sáb",
+          "dayOfWeek": ["Saturday"],
           "opens": "09:00",
           "closes": "13:00"
         },
@@ -174,6 +176,36 @@
   },
   "footer": {
     "logoAlt": "Galmar – Produtos de Limpeza e Descartáveis",
-    "rights": "Galmar – Produtos de Limpeza e Descartáveis. Todos os direitos reservados."
+    "rights": "Galmar – Produtos de Limpeza e Descartáveis. Todos os direitos reservados.",
+    "privacy": "Política de privacidade"
+  },
+  "cookies": {
+    "message": "Usamos cookies de medição (Google Analytics) para entender como o site é usado. Você pode aceitar ou recusar.",
+    "accept": "Aceitar",
+    "reject": "Recusar",
+    "policy": "Política de privacidade"
+  },
+  "privacy": {
+    "title": "Política de privacidade",
+    "updated": "Atualizada em 25 de novembro de 2026",
+    "back": "Voltar ao início",
+    "sections": [
+      {
+        "heading": "Quem somos",
+        "body": "A Galmar Comercial vende produtos de limpeza, higiene e descartáveis em Campinas-SP. Contato: (19) 3212-1177 e galmarcomercial@gmail.com."
+      },
+      {
+        "heading": "Dados que coletamos",
+        "body": "Se você aceitar cookies de medição, o Google Analytics registra páginas visitadas e cliques em WhatsApp, telefone e rotas — de forma agregada, com IP anonimizado. Se recusar, esses cookies não são carregados."
+      },
+      {
+        "heading": "WhatsApp e telefone",
+        "body": "Ao clicar em WhatsApp ou Ligar, você segue para o aplicativo ou discador do seu dispositivo. Não armazenamos o conteúdo dessas conversas neste site."
+      },
+      {
+        "heading": "Seus direitos",
+        "body": "Você pode alterar a escolha de cookies apagando os dados do site no navegador. Para dúvidas sobre privacidade, fale conosco pelo WhatsApp ou e-mail acima."
+      }
+    ]
   }
 }

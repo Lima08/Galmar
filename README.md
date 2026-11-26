@@ -25,6 +25,8 @@ npm run dev                  # http://localhost:3000
 | Variável               | Obrigatória      | Uso                                                                                                                                       |
 | ---------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL` | Sim, em produção | URL pública sem barra final. Alimenta canonical, Open Graph, JSON-LD, `sitemap.xml` e `robots.txt`. Sem ela, usa `http://localhost:3000`. |
+| `NEXT_PUBLIC_GA_ID`    | Não              | ID do GA4 (`G-…`). Vazio = sem medição nem banner de cookies.                                                                             |
+| `NEXT_PUBLIC_NOINDEX`  | Preview          | `true` no preview Vercel para bloquear indexação.                                                                                         |
 
 ## Scripts
 

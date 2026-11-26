@@ -43,7 +43,9 @@ export default function Hero() {
               <a
                 href={buildWhatsAppUrl(phone, business)}
                 target='_blank'
-                rel='noopener noreferrer'>
+                rel='noopener noreferrer'
+                data-track-location='hero'
+                data-track-audience='business'>
                 {content.hero.ctaBusiness}
               </a>
             </Button>
@@ -58,7 +60,9 @@ export default function Hero() {
               <a
                 href={buildWhatsAppUrl(phone, home)}
                 target='_blank'
-                rel='noopener noreferrer'>
+                rel='noopener noreferrer'
+                data-track-location='hero'
+                data-track-audience='home'>
                 {content.hero.ctaHome}
               </a>
             </Button>

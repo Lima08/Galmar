@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Poppins } from 'next/font/google'
+import Analytics from '@/components/analytics'
+import CookieBanner from '@/components/cookie-banner'
 import content from '@/data/content.json'
+import { toOpeningHoursSpecification } from '@/lib/hours'
 import { siteUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
 import './globals.css'
@@ -15,12 +18,16 @@ const poppins = Poppins({
 
 const { title } = content.meta
 const description = content.hero.description
+const noIndex = process.env.NEXT_PUBLIC_NOINDEX === 'true'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
   description,
   alternates: { canonical: '/' },
+  robots: noIndex
+    ? { index: false, follow: false }
+    : { index: true, follow: true },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
@@ -58,6 +65,7 @@ const localBusinessJsonLd = {
     postalCode: info.address.postalCode,
     addressCountry: 'BR'
   },
+  openingHoursSpecification: toOpeningHoursSpecification(info.hoursByDay),
   sameAs: [social.facebook.url, social.instagram.url]
 }
 
@@ -78,6 +86,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
         {children}
+        <CookieBanner />
+        <Analytics />
       </body>
     </html>
   )

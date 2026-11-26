@@ -99,7 +99,8 @@ export default function Contact() {
               <a
                 href={defaultWhatsAppUrl}
                 target='_blank'
-                rel='noopener noreferrer'>
+                rel='noopener noreferrer'
+                data-track-location='onde-estamos'>
                 <FaWhatsapp aria-hidden />
                 {content.contact.actions.whatsapp}
               </a>
@@ -109,7 +110,7 @@ export default function Contact() {
               size='lg'
               variant='outline'
               className={cn(CTA, OUTLINE)}>
-              <a href={phoneHref}>
+              <a href={phoneHref} data-track-location='onde-estamos'>
                 <Phone aria-hidden />
                 {content.contact.actions.call}
               </a>
@@ -119,7 +120,11 @@ export default function Contact() {
               size='lg'
               variant='outline'
               className={cn(CTA, OUTLINE)}>
-              <a href={directionsUrl} target='_blank' rel='noopener noreferrer'>
+              <a
+                href={directionsUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                data-track-location='onde-estamos'>
                 <Navigation aria-hidden />
                 {content.contact.actions.directions}
               </a>

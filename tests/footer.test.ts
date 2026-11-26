@@ -44,4 +44,9 @@ describe('rodapé (FT-01)', () => {
     expect(content.footer.rights).toBeTruthy()
     expect(content.footer.logoAlt).toBeTruthy()
   })
+
+  it('linka a política de privacidade', () => {
+    expect(footer()).toContain('/privacidade')
+    expect(footer()).toContain('content.footer.privacy')
+  })
 })

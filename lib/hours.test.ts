@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { formatHours, formatShortHours } from './hours'
+import {
+  formatHours,
+  formatShortHours,
+  toOpeningHoursSpecification
+} from './hours'
 
 const labels = { to: 'às', closed: 'fechado', separator: ' · ' }
 
@@ -7,10 +11,17 @@ const week = [
   {
     days: 'Segunda a sexta',
     daysShort: 'Seg–Sex',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '09:00',
     closes: '18:00'
   },
-  { days: 'Sábado', daysShort: 'Sáb', opens: '09:00', closes: '13:00' },
+  {
+    days: 'Sábado',
+    daysShort: 'Sáb',
+    dayOfWeek: ['Saturday'],
+    opens: '09:00',
+    closes: '13:00'
+  },
   { days: 'Domingo', daysShort: 'Dom', closed: true }
 ]
 
@@ -56,5 +67,32 @@ describe('formatShortHours', () => {
         ' · '
       )
     ).toBe('Sábado 9h30–12h45')
+  })
+})
+
+describe('toOpeningHoursSpecification', () => {
+  it('gera OpeningHoursSpecification só para dias abertos com dayOfWeek', () => {
+    expect(toOpeningHoursSpecification(week)).toEqual([
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00'
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday'],
+        opens: '09:00',
+        closes: '13:00'
+      }
+    ])
+  })
+
+  it('ignora linha aberta sem dayOfWeek', () => {
+    expect(
+      toOpeningHoursSpecification([
+        { days: 'Sábado', opens: '09:00', closes: '13:00' }
+      ])
+    ).toEqual([])
   })
 })

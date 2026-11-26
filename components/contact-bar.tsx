@@ -17,12 +17,16 @@ export default function ContactBar() {
             href={defaultWhatsAppUrl}
             target='_blank'
             rel='noopener noreferrer'
+            data-track-location='contact-bar'
             className={LINK}>
             <FaWhatsapp className='h-4 w-4' aria-hidden />
             <span>{content.contactBar.whatsapp}</span>
             <span className='hidden md:inline'>{info.phone}</span>
           </a>
-          <a href={phoneHref} className={LINK}>
+          <a
+            href={phoneHref}
+            data-track-location='contact-bar'
+            className={LINK}>
             <Phone className='h-4 w-4' aria-hidden />
             <span>{content.contactBar.call}</span>
           </a>

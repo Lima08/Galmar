@@ -35,7 +35,7 @@ graph TD
 
 ### Server por padrão
 
-Client (`'use client'`) só: `CookieBanner`/`Analytics` (consentimento + GA4), `Header` (sombra ao rolar + menu mobile em `Sheet`/Radix Dialog), `WhatsAppButton` (visibilidade por scroll/timer), `RevealObserver` (revela `[data-reveal]` abaixo da dobra uma vez; nada oculto sem JS ou com `prefers-reduced-motion`).
+Client (`'use client'`) só: `CookieBanner`/`Analytics`/`CookiePreferences` (store de consentimento em `lib/analytics.ts`, Consent Mode v2), `MarqueeToggle` (pausa do carrossel), `CookieBanner`/`Analytics` (consentimento + GA4), `Header` (sombra ao rolar + menu mobile em `Sheet`/Radix Dialog), `WhatsAppButton` (visibilidade por scroll/timer), `RevealObserver` (revela `[data-reveal]` abaixo da dobra uma vez; nada oculto sem JS ou com `prefers-reduced-motion`).
 
 ### Lógica pura em `lib/`
 

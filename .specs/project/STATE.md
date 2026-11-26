@@ -1,7 +1,7 @@
 # State
 
 **Last Updated:** 2026-11-25
-**Current Work:** M1 — F1–F5 revisadas ✅; F6–F10 implementadas com 9 bloqueantes de publicação (ver `.specs/quick/review-m1-geral.md`); M1 = pronto para correções + QA, não para publicar
+**Current Work:** M1 — bloqueantes do review geral resolvidos (`launch-readiness`, #37/#27); pronto para publicar quando houver domínio, servidor e upload (#2, #16)
 
 ---
 
@@ -186,12 +186,20 @@
 
 ---
 
+### L-004: Duas sessões no mesmo diretório de trabalho misturam commits
+
+**Context:** 2026-11-25 — outra sessão commitou trabalho em andamento desta e vice-versa (`e0864d8`, `f1ee7a3`).
+**Solution:** uma sessão por vez por diretório, ou um `git worktree` por sessão; sempre `git status` + `git diff --stat` antes de `git add`.
+**Prevents:** commits com mudanças de outra sessão e trabalho duplicado.
+
+---
+
 ## Deferred Ideas
 
 - [ ] `components/ui/sheet.tsx` (vendor): `sr-only` "Close" em inglês, alvo de fechar ~16 px (WCAG 2.5.8 pede ≥ 24) e classes `animate-in` sem plugin no Tailwind 4 — avaliar `tw-animate-css` (conferir reduced-motion) e botão de fechar próprio pt-BR `size-11` — Captured during: F4
 
 - [x] `sr-only`/"aria-label" Facebook/Instagram via `content.json` — Done in F6
-- [ ] Lighthouse/axe real (contraste, performance) — Captured during: review F1 (F10)
+- [x] Lighthouse mobile real — Done em launch-readiness: 93–98 / 100 / 100 / 100 com compressão no servidor
 
 - [ ] Fotos reais da loja (interior, balcão, fachada sem placa antiga) para hero e Sobre — Captured during: AD-010
 

@@ -6,6 +6,8 @@ F1–F5 já tinham review próprio (ver `review.md` de cada feature). F6–F10 e
 
 ## Bloqueantes para publicar
 
+> **2026-11-26: todos resolvidos** em `.specs/features/launch-readiness/` (LR-01 a LR-14), junto com a #27.
+
 | #   | Achado                                                                                                                                                           | Onde                                                 | Feature |
 | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------- |
 | 1   | `/privacidade` quebra em Apache/nginx sem rewrite: export gera `privacidade.html` **e** a pasta `privacidade/` → 301 + listagem/403. Teste aceita as duas formas | `next.config.mjs`, `tests/launch.test.ts`            | F10     |

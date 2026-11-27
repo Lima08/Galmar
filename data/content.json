@@ -126,7 +126,7 @@
     "info": {
       "addressTitle": "Endereço",
       "address": {
-        "street": "Av. Jorge Tibiriçá, 1747 – Jardim Santa Eudoxia",
+        "street": "Av. Jorge Tibiriçá, 1747 – Jardim dos Oliveiras",
         "city": "Campinas",
         "state": "SP",
         "postalCode": "13044-125"
@@ -134,7 +134,7 @@
       "phoneTitle": "Telefone",
       "phone": "(19) 3212-1177",
       "emailTitle": "E-mail",
-      "email": "galmarcomercial@gmail.com",
+      "email": "contato@galmarlimpeza.com.br",
       "clockTitle": "Horário de Funcionamento",
       "hoursByDay": [
         {
@@ -195,12 +195,12 @@
   "privacy": {
     "title": "Política de privacidade",
     "description": "Como a Galmar trata dados neste site: cookies de medição com consentimento, mapa do Google Maps e como exercer seus direitos.",
-    "updated": "Atualizada em 26 de novembro de 2026",
+    "updated": "Atualizada em 27 de novembro de 2026",
     "back": "Voltar ao início",
     "sections": [
       {
         "heading": "Quem somos",
-        "body": "A Galmar Comercial vende produtos de limpeza, higiene e descartáveis em Campinas-SP e é a responsável pelos dados tratados neste site. Contato: (19) 3212-1177 e galmarcomercial@gmail.com."
+        "body": "A Galmar Comercial vende produtos de limpeza, higiene e descartáveis em Campinas-SP e é a responsável pelos dados tratados neste site. Contato: (19) 3212-1177 e contato@galmarlimpeza.com.br."
       },
       {
         "heading": "Cookies de medição",

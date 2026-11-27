@@ -101,9 +101,19 @@ describe('contato oficial (CT-03, CT-04)', () => {
     )
   })
 
+  it('e-mail oficial', () => {
+    expect(info.email, 'contact.info.email').toBe(
+      'contato@galmarlimpeza.com.br'
+    )
+    expect(
+      content.privacy.sections[0]?.body,
+      'privacy.sections[0].body'
+    ).toContain('contato@galmarlimpeza.com.br')
+  })
+
   it('endereço do Perfil da Empresa no Google', () => {
     expect(info.address, 'contact.info.address').toEqual({
-      street: 'Av. Jorge Tibiriçá, 1747 – Jardim Santa Eudoxia',
+      street: 'Av. Jorge Tibiriçá, 1747 – Jardim dos Oliveiras',
       city: 'Campinas',
       state: 'SP',
       postalCode: '13044-125'
